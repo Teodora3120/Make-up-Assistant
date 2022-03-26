@@ -2,14 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;  /* we removing the margins, paddings from start*/
-}
-
-body {
-     font-family: 'Poppins', sans-serif;
-}
-
-button {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -95,14 +88,14 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
     -webkit-text-fill-color: transparent;
 }
 
-.cta {
+/* .cta {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: nowrap;
     margin-top: 2em;
-}
+}  */
 
 .cta-select {
     border: 3px solid #c36cdd;
@@ -113,19 +106,15 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
     height: 50px;
     cursor: pointer;
     font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 2em; 
 }
+.cta-select:hover {
+    background-color: #c36cdd;
+    color: white;
+  }
 
-.cta-add {
-    border: 3px solid #dd6cb2;
-    background: transparent;
-    color: #dd6cb2;
-    font-weight: 600;
-    width: 150px;
-    height: 50px;
-    cursor: pointer;
-    font-size: 15px;
-    margin: 0px 0px 0px 30px;
-}
 
 .intro-text p {
     margin-top: 7px;
@@ -216,6 +205,7 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
 
     }
     .nav-links li {
+        margin-top: 1em;
         opacity: 0;
         color: white;
     }
@@ -231,6 +221,7 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
     width: 40vw;
     height: 100vh;
 }
+
 
 @keyframes navLinkFade 
 {
@@ -257,12 +248,42 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-.footer {
+
+
+/*Footer part */
+.footer{
+    display: flex;
+    align-items: flex-end;
+    background-color: rgba(133, 102, 129, 0.6);
+    padding: 30px 0px;
+    margin-top: 8em; 
+    /* margin-top ca sa nu mai fie spatiul alb sub footer */
+
+}
+
+.footer-container{
+    max-width: 1170px;
+    margin: auto;
+}
+
+.footer-ul {
+    list-style-type: none;
+    margin-left: 5em;
+    margin-top: 10px;
+}
+
+.footer-col{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: #dd6cb2;
-    padding: 1em;
+    
+}
+a{
+    text-decoration: none;
+    color:#000;
+    cursor: pointer;
+}
+
+.footer-ul li{
+    margin-top:5px;
 }
