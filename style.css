@@ -256,3 +256,13 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
 .toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
 }
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #dd6cb2;
+    padding: 1em;
+}
