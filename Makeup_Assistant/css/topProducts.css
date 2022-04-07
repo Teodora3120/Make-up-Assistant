@@ -7,7 +7,6 @@
 
 header {
     width: 100%;
-    /* background-color :rgba(168, 140, 143, 1); */
     background-color :rgb(245, 215, 218);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
@@ -56,76 +55,7 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
     flex: 2;
 }
 
-.presentation {
-    display: flex;
-    align-items: center;
-    width: 90%;
-    margin: auto;
-    min-height: 80vh;
-}
-
-.cover img {
-    height: 100%;
-    filter: drop-shadow(0px 5px 3px rgb(82, 51, 51));
-}
-
-.cover {
-    flex : 1;
-    height: 60vh;
-}
-
-.introduction {
-    margin: 10px;  /* margins are added by me*/
-    flex : 1;
-}
-
-.intro-text {
-    padding-right: 2em;
-}
-.intro-text h1 {
-    font-size: 40px;
-    font-weight: 600;
-    background: linear-gradient(to right, rgb(179, 84, 104), rgba(121, 56, 101, 0.133));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* .cta {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    margin-top: 2em;
-}  */
-
-.cta-select {
-    border: 3px solid #c36cdd;
-    background: transparent;
-    color: #c36cdd;
-    font-weight: 600;
-    width: 150px;
-    height: 50px;
-    cursor: pointer;
-    font-size: 15px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-top: 2em; 
-    transition: .2s all;
-}
-.cta-select:hover {
-    background-color: #c36cdd;
-    color: white;
-  }
-
-
-.intro-text p {
-    margin-top: 7px;
-    font-size: 20px;
-    font-weight: 400;
-    color: #000;
-}
+/* burger menu styling */
 
 .burger {
     display: none;  
@@ -141,53 +71,13 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
     transition: all 0.3s ease;
 }
 
+
 @media screen and (max-width: 1024px) {
     .nav-links {
         justify-content: space-between;
     }
-    .presentation {
-        flex-direction: column;
-    }
-    .introduction {
-        margin-top: 5vh;
-        text-align: center;
-    }
-
-    .intro-text {
-        padding-right: unset;
-    } 
-
-    .intro-text h1 {
-        font-size: 30px;
-    }
-
-    .intro-text p {
-        font-size: 15px;
-    }
-
-    .cover {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .cover img {
-        max-width: 90%;
-    }
-    .cta {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .presentation {
-        display: flex;
-        width: 90%;
-        margin: auto;
-        min-height: 70vh;
-        align-items: center;
-    }
+    
 }
-
 
 @keyframes navLinkFade 
 {
@@ -214,6 +104,7 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
+
 /*Footer part */
 .footer{
     width: 100%;
@@ -226,7 +117,7 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
 .footer-container {
     position: fixed;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-60%, 0);
     bottom: 0;
     margin: 0 auto;
     width: 90%;
@@ -234,6 +125,34 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
     align-items: center;
     justify-content: space-between;
    
+}
+
+.select-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    min-height: 80vh;
+}
+
+.select-container h4{
+    margin-bottom: 2em;
+    font-size: 1.5rem;
+}
+label{
+    margin-bottom: 1em;
+    font-size: 1rem;
+}
+
+select{
+    box-shadow: 0 10px 25px ;
+    font-size: 1rem;
+    padding: 0.5em 0.5em;
+    background: rgb(192, 123, 123);
+    color: white;
+
 }
 
 @media screen and (max-width: 600px){
@@ -270,8 +189,21 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        left: 50%;
-        transform: translate(-60%, 0);
+        margin-bottom: 0.5em;
+    }
+
+    .select-container h4{
+        margin-bottom: 2em;
+        font-size: 1rem;
+    }
+
+    select{
+        box-shadow: 0 10px 25px ;
+        font-size: 1rem;
+        padding: 0.25em 0.25em;
+        background: rgb(192, 123, 123);
+        color: white;
+    
     }
 }
 
@@ -280,3 +212,5 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
     width: 40vw;
     height: 100vh;
 }
+
+
