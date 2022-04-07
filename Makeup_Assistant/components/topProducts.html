@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/topProducts.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&display=swap" rel="stylesheet">
-    <title>Landing Page</title>
+    <title>Top Products</title>
 </head>
 
 <body>
@@ -21,9 +21,9 @@
             </div>
             <nav class="navbar">
                 <ul class="nav-links">
-                    <li><a class="nav-link" href="../components/topProducts.html">Top Products</a></li>
-                    <li><a class="nav-link" href="#">Form</a></li>
+                    <li><a class="nav-link" href="../components/index.html">Home</a></li>
                     <li><a class="nav-link" href="#">Logout</a></li>
+                    <li><a class="nav-link" href="#">Form</a></li>
                 </ul>
             </nav>
             <div class="burger">
@@ -35,29 +35,17 @@
     </header>
 
     <main>
-        <section class="presentation">
+      <div class="select-container">
+          <h4>Here you can select the filter for the top products</h4>
+         
+          <label for="makeup">Filter: </label>
+          <select name="filter" id="filter">
+            <option value="age">Age</option>
+            <option value="gender">Gender</option>
+            <option value="occasion">Occasion</option>
+          </select>
 
-            <div class="introduction">
-                <div class="intro-text">
-                    <h1>Hello, welcome to our Make-up Assistant</h1>
-                    <p>Do you want effortless make-up, but you don't have any idea how type of make-up to do?
-                        What type of products to use?
-                        What about the style, the tematic?
-                        We are here to help you, just complete the form
-                    </p>
-                </div>
-                <div class="cta">
-                    <!-- call to action -->
-                    <button class="cta-select">Complete Form</button>
-                    <!-- <button class="cta-add">Daily Make-up</button> -->
-                </div>
-            </div>
-
-            <div class="cover">
-                <img draggable="false" src="../images/istockphoto-1176520415-612x612.jpg" alt="site photo">
-            </div>
-
-        </section>
+      </div>
     </main>
 
     <footer class="footer">
