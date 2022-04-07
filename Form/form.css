@@ -1,0 +1,126 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Roboto',sans-serif;
+}
+
+.spate{
+    height: auto;
+    width: auto;
+    margin:0;
+    display:flex;
+    flex-wrap: nowrap;
+    padding:0;
+    max-width: auto;
+    max-height:auto;
+    min-height:100%;
+    min-width:100%;
+    background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url(imgs/background.jpg);
+    background-position:center;
+    background-size:cover;
+    position:absolute;
+}
+
+.formular{
+    display: flex;
+    position:relative;
+    height:40%;
+    flex-direction: column;
+    align-content: center;
+    width:50%;
+    background-color: rgba(245, 245, 245,0.3); 
+    position:relative;
+    margin:4% auto;
+}
+.selectare{
+    display: flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    margin:5% auto;
+    border-left:4% auto;
+    padding:4% auto;
+}
+#sel{
+    position: relative;
+    align-content: center;
+    margin:inherit;
+    border-left:4% auto;
+    padding:4% auto;
+}
+label{
+    font-family: 'Roboto',sans-serif;
+    font-style: oblique;
+    color: rgba(243,182,212,0.53);
+    font-size: 100%;
+}
+#blabla{
+    position: relative;
+    margin: inherit;
+    padding: inherit;
+    align-content: center;
+}
+.butoane{
+    position: relative;
+    align-content: center;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    border:inherit;
+    margin:0% auto;
+}
+#daymakeup{
+    border:4px solid;
+    border-color:rgba(243,182,212,0.54);
+    border-radius:20px;
+    padding: 5px 7px;
+    background-color: rgba(243,182,212,0.53);
+}
+#daymakeup:hover{
+    border:4% solid;
+    border-color:rgba(243,182,212,0.54);
+    border-radius:20px;
+    padding: 5px 7px;
+    background-color: transparent;
+    color:rgba(243,182,212,0.54);
+    
+}
+
+#nightmakeup{
+    
+    margin:4% auto;
+    border:4% solid;
+    border-radius:20px;
+    border-color:rgba(243,182,212,0.54);
+    padding: 5% 7%;
+    background-color: rgba(243,182,212,0.53);
+}
+#nightmakeup:hover{
+    
+    margin:5% auto;
+    border:4% solid;
+    border-radius:20px;
+    border-color:rgba(243,182,212,0.54);
+    padding: 5% 7%;
+    background-color: transparent;
+    color:rgba(243,182,212,0.54);
+    
+}
+
+option{
+    background-color: rgba(243,182,212,0.53);
+    font-family: 'Roboto', sans-serif;
+}
+select{
+        background-color: rgba(243,182,212,0.53);
+        font-family: 'Roboto', sans-serif;
+        border:40% solid;
+        border-color: rgba(243,182,212,0.53);
+        border-radius: 20px;
+        appearance:none;
+        align-content: center;
+        justify-content: center;
+}
+select::ms-expand{
+    display: none;
+}
