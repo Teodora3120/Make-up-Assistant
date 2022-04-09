@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* we removing the margins, paddings from start*/
+    font-family: 'Roboto', sans-serif;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+
+header {
+    background-color: rgb(245, 215, 218);
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  }
+  
+  .header-container{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin: auto;
+  }
+  li {
+    list-style: none;
+  }
+  
+  a{
+    color: black;
+    text-decoration: none;
+  }
+  
+  .navbar{
+    width: 80%;
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+  }
+  
+  .nav-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10em ;
+  }
+  
+  .nav-branding{
+    font-size: 2rem;
+  }
+  
+  .nav-link{
+    transition: 0.7s ease;
+  }
+  
+  .nav-link:hover{
+    color:#c36cdd;
+  }
+  
+  .hamburger{
+    display: none;
+    cursor: pointer;
+  }
+  
+  .bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    background-color: white;
+  }
+
+.cta {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    margin-top: 2em;
+}  
+
+.cta-select {
+    border: 3px solid #c36cdd;
+    background: transparent;
+    color: #c36cdd;
+    font-weight: 600;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 2em; 
+    transition: .2s all;
+}
+.cta-select:hover {
+    background-color: #c36cdd;
+    color: white;
+  }
+.class-branding{
+    margin-left: 4em;
+  }
+/*Footer part */
+
+.select-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    min-height: 80vh;
+}
+
+.select-container h4{
+    margin-bottom: 2em;
+    font-size: 1.5rem;
+}
+label{
+    margin-bottom: 1em;
+    font-size: 1rem;
+}
+
+select{
+    box-shadow: 0 10px 25px ;
+    font-size: 1rem;
+    padding: 0.5em 0.5em;
+    background: rgb(192, 123, 123);
+    color: white;
+
+}
+
+/*Footer part */
+.footer{
+    width: 100%;
+    background-color: white;
+    padding: 10px 0;
+    margin-bottom: 0;
+    bottom: 0;
+    position: fixed;
+  }
+  
+  .footer-container {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+
+
+  @media screen and (max-width: 600px){
+ 
+    .hamburger{
+      display: block;
+    }
+  
+    .hamburger.active .bar:nth-child(2){
+      opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+      transform: translateY(8px) rotate(45deg);
+    }
+  
+    .hamburger.active .bar:nth-child(3){
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  
+    .nav-menu{
+      position: fixed;
+      left: -100%;
+      top: 3rem;
+      gap : 0;
+      flex-direction: column;
+      background-color: rgb(245, 215, 218);
+      width: 100%;
+      text-align: center;
+      transition: 0.3s ease;
+      z-index: 9999;
+    }
+  
+    .nav-item{
+      margin: 10px 0;
+    }
+  
+    .nav-menu.active{
+      left: 0;
+    }
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .select-container h4{
+        margin-bottom: 2em;
+        font-size: 1rem;
+    }
+
+    select{
+        box-shadow: 0 10px 25px ;
+        font-size: 1rem;
+        padding: 0.25em 0.25em;
+        background: rgb(192, 123, 123);
+        color: white;
+    
+    }
+
+    .cta-select {
+        border: 3px solid #c36cdd;
+        background: transparent;
+        color: #c36cdd;
+        font-weight: 400;
+        width: 75px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-top: 2em; 
+        transition: .2s all;
+    }
+  
+  }
+
+
+
+
