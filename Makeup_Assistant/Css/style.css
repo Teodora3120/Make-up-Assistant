@@ -5,6 +5,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
+
 header {
     width: 100%;
     /* background-color :rgba(168, 140, 143, 1); */
@@ -237,8 +238,9 @@ nav {           /* este copil direct a lui header si nu unicul de tipul asta*/
 }
 
 @media screen and (max-width: 600px){
+
     .nav-links{
-        position: absolute;
+        position: fixed; /* inainte era absolute*/
         right: 0px;
         height: 92vh;
         top: 8vh;
