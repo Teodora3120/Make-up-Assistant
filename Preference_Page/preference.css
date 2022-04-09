@@ -5,10 +5,9 @@
   font-family: 'Roboto', sans-serif;
 }
   
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    
-  }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 
 header {
@@ -20,8 +19,9 @@ header {
 .header-container{
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     width: 100%;
-    margin: auto;
 }
 li {
   list-style: none;
@@ -33,19 +33,21 @@ a{
 }
 
 .navbar{
-  width: 80%;
+  width: 100%;
   min-height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 3em;
+  align-self: center;
+  justify-self: center;
 }
 
 .nav-menu{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10em ;
+  gap: 10em;
 }
 
 .nav-branding{
@@ -71,6 +73,7 @@ a{
   height: 3px;
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background-color: white;
 }
 
@@ -105,6 +108,7 @@ a{
   font-weight: 600;
   background: linear-gradient(to right, rgb(179, 84, 104), rgba(121, 56, 101, 0.133));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -136,12 +140,6 @@ a{
   color: #000;
 }
 
-.class-branding{
-  margin-left: 4em;
-}
-
-
-
 /*Footer part */
 .footer{
   width: 100%;
@@ -154,10 +152,11 @@ a{
 
 .footer-container {
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 3em;
 }
 
 .container {
@@ -252,7 +251,7 @@ a{
   }
 
   .nav-menu{
-    position: fixed;
+    position: absolute;
     left: -100%;
     top: 3rem;
     gap : 0;
@@ -262,10 +261,11 @@ a{
     text-align: center;
     transition: 0.3s ease;
     z-index: 9999;
+    padding: 15px;
   }
 
   .nav-item{
-    margin: 10px 0;
+    margin: 5px 0;
   }
 
   .nav-menu.active{
