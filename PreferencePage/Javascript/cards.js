@@ -61,7 +61,7 @@ let products = [
   var dynamic = document.querySelector('.container');
   for (var i = 0; i < products.length; i++) {
     var fetch = document.querySelector('.container').innerHTML;
-    dynamic.innerHTML = `<div id="cards${i}" onclick="show(event)">
+    dynamic.innerHTML = `<div id="cards${i}" onclick="show(${products[i].id})">
         <div class="box-content">
           <img class="grid-img" src="${products[i].image}">
           <h2>${products[i].name}</h2>
@@ -72,10 +72,8 @@ let products = [
       </div>` + fetch;
   } 
 
-  function show(event) {
-    var currentElement = event.target || event.srcElement;
-    var details = currentElement.innerHTML.id
-    console.log(details)
- }
+//   function show(id) {
+//     console.log(id);
+//  }
 
 
