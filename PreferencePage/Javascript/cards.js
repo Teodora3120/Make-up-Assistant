@@ -72,8 +72,8 @@ let products = [
       </div>` + fetch;
   } 
 
-//   function show(id) {
-//     console.log(id);
-//  }
+  function show(id) {
+    console.log(id);
+ }
 
 
