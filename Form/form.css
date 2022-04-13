@@ -92,7 +92,7 @@ header {
     max-height:auto;
     min-height:100%;
     min-width:100%;
-    background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url(Images/background.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url(/Images/background.jpg);
     background-position:center;
     background-size:cover;
     position:inherit;
@@ -254,6 +254,13 @@ select::ms-expand{
   margin-bottom: 0;
   bottom: 0;
   position: fixed;
+}
+
+.navbarlogo{
+  background: linear-gradient(to right, rgb(66,39,90), rgb(115,75,109, 0.6));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .footer-container {

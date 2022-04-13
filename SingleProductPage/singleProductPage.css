@@ -66,6 +66,13 @@
     display: none;
     cursor: pointer;
   }
+
+  .navbarlogo{
+    background: linear-gradient(to right, rgb(66,39,90), rgb(115,75,109, 0.6));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   
   .bar{
     display: block;
@@ -107,7 +114,8 @@
   }
   
   .grid-img{
-    max-width: 100%;
+    width: 80%;
+    height: 80%;
   }
   
   .box-content{
@@ -115,16 +123,20 @@
     padding: 10px 5px;
     text-align: center;
     margin-top: 2em;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  .box-content h2{
+    margin-bottom: 0.5em;
+    margin-top: 1em;
   }
   .productContainer{
     background-color: white;
     padding: 10px 5px;
     text-align: center;
-    max-width: 50%;
-    max-height: 50%;
+    max-width: 45%;
+    max-height: 45%;
     margin-top: 0.5em;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 10px;
   }
 
   .description{
@@ -159,6 +171,10 @@
   
   
   @media screen and (max-width: 600px){
+    .grid-img{
+      width: 80%;
+      height: 80%;
+    }
    
     .hamburger{
       display: block;
@@ -202,6 +218,10 @@
         align-items: center;
         justify-content: center;
     }
+
+    .footer{
+      background-color: #ffdde1;
+    }
   
     .container {
      flex-direction: column;
@@ -209,5 +229,13 @@
     .box-content{
       margin-top: 1em;
     }
+
+    .productContainer{
+      max-width: 70%;
+      max-height: 70%;
+    }
   
   }
+
+
+  

@@ -3,57 +3,57 @@ let products = [
     id: "id1",
     name: "Fond de ten",
     price: "10 RON",
-    description: "bla bla bla",
+    description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Maybelline",
-    image: "/PreferencePage/Images/istockphoto-1176520415-612x612.jpg"
+    image: "/Images/fond_de_ten.jpg"
   },
   {
     id: "id2",
     name: "Ruj",
     price: "15 RON",
-    description: "bla bla bla",
+    description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Mac",
-    image: "/PreferencePage/Images/istockphoto-1176520415-612x612.jpg"
+    image: "/Images/ruj.jpg"
   },
   {
     id: "id3",
     name: "Fard",
     price: "20 RON",
-    description: "bla bla bla",
+    description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Essence",
-    image: "/PreferencePage/Images/istockphoto-1176520415-612x612.jpg"
+    image: "/Images/fard.jpg"
   },
   {
     id: "id4",
     name: "Pudra",
     price: "30 RON",
-    description: "bla bla bla",
+    description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Pupa Milano",
-    image: "/PreferencePage/Images/istockphoto-1176520415-612x612.jpg"
+    image: "/Images/pudra.jpg"
   },
   {
     id: "id5",
     name: "Mascara",
     price: "0 RON",
-    description: "bla bla bla",
+    description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Cupio",
-    image: "/PreferencePage/Images/istockphoto-1176520415-612x612.jpg"
+    image: "/Images/mascara.jpg"
   },
   {
     id: "id6",
     name: "Eyeliner",
     price: "60 RON",
-    description: "bla bla bla",
+    description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Catrice",
-    image: "/PreferencePage/Images/istockphoto-1176520415-612x612.jpg"
+    image: "/Images/eyeliner.jpg"
   },
   {
     id: "id7",
     name: "Creion de buze",
     price: "70 RON",
-    description: "bla bla bla",
+    description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Dior",
-    image: "/PreferencePage/Images/istockphoto-1176520415-612x612.jpg"
+    image: "/Images/creion_de_buze.jpg"
   }
 ]
 
