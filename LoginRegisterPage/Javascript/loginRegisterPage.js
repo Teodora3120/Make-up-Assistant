@@ -5,12 +5,12 @@ var y=document.getElementById("register");
 var z=document.getElementById("btn");
 
 function register(){
-  x.style.left="-100%";
+  x.style.left="-120%";
   y.style.left="33%";
   z.style.left="110px";
 }
 function login(){
   x.style.left="33%";
-  y.style.left="100%";
+  y.style.left="120%";
   z.style.left="0px";
 }

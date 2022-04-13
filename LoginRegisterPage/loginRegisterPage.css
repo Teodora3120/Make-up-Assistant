@@ -63,7 +63,8 @@
 .input-group{
   top:180px;
   position: absolute;
-  width: 34%;
+  margin-left:-7%;
+  width: 45%;
   transition: .5s;
 }
 
@@ -107,7 +108,7 @@ span{
 }
 
 #register{
-  left:100%;
+  left:120%;
 }
 
 @media screen and (max-width: 700px) {
