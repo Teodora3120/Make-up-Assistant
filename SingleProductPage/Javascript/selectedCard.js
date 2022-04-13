@@ -1,3 +1,4 @@
+//Set all the images to end with "../"
 let products = [
   {
     id: "id1",
@@ -5,7 +6,7 @@ let products = [
     price: "10 RON",
     description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Maybelline",
-    image: "/Images/fond_de_ten.jpg"
+    image: "../Images/fond_de_ten.jpg"
   },
   {
     id: "id2",
@@ -13,7 +14,7 @@ let products = [
     price: "15 RON",
     description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Mac",
-    image: "/Images/ruj.jpg"
+    image: "../Images/ruj.jpg"
   },
   {
     id: "id3",
@@ -21,7 +22,7 @@ let products = [
     price: "20 RON",
     description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Essence",
-    image: "/Images/fard.jpg"
+    image: "../Images/fard.jpg"
   },
   {
     id: "id4",
@@ -29,7 +30,7 @@ let products = [
     price: "30 RON",
     description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Pupa Milano",
-    image: "/Images/pudra.jpg"
+    image: "../Images/pudra.jpg"
   },
   {
     id: "id5",
@@ -37,7 +38,7 @@ let products = [
     price: "0 RON",
     description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Cupio",
-    image: "/Images/mascara.jpg"
+    image: "../Images/mascara.jpg"
   },
   {
     id: "id6",
@@ -45,7 +46,7 @@ let products = [
     price: "60 RON",
     description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Catrice",
-    image: "/Images/eyeliner.jpg"
+    image: "../Images/eyeliner.jpg"
   },
   {
     id: "id7",
@@ -53,7 +54,7 @@ let products = [
     price: "70 RON",
     description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
     company: "Dior",
-    image: "/Images/creion_de_buze.jpg"
+    image: "../Images/creion_de_buze.jpg"
   }
 ]
 
@@ -63,6 +64,8 @@ let products = [
   const id = urlParams.get('id');
   const product = products.find(idOfProduct => idOfProduct.id == id);
   var productContainer = document.querySelector('.container');
+  //Have a problem with the link from the preference page to singleProduct page. It is probably because "../" is missing.
+  //Tried to resolve but couldn't in the end
   productContainer.innerHTML =   `
   <div class="productContainer" id="${product.id}">
     <div class="box-content">

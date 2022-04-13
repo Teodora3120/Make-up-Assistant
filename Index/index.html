@@ -14,9 +14,9 @@
 
 <body>
     <header>
-        <div clas="header-container">
+        <div class="header-container"> <!--Missing an "s" on "class"-->
           <nav class="navbar">
-            <a class="navbarlogo" href="index.html" class="class-branding">~MKP ASSISTANT~</a>
+            <a class="navbarlogo" href="index.html" >~MKP ASSISTANT~</a> <!--deleting class branding-->
             <ul class="nav-menu">
               <li class="nav-item">
                 <a class="nav-link" href="../TopProducts/topProducts.html">Top Products</a>
@@ -24,7 +24,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="../Form/form.html">Form</a>
               </li>
-              <li class="" nav-item>
+              <li class="nav-item" > <!--"nav-item" outside of class-->
                 <a class="nav-link" href="../LoginRegisterPage/loginRegisterPage.html">Logout</a>
               </li>
             </ul>
@@ -52,12 +52,12 @@
                     </p>
                 </div>
                 <div class="cta">
-                    <button class="cta-select"><a class="nav-link" href="../Form/form.html">Form</a></button>         
+                  <form class="nav-link" action="../Form/form.html"><button class="cta-select" type="submit" >Form</button></form> <!--The element button must not appear as a descendant of the a element (validator w3 error)-->     
                 </div>
             </div>
 
             <div class="cover">
-                <img draggable="false" src="/Images/istockphoto-1176520415-612x612.jpg" alt="site photo">
+                <img draggable="false" src="../Images/istockphoto-1176520415-612x612.jpg" alt="site photo">
             </div>
 
         </section>

@@ -14,9 +14,9 @@
 
 <body>
     <header>
-        <div clas="header-container">
+        <div class="header-container"> <!--Missing an "s" on "class"-->
           <nav class="navbar">
-            <a class="navbarlogo" href="../Index/index.html" class="class-branding">~MKP ASSISTANT~</a>
+            <a class="navbarlogo" href="../Index/index.html" >~MKP ASSISTANT~</a>
             <ul class="nav-menu">
               <li class="nav-item">
                 <a class="nav-link" href="../TopProducts/topProducts.html">Top Products</a>
@@ -24,7 +24,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="../Form/form.html">Form</a>
               </li>
-              <li class="" nav-item>
+              <li class="nav-item" > <!--"nav-item" was outside of class-->
                 <a class="nav-link" href="../LoginRegisterPage/loginRegisterPage.html">Logout</a>
               </li>
             </ul>
@@ -43,7 +43,7 @@
       <div class="select-container">
           <h4>Here you can select the filter for the top products</h4>
          
-          <label for="makeup">Filter: </label>
+          <label> Filter: </label> <!--deleting " for="makeup" " because it sent an error to validator w3-->
           <select name="filter" id="filter">
             <option value="age">Age</option>
             <option value="gender">Gender</option>

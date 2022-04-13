@@ -14,9 +14,9 @@
 </head>
 <body>
     <header>
-        <div clas="header-container">
+        <div class="header-container"> <!--Missing an "s" on "class"-->
           <nav class="navbar">
-            <a class="navbarlogo" href="../Index/index.html" class="class-branding">~MKP ASSISTANT~</a>
+            <a class="navbarlogo" href="../Index/index.html" >~MKP ASSISTANT~</a> <!--Eliminating class-branding-->
             <ul class="nav-menu">
               <li class="nav-item">
                 <a class="nav-link" href="../TopProducts/topProducts.html">Top Products</a>
@@ -24,7 +24,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="../Form/form.html">Form</a>
               </li>
-              <li class="" nav-item>
+              <li class="nav-item" > <!--"nav-tem" was outside of class=""-->
                 <a class="nav-link" href="../LoginRegisterPage/loginRegisterPage.html">Logout</a>
               </li>
             </ul>
@@ -52,7 +52,7 @@
                     <option value="mixt_acneic">Mixt si acneic</option>
                     
                 </select>
-                <label for="varsta_tenului"><br>Selectati varsta tenului dvs.</label>
+                <label ><br>Selectati varsta tenului dvs.</label> <!--deleting "for="varsta_tenului"  The value of the for attribute of the label element must be the ID of a non-hidden form control-->
                 <select name="varsta_tenului">
                     <option value=""> Nespecificat</option>
                     <option value="adolescent"> Ten de adolescent (16-20 ani)</option>
@@ -65,13 +65,13 @@
                     <option value="Zi">Zi</option>
                     <option value="Noapte">Noapte</option>
                 </select>
-                <label for="makeup_intensity"><br>Doriti un machiaj intens sau unul subtil?<br></label>
+                <label ><br>Doriti un machiaj intens sau unul subtil?<br></label> <!--for="makeup_intensity" The value of the for attribute of the label element must be the ID of a non-hidden form control-->
                 <select name="makeup_intensity">
                     <option value="Anything">Nu am nicio preferinta</option>
                     <option value="Intense"> As dori un machiaj intens</option>
                     <option value="Subtle"> As dori un machiaj subtil</option>
                 </select>
-                <label for="eveniment"><br>Pentru ce eveniment ati dori sa va pregatiti?</label>
+                <label ><br>Pentru ce eveniment ati dori sa va pregatiti?</label> <!-- for="eveniment" The value of the for attribute of the label element must be the ID of a non-hidden form control-->
                 <select name="eveniment">
                     <option value="">Alegeti un eveniment!</option>
                     <option value="botez">Botez</option>
@@ -85,7 +85,7 @@
                     <option value="concert_pop">Concert de muzica usoara/pop</option>
                     <option value="concert_rock">Concert de muzica rock/metal</option>
                 </select>
-                <label for="culoriTinuta"><br>Alegeti tipul de culori pe care il va avea tinuta dvs.</label>
+                <label ><br>Alegeti tipul de culori pe care il va avea tinuta dvs.</label> <!--for="culoriTinuta" The value of the for attribute of the label element must be the ID of a non-hidden form control-->
                 <select name="culoriTinuta">
                     <option value="">Alegeti paleta!</option>
                     <option value="caldeLight">Culori calde, nuante deschise.</option>
@@ -97,7 +97,7 @@
                 </select>
                 </div>
                 <br>
-                <h4 for="branduri" id="labelAlegeri"> Alegeti de mai jos brand-urile preferate!</h4><br>
+                <h4  id="labelAlegeri"> Alegeti de mai jos brand-urile preferate!</h4><br> <!--deleting "for="branduri""-->
                 <div class="branduri">
                     <div class="drugstore">
                         <div class="brand">
@@ -142,7 +142,7 @@
                         </div>
                         
                         <div>
-                            <input type="checkbox" id="TrendItUp" name="TrendItUp" value="TrendItUp"><label for="TrendItUp">TrendItUp</label>
+                            <input type="checkbox" id="TrendItUp2" name="TrendItUp2" value="TrendItUp2"><label for="TrendItUp">TrendItUp</label><!--ID DUPLICATE:TrendItUp-->
                         </div>
                         <div>
                             <input type="checkbox" id="KVDbeauty" name="KVDbeauty" value="KVDbeauty"><label for="KVDbeauty">KVDbeauty</label>
@@ -155,9 +155,9 @@
                         </div>
                     </div>
                 </div>    
-                <div class="butoane">
-                <button type="submit" id="donebutton"><a href="../PreferencePage/preferancePage.html">Am terminat!</a></button>
-                </div>
+                <form class="butoane" action="../PreferencePage/preferancePage.html"> 
+                <button type="submit" id="donebutton">Am terminat!</button> <!-- The element a must not appear as a descendant of the button element.-->
+                </form>
             </div>
     </div>
     </main>

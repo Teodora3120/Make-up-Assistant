@@ -90,7 +90,7 @@ header {
     max-height:100vh;
     min-height:100vh;
     min-width:100%;
-    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)),url(/Images/background2.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)),url(../Images/background2.jpg);
     background-position:center;
     background-repeat:repeat-y;
     background-size:cover;
@@ -100,14 +100,14 @@ header {
 .formular{
     display: flex;
     position:relative;
-    height:36rem 19em;
+    height:36rem; 
     flex-direction: column;
     align-content: center;
     justify-content: center;
     /* align-items: center; */
     width:65vh;
     background-color: rgba(245, 245, 245,0.9); 
-    position:relative;
+    
     margin:4% auto;
 }
 .selectare{
@@ -161,7 +161,7 @@ label{
 #nightmakeup{
     
     margin:4% auto;
-    border:4% solid;
+    border:4px solid;
     border-radius:20px;
     border-color:rgba(211, 141, 176, 0.617);
     padding: 5% 7%;
@@ -170,7 +170,7 @@ label{
 #nightmakeup:hover{
     
     margin:5% auto;
-    border:4% solid;
+    border:4px solid;
     border-radius:20px;
     border-color:rgba(243,182,212,0.54);
     padding: 5% 7%;
@@ -198,7 +198,7 @@ select{
         background-color: rgba(243,182,212,0.53);
         font-family: 'Roboto', sans-serif;
         font-size: 1.4vh;
-        border:40% solid;
+        border:4px solid;
         border-color: rgba(243,182,212,0.53);
         border-radius: 20px;
         appearance:none;
@@ -209,13 +209,13 @@ select{
         align-content: center;
 
         margin-left:5%;
-        border-left:4% auto;
-        padding:auto;
+        /* border-left:5%; */
+        /* padding:auto; */
 }
 
-select::ms-expand{
+/* select::ms-expand{
     display: none;
-}
+} */
 .branduri{
     position: relative;
     flex-wrap:nowrap;
@@ -239,7 +239,7 @@ select::ms-expand{
     margin-top: 5%;
 }
 #donebutton:hover{
-    border:4% solid;
+    border:4px solid;
     border-color:rgba(235, 31, 133, 0.54);
     border-radius:20px;
     padding: 5px 7px;
@@ -319,7 +319,7 @@ p{
     font-size: 0;
     max-width: 100vh;
     max-height:100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)),url(/Images/background_mobile.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)),url(../Images/background_mobile.jpg);
     background-color: black;
     background-position:center;
     background-repeat:repeat-y;
@@ -350,7 +350,7 @@ h4{
   .formular{
     display: flex;
     position:relative;
-    height:36rem 19em;
+    height:auto;
     flex-direction: column;
     align-content: center;
     /* overflow: scroll; */
