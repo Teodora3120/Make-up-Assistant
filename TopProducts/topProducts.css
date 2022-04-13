@@ -133,8 +133,10 @@ label{
 select{
     box-shadow: 0 10px 25px ;
     font-size: 1rem;
+    width: 10rem;
     padding: 0.5em 0.5em;
-    background: rgb(192, 123, 123);
+    background: rgb(202, 166, 166);
+    margin-bottom: 1em;
     color: white;
 
 }

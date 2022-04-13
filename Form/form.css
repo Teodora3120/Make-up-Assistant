@@ -4,10 +4,7 @@
     box-sizing: border-box;
     font-family: 'Roboto',sans-serif;
 }
-body{
-	/* bottom: 0px;
-	overflow:scroll; */
-}
+
 #appName{
     margin-bottom: 0;
 }
@@ -93,7 +90,7 @@ header {
     max-height:100vh;
     min-height:100vh;
     min-width:100%;
-    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)),url(Images/background2.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)),url(/Images/background2.jpg);
     background-position:center;
     background-repeat:repeat-y;
     background-size:cover;
@@ -322,7 +319,7 @@ p{
     font-size: 0;
     max-width: 100vh;
     max-height:100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)),url(Images/background_mobile.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)),url(/Images/background_mobile.jpg);
     background-color: black;
     background-position:center;
     background-repeat:repeat-y;
