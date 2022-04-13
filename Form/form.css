@@ -158,6 +158,9 @@ label{
     margin:0%;
     
 }
+.logo,.copyright{
+  color:whitesmoke;
+}
 #nightmakeup{
     
     margin:4% auto;
@@ -284,7 +287,7 @@ p{
 }
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 913px) {
   .hamburger{
     display: block;
   }
@@ -364,9 +367,11 @@ h4{
   }
   .footer-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-wrap:nowrap;
 }
 .branduri{
   position: relative;
@@ -384,4 +389,19 @@ h4{
   margin-left:10%;
   margin-right:10%;
 }
+/* .footer{
+  z-index:9999;
+  flex-wrap:nowrap;
+  justify-content: space-around;
 }
+.logo,.copyright{
+  color:indigo;
+} */
+}
+/* @media screen and (max-width: 913px){
+
+.spate{
+  background-size: 912px 1368px;
+}
+  
+} */
