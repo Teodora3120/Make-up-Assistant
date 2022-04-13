@@ -81,7 +81,7 @@ a{
 /*Footer part */
 .footer{
   width: 100%;
-  background-color: white;
+  background-color: rgb(245, 215, 218);
   padding: 10px 0;
   margin-bottom: 0;
   bottom: 0;
@@ -107,7 +107,8 @@ a{
 }
 
 .grid-img{
-  max-width: 100%;
+  width: 600px;
+  height: 400px;
 }
 
 .box-content{
@@ -115,7 +116,8 @@ a{
   padding: 10px 5px;
   text-align: center;
   margin-top: 2em;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 10px;
 }
 .boxes:hover {
   transform: scale(1.1);
@@ -125,6 +127,42 @@ a{
   color: white;
 }
 
+
+.showmore {
+  border: 3px solid #007bff;
+  background: transparent;
+  color: #007bff;
+  font-weight: 400;
+  width: 150px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 2em; 
+  margin-bottom: 1em;
+  transition: .2s all;
+}
+.showmore:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+body{
+  background: linear-gradient(to bottom, #DBE6F6, rgb(197,121,109, 0.6));
+}
+
+
+.navbarlogo{
+  background: linear-gradient(to right, rgb(66,39,90), rgb(115,75,109, 0.6));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.box-content h2{
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
 @media screen and (max-width: 1024px) {
 .nav-menu:first-child{
   margin-left: 2em;
@@ -133,7 +171,11 @@ a{
 
 
 @media screen and (max-width: 600px){
- 
+
+  .grid-img{
+    width: 350px;
+    height: 350px;
+  }
   .hamburger{
     display: block;
   }

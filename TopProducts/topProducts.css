@@ -102,6 +102,13 @@ header {
     color: white;
   }
 
+  .navbarlogo{
+    background: linear-gradient(to right, rgb(66,39,90), rgb(115,75,109, 0.6));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
 /*Footer part */
 
 .select-container{
