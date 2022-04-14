@@ -74,7 +74,7 @@ let products = [
       <p>${product.price}</p>
       <p>${product.company}</p>
       <p class="description">${product.description}</p>
-      <button class="backButton"><a href="${window.location.protocol}//${window.location.host}/PreferencePage/preferancePage.html">Previous Page</a></button>
+      <button class="backButton"><a href="${window.location.protocol}//${window.location.host}/preferancePage.html">Previous Page</a></button>
     </div>
   </div>
 `
