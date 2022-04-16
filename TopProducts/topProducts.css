@@ -3,11 +3,12 @@
     padding: 0;
     box-sizing: border-box;  /* we removing the margins, paddings from start*/
     font-family: 'Roboto', sans-serif;
+    max-width: 100%;
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
+  
 }
-
 header {
     background-color: rgb(245, 215, 218);
     width: 100%;
@@ -160,6 +161,54 @@ select{
     padding: 0 3em;
   }
 
+  .box-content{
+    background-color: white;
+    padding: 5% 2%;
+    text-align: center;
+    margin-top: 2em;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 10px;
+  }
+  .boxes:hover {
+    transform: scale(1.1);
+  }
+  .boxes:hover .box-content{
+    background-color: white;
+    color: white;
+  }
+
+  .box-content h2{
+    margin-bottom: 0.5em;
+    margin-top: 1em;
+  } 
+
+  .container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 4em;
+    margin-bottom: 4em;
+  }
+  .box-content{
+    background-color: white;
+    padding: 10px 5px;
+    text-align: center;
+    margin-top: 2em;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 10px;
+  }
+
+  .grid-img{
+    width: 600px;
+    height: 400px;
+  }
+  
+  .box-description{
+    align-self: center;
+  }
+
   @media screen and (max-width: 600px){
  
     .hamburger{
@@ -231,6 +280,19 @@ select{
         padding-right: 5px;
         margin-top: 2em; 
         transition: .2s all;
+    }
+    .grid-img{
+      width: 50%;
+      height: 30%;
+      min-width: 250px;
+      min-height: 200px;
+    }
+    .container {
+      flex-direction: column;
+     }
+
+     .box-content{
+      margin-top: 1em;
     }
   
   }

@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;  /* we removing the margins, paddings from start*/
   font-family: 'Roboto', sans-serif;
+  max-width: 100%;
 }
   
 body {
@@ -173,8 +174,10 @@ body{
 @media screen and (max-width: 600px){
 
   .grid-img{
-    width: 350px;
-    height: 350px;
+    width: 50%;
+    height: 30%;
+    min-width: 250px;
+    min-height: 200px;
   }
   .hamburger{
     display: block;
