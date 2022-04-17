@@ -68,19 +68,13 @@ dynamic.innerHTML = products.map((item, index) =>
           <h2>${item.name}</h2>
           <p>${item.price}</p>
           <p>${item.company}</p>
-          <button class="showmore"><a href="${window.location.protocol}//${window.location.host}/C:/Users/conea/Documents/Make-up-Assistant/singleProductPage.html?id=${products[index].id}">See more details</a></button>
+          <button class="showmore"><a href="${window.location.protocol}//${window.location.host}/singleProductPage.html?id=${products[index].id}">See more details</a></button>
         </div>
       </div>
     `
 ).join(" "); 
 
-// for (let i = 0; i < products.length; i++) {
-//     document.getElementById(`card${i}`).addEventListener("click", function() {
-//        const src = `${window.location.protocol}//${window.location.host}/SingleProductPage/singleProductPage.html?id=${products[i].id}`;
-//       console.log(src);
-//       window.location.href = src;
-//   });
-// }
+
 
 
 

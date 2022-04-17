@@ -162,6 +162,21 @@
     background-color: #6c757d;
     color: white;
   }
+
+  .noProductSelected{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .noProductSelected a{
+    margin-top: 3em;
+    align-self: center;
+    text-decoration: underline;
+  }
+
+  .noProductSelected a:hover{
+    color: blue;
+  }
   
   @media screen and (max-width: 1024px) {
     .nav-menu:first-child{
@@ -171,6 +186,10 @@
   
   
   @media screen and (max-width: 600px){
+    .noProductSelected h2{
+      text-align: center;
+
+    }
     .grid-img{
       width: 80%;
       height: 80%;

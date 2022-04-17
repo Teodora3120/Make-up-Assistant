@@ -81,7 +81,7 @@ header {
     align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    margin-top: 2em;
+    /* margin-top: 0.5em; */
 }  
 
 .cta-select {
@@ -95,7 +95,7 @@ header {
     font-size: 15px;
     padding-left: 5px;
     padding-right: 5px;
-    margin-top: 2em; 
+    /* margin-top: 0em;  */
     transition: .2s all;
 }
 .cta-select:hover {
@@ -132,13 +132,13 @@ label{
 }
 
 select{
-    box-shadow: 0 10px 25px ;
+    box-shadow: rgba(223, 160, 160, 0.16) 0px 5px 5px;
     font-size: 1rem;
     width: 10rem;
     padding: 0.5em 0.5em;
-    background: rgb(202, 166, 166);
+    /* background: rgb(202, 166, 166); */
     margin-bottom: 1em;
-    color: white;
+    color: black;
 
 }
 
@@ -188,8 +188,10 @@ select{
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
-    margin-top: 4em;
-    margin-bottom: 4em;
+    margin: auto;
+    max-width: 50%;
+    /* margin-top: 4em;
+    margin-bottom: 4em; */
   }
   .box-content{
     background-color: white;
@@ -208,6 +210,19 @@ select{
   .box-description{
     align-self: center;
   }
+
+@media screen and(max-width: 1200px){
+  .container {
+    flex-direction: column;
+    max-width: 100%;
+   }
+
+   .grid-img{
+    width: 70%;
+    height: 50%;
+  }
+
+} 
 
   @media screen and (max-width: 600px){
  
@@ -278,24 +293,46 @@ select{
         font-size: 15px;
         padding-left: 5px;
         padding-right: 5px;
-        margin-top: 2em; 
+        margin-bottom: 2em; 
         transition: .2s all;
     }
     .grid-img{
       width: 50%;
       height: 30%;
-      min-width: 250px;
+      min-width: 200px;
       min-height: 200px;
     }
     .container {
       flex-direction: column;
+      max-width: 70%;
      }
 
      .box-content{
       margin-top: 1em;
     }
-  
+
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
   }
+  
+}
+
+@media screen and (max-width: 300px){
+  .grid-img{
+    width: 50%;
+    height: 30%;
+    min-width: 150px;
+    min-height: 150px;
+  }
+  .container {
+    flex-direction: column;
+    max-width: 70%;
+   }
+
+}
 
 
 
