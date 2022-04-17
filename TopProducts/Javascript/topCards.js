@@ -1,11 +1,11 @@
-let count=1;
+
 let products = [
     {
       id: "id1",
       name: "Fond de ten",
       price: "10 RON",
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
-      shortDescription:"This is a short description!",
+      shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Maybelline",
       image: "Images/fond_de_ten.jpg",
       clicks:40
@@ -15,7 +15,7 @@ let products = [
       name: "Ruj",
       price: "15 RON",
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
-      shortDescription:"This is a short description!",
+      shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Mac",
       image: "Images/ruj.jpg",
       clicks:20
@@ -25,7 +25,7 @@ let products = [
       name: "Fard",
       price: "20 RON",
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
-      shortDescription:"This is a short description!",
+      shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Essence",
       image: "Images/fard.jpg",
       clicks:28
@@ -35,7 +35,7 @@ let products = [
       name: "Pudra",
       price: "30 RON",
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
-      shortDescription:"This is a short description!",
+      shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Pupa Milano",
       image: "Images/pudra.jpg",
       clicks:21
@@ -45,7 +45,7 @@ let products = [
       name: "Mascara",
       price: "0 RON",
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
-      shortDescription:"This is a short description!",
+      shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Cupio",
       image: "Images/mascara.jpg",
       clicks:22
@@ -55,7 +55,7 @@ let products = [
       name: "Eyeliner",
       price: "60 RON",
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
-      shortDescription:"This is a short description!",
+      shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Catrice",
       image: "Images/eyeliner.jpg",
       clicks:26
@@ -65,7 +65,7 @@ let products = [
       name: "Creion de buze",
       price: "70 RON",
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
-      shortDescription:"This is a short description!",
+      shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Dior",
       image: "Images/creion_de_buze.jpg",
       clicks:25
@@ -77,12 +77,14 @@ dynamic.innerHTML = products.map((item, index) =>
   `
       <div id="card${index}">
         <div class="box-content">
+          <h1 style=" ${index === 0 ? "color:#D4AF37" : "color:black"}; padding: 0.4em; text-align: left;">Number ${index + 1}</h1>
           <img class="grid-img" src="${item.image}">
-          <h4>${count++}</h4>
-          <h2>${item.name}-${item.price}</h2>
-          <p>${item.company}</p>
+          <h2>${item.name}</h2>
+          <p>${item.shortDescription}</p>
+          <p style="margin-top: 1em; font-style: italic;">${item.company}</p>
+          <small style="margin-bottom: .5em">${item.price}</small>
           <div class="box-description"
-          <p>${item.shortDescription}</p></div>
+          </div>
         </div>
       </div>
   `

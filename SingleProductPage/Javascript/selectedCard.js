@@ -63,21 +63,32 @@ let products = [
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
   const product = products.find(idOfProduct => idOfProduct.id == id);
-  var productContainer = document.querySelector('.container');
-  //Have a problem with the link from the preference page to singleProduct page. It is probably because "../" is missing.
-  //Tried to resolve but couldn't in the end
-  productContainer.innerHTML =   `
-  <div class="productContainer" id="${product.id}">
-    <div class="box-content">
-      <img class="grid-img" src="${product.image}">
-      <h2>${product.name}</h2>
-      <p>${product.price}</p>
-      <p>${product.company}</p>
-      <p class="description">${product.description}</p>
-      <button class="backButton"><a href="${window.location.protocol}//${window.location.host}/preferancePage.html">Previous Page</a></button>
+  if(!product){
+    var Container = document.querySelector('.container');
+    Container.innerHTML =   `
+    <div class="noProductSelected">
+    <h2>You have not selected a product.</h2>
+    <a href="preferancePage.html">Go back to the products page.</a>
     </div>
-  </div>
-`
+  `
+  } else {
+    var productContainer = document.querySelector('.container');
+    //Have a problem with the link from the preference page to singleProduct page. It is probably because "../" is missing.
+    //Tried to resolve but couldn't in the end
+    productContainer.innerHTML =   `
+    <div class="productContainer" id="${product.id}">
+      <div class="box-content">
+        <img class="grid-img" src="${product.image}">
+        <h2>${product.name}</h2>
+        <p>${product.price}</p>
+        <p>${product.company}</p>
+        <p class="description">${product.description}</p>
+        <button class="backButton"><a href="${window.location.protocol}//${window.location.host}/preferancePage.html">Previous Page</a></button>
+      </div>
+    </div>
+  `
+  }
+
 }
 getProduct();
 
