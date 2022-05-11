@@ -68,11 +68,12 @@ dynamic.innerHTML = products.map((item, index) =>
           <h2>${item.name}</h2>
           <p>${item.price}</p>
           <p>${item.company}</p>
-          <button class="showmore"><a href="${window.location.protocol}//${window.location.host}/Frontend/singleProductPage.html?id=${products[index].id}">See more details</a></button>
+          <button class="showmore"><a href="${window.location.host}/Frontend/singleProductPage.html?id=${products[index].id}">See more details</a></button>
         </div>
       </div>
     `
 ).join(" "); 
+
 
 
 

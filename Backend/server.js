@@ -116,6 +116,7 @@ module.exports = {
 var http = require('http');
 var fs = require('fs');
 var path = require('path');
+const port = 5000;
 
 http.createServer(function (request, response) {
     console.log('request ', request.url);
@@ -125,7 +126,7 @@ http.createServer(function (request, response) {
     if (filePath == '../') {
         filePath = '../Frontend/index.html';
     }
-    console.log("FILEPATH-UL"+filePath);
+    console.log("FILEPATH-UL" + filePath);
     var extname = String(path.extname(filePath)).toLowerCase();
     var mimeTypes = {
         '.html': 'text/html',
@@ -166,5 +167,5 @@ http.createServer(function (request, response) {
         }
     });
 
-}).listen(8125);
-console.log('Server running at http://127.0.0.1:8125/');
+}).listen(port);
+console.log('Server is listening on port ' + port);
