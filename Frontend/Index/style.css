@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;  /* we removing the margins, paddings from start*/
     font-family: 'Roboto', sans-serif;
-    display: none;
 }
 
 header {
