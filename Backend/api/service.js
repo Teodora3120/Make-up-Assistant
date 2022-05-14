@@ -20,6 +20,7 @@ const service = async (req, res) => {
         res.writeHead(200, { "Content-Type": "application/json" });
         // send the data
         res.end(JSON.stringify(todos));
+        // handleSuccessResponse(todos);
     }
     else if (req.url.match(/\/api\/todos\/(id[0-9]+)/) && req.method === "GET") {
         try {
@@ -32,10 +33,11 @@ const service = async (req, res) => {
             // send the data
             res.end(JSON.stringify(todo));
         } catch (error) {
-            // set the status code and content-type
-            res.writeHead(404, { "Content-Type": "application/json" });
-            // send the error
-            res.end(JSON.stringify({ message: error }));
+            // // set the status code and content-type
+            // res.writeHead(404, { "Content-Type": "application/json" });
+            // // send the error
+            // res.end(JSON.stringify({ message: error }));
+            handleErrorResponse(error);
         }
     }
 
@@ -51,10 +53,11 @@ const service = async (req, res) => {
             // send the message
             res.end(JSON.stringify({ message }));
         } catch (error) {
-            // set the status code and content-type
-            res.writeHead(404, { "Content-Type": "application/json" });
-            // send the error
-            res.end(JSON.stringify({ message: error }));
+            // // set the status code and content-type
+            // res.writeHead(404, { "Content-Type": "application/json" });
+            // // send the error
+            // res.end(JSON.stringify({ message: error }));
+            handleErrorResponse(error);
         }
     }
 
@@ -71,20 +74,25 @@ const service = async (req, res) => {
             res.end(JSON.stringify(updated_todo));
         } catch (error) {
             // set the status code and content type
-            res.writeHead(404, { "Content-Type": "application/json" });
-            // send the error
-            res.end(JSON.stringify({ message: error }));
+            // res.writeHead(404, { "Content-Type": "application/json" });
+            // // send the error
+            // res.end(JSON.stringify({ message: error }));
+            handleErrorResponse(error);
         }
     } 
 }
 
-const handleSuccessResponse = () =>{
-
+const handleSuccessResponse = (data) =>{
+    res.writeHead(200, { "Content-Type": "application/json" });
+    // send the message
+    res.end(JSON.stringify(data));
 }
 
 
-const handleErrorResponse = (message) => {
-
+const handleErrorResponse = (error) => {
+    res.writeHead(404, { "Content-Type": "application/json" });
+    // send the error
+    res.end(JSON.stringify({ message : error }));
 }
 
 module.exports = service;
