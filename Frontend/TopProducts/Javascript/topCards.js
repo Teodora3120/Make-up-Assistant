@@ -7,7 +7,7 @@ let products = [
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
       shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Maybelline",
-      image: "Images/fond_de_ten.jpg",
+      image: "images/fond_de_ten.jpg",
       clicks:40
     },
     {
@@ -17,7 +17,7 @@ let products = [
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
       shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Mac",
-      image: "Images/ruj.jpg",
+      image: "images/ruj.jpg",
       clicks:20
     },
     {
@@ -27,7 +27,7 @@ let products = [
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
       shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Essence",
-      image: "Images/fard.jpg",
+      image: "images/fard.jpg",
       clicks:28
     },
     {
@@ -37,7 +37,7 @@ let products = [
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
       shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Pupa Milano",
-      image: "Images/pudra.jpg",
+      image: "images/pudra.jpg",
       clicks:21
     },
     {
@@ -47,7 +47,7 @@ let products = [
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
       shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Cupio",
-      image: "Images/mascara.jpg",
+      image: "images/mascara.jpg",
       clicks:22
     },
     {
@@ -57,7 +57,7 @@ let products = [
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
       shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Catrice",
-      image: "Images/eyeliner.jpg",
+      image: "images/eyeliner.jpg",
       clicks:26
     },
     {
@@ -67,7 +67,7 @@ let products = [
       description: "Consider beauty product description examples, this description of Shea butter does not only provide boring technical information about its features. Instead, this description focuses on some benefits one would expect from this product, such as - shiny, moisturized, and smooth hair. At the same time, it also included the ingredients that made it possible, which increases the reliability of the product.",
       shortDescription:"Whether you’re looking for the perfect red, everyday nude, or moody blue, Mattemoiselle Plush Matte Lipstick makes it easier than ever to rock the entire rainbow",
       company: "Dior",
-      image: "Images/creion_de_buze.jpg",
+      image: "images/creion_de_buze.jpg",
       clicks:25
     }
   ]
