@@ -78,4 +78,13 @@ const service = async (req, res) => {
     } 
 }
 
+const handleSuccessResponse = () =>{
+
+}
+
+
+const handleErrorResponse = (message) => {
+
+}
+
 module.exports = service;
