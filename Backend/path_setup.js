@@ -7,7 +7,7 @@ const pathSetup = async (request, response) => {
     var filePath = '..' + request.url;
 
     if (filePath == '../') {
-        filePath = '../Frontend/index.html';
+        filePath = '../frontend/index.html';
     }
     console.log("FILEPATH-UL" + filePath);
     var extname = String(path.extname(filePath)).toLowerCase();
@@ -26,8 +26,10 @@ const pathSetup = async (request, response) => {
 
     fs.readFile(filePath, function (error, content) {
         if (error) {
+            console.log(error);
             if (error.code == 'ENOENT') {
-                fs.readFile('./404.html', function (error, content) {
+                fs.readFile('./404.html', function (error2, content) {
+                    console.log(error2);
                     response.writeHead(404, { 'Content-Type': 'text/html' });
                     response.end(content, 'utf-8');
                 });

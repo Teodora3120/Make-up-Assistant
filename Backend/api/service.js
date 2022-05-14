@@ -2,6 +2,7 @@ const getReqData = require("./utils");
 const Todo = require("./controller");
 
 const service = async (req, res) => {
+
     if (req.url === "/api/todos" && req.method === "POST") {
         // get the data sent along
         let todo_data = await getReqData(req);
@@ -75,11 +76,6 @@ const service = async (req, res) => {
             res.end(JSON.stringify({ message: error }));
         }
     } 
-    // No route present
-    else {
-        res.writeHead(404, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ message: "Route not found" }));
-    }
 }
 
 module.exports = service;
