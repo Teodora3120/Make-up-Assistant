@@ -26,9 +26,5 @@ main()
   .then(console.log)
   .catch(console.error)
   .finally(() => client.close());
-/*   async function findAll()
-  {
-    const findResult = await collection.find({}).toArray();
-    console.log('Found documents =>', findResult);
-}
-findAll(); */
+
+module.exports = findResult;
