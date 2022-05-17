@@ -20,13 +20,16 @@ const service = async (req, res) => {
         res.writeHead(200, { "Content-Type": "application/json" });
         // send the data
         res.end(JSON.stringify(todos));
+        // handleSuccessResponse(todos);
     }
-    else if (req.url.match(/\/api\/todos\/(id[0-9]+)/) && req.method === "GET") {
+    else if (req.url.match(/\/api\/todos\/([0-9]+)/) && req.method === "GET") {
         try {
             // get id from url
             const id = req.url.split("/")[3];
+            console.log("URL ID: " + id);
             // get todo
             const todo = await new Todo().getTodo(id);
+            console.log("To do: " + todo);
             // set the status code and content-type
             res.writeHead(200, { "Content-Type": "application/json" });
             // send the data
@@ -36,11 +39,12 @@ const service = async (req, res) => {
             res.writeHead(404, { "Content-Type": "application/json" });
             // send the error
             res.end(JSON.stringify({ message: error }));
+            //handleErrorResponse(error);
         }
     }
 
     // /api/todos/:id : DELETE
-    else if (req.url.match(/\/api\/todos\/(id[0-9]+)/) && req.method === "DELETE") {
+    else if (req.url.match(/\/api\/todos\/([0-9]+)/) && req.method === "DELETE") {
         try {
             // get the id from url
             const id = req.url.split("/")[3];
@@ -55,11 +59,12 @@ const service = async (req, res) => {
             res.writeHead(404, { "Content-Type": "application/json" });
             // send the error
             res.end(JSON.stringify({ message: error }));
+           // handleErrorResponse(error);
         }
     }
 
     // /api/todos/:id : UPDATE
-    else if (req.url.match(/\/api\/todos\/(id[0-9]+)/) && req.method === "PATCH") {
+    else if (req.url.match(/\/api\/todos\/([0-9]+)/) && req.method === "PATCH") {
         try {
             // get the id from the url
             const id = req.url.split("/")[3];
@@ -70,21 +75,26 @@ const service = async (req, res) => {
             // send the message
             res.end(JSON.stringify(updated_todo));
         } catch (error) {
-            // set the status code and content type
+           // set the status code and content type
             res.writeHead(404, { "Content-Type": "application/json" });
             // send the error
             res.end(JSON.stringify({ message: error }));
+           // handleErrorResponse(error);
         }
     } 
 }
 
-const handleSuccessResponse = () =>{
+// const handleSuccessResponse = (data) =>{
+//     res.writeHead(200, { "Content-Type": "application/json" });
+//     // send the message
+//     res.end(JSON.stringify(data));
+// }
 
-}
 
-
-const handleErrorResponse = (message) => {
-
-}
+// const handleErrorResponse = (error) => {
+//     res.writeHead(404, { "Content-Type": "application/json" });
+//     // send the error
+//     res.end(JSON.stringify({ message : error }));
+// }
 
 module.exports = service;

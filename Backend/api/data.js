@@ -56,4 +56,37 @@ const todos = [{
   }
 ];
 
+
+const http = require("https");
+
+const options = {
+	"method": "GET",
+	"hostname": "makeup.p.rapidapi.com",
+	"port": null,
+	"path": "/products.json",
+	"headers": {
+		"X-RapidAPI-Host": "makeup.p.rapidapi.com",
+		"X-RapidAPI-Key": "da8b975ecamsh3acd72fcd4387cap13cb65jsnd5974d5ed537",
+		"useQueryString": true
+	}
+};
+
+const req = http.request(options, function (res) {
+	const chunks = [];
+
+	res.on("data", function (chunk) {
+		chunks.push(chunk);
+	});
+
+	res.on("end", function () {
+		const body = Buffer.concat(chunks);
+    // console.log("CHUCKS:" + "\n" + chunks.toString());
+    return chunks;
+		//console.log(body.toString());
+	});
+});
+
+req.end();
+
+
 module.exports = todos;

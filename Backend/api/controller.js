@@ -1,4 +1,4 @@
-const data = require("./data");
+const data = require("./datadb");
 
 class Controller {
        // getting all todos
