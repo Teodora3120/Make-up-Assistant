@@ -1,7 +1,7 @@
 const getReqData = require("./utils");
 const Todo = require("./Backend-service");
 const { run } = require("./datadb");
-const { getAll } = require("./models/service");
+const { getAll, findById } = require("./models/service");
 // const {getAll} = require('../api/models/service');
 
 const controller = async (req, res) => {
@@ -30,12 +30,14 @@ const controller = async (req, res) => {
             const id = req.url.split("/")[3];
             console.log("URL ID: " + id);
             // get todo
-            const todo = await new Todo().getTodo(id);
-            console.log("To do: " + todo);
+            // const todo = await new Todo().getTodo(id);
+            // console.log("To do: " + todo);
+            const product = await run("Products", (data) => findById(data, id));
+            console.log(product.readConcern());
             // set the status code and content-type
             res.writeHead(200, { "Content-Type": "application/json" });
             // send the data
-            res.end(JSON.stringify(todo));
+            res.end(JSON.stringify(product));
         } catch (error) {
             // set the status code and content-type
             res.writeHead(404, { "Content-Type": "application/json" });

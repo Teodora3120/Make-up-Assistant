@@ -1,5 +1,4 @@
 // const {DB, client} = require("./db.js")
-
 // const collection = DB.collection("Products")
 
 const collection = []
@@ -9,8 +8,9 @@ function find(query) {
 }
 
 //filtreaza dupa id
-function findById(id) {
-    return collection.find({ "id": id });
+function findById(data, id) {
+    const results = data.find({ 'id': id});
+    return results;
 }
 
 //ia toate documentele din colectie
