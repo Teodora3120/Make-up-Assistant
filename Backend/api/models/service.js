@@ -1,7 +1,8 @@
-const {DB, client} = require("./db.js")
+// const {DB, client} = require("./db.js")
 
-const collection = DB.collection("Production")
+// const collection = DB.collection("Products")
 
+const collection = []
 //filtreaza datele dupa un query specificat
 function find(query){
     return collection.find(query).toArray()
@@ -9,12 +10,12 @@ function find(query){
 
 //filtreaza dupa id
 function findById(id){
-    return collection.find({"id":id}).toArray()
+    return collection.find({"id":id});
 }
 
 //ia toate documentele din colectie
-function getAll(){
-    return collection.find({}).toArray()
+function getAll(data){
+    return data.find({}).toArray()
 }
 
 //isi creeaza un filtru custom dupa mai multi parametrii

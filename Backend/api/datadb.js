@@ -1,31 +1,32 @@
-const { MongoClient } = require('mongodb');
-// or as an es module:
-// import { MongoClient } from 'mongodb'
+const { MongoClient } = require("mongodb");
+// Replace the uri string with your MongoDB deployment's connection string.
+const uri =
+  "mongodb://localhost:27017";
+const client = new MongoClient(uri);
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
-
-// Database Name
-const dbName = 'MakeupProductsDatabase';
-
-let findResult;
-async function main() {
-  // Use connect method to connect to the server
-  await client.connect();
-  console.log('Connected successfully to server');
-  const db = client.db(dbName);
-  const collection = db.collection('Products');
-  findResult = await collection.find({}).toArray();
-  console.log('Found documents =>', findResult);
-  // the following code examples can be pasted here...
-
-  return 'done.';
+const run = async (targetTable, callback) => {
+  const tables = ["Products", "Users"];
+  const table = tables.find(item => item === targetTable);
+  try {
+    await client.connect();
+    console.log("Database connection successful");
+    try {
+      const database = client.db('MakeupProductsDatabase');
+      const foundTable = database.collection(table);
+      const results = await callback(foundTable);
+      console.log("Database callback succesful")
+      return results;
+    } catch (err) {
+      console.log(err);
+    }
+  } finally {
+    // Ensures that the client will close when you finish/error
+    console.log("Database connection closed")
+    await client.close();
+  }
 }
+// run().catch(console.dir);
 
-main()
-  .then(console.log)
-  .catch(console.error)
-  .finally(() => client.close());
-
-module.exports = findResult;
+module.exports = {
+  run
+}
