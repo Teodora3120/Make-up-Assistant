@@ -1,22 +1,38 @@
-// const {DB, client} = require("./db.js")
-// const collection = DB.collection("Products")
 
-const collection = []
+
+const collection = [];
 //filtreaza datele dupa un query specificat
 function find(query) {
     return collection.find(query).toArray()
 }
 
 //filtreaza dupa id
-function findById(data, id) {
-    const results = data.find({ 'id': id});
-    return results;
+async function findById(data, id) {  
+  return await data.findOne({ "id": id });
 }
 
 //ia toate documentele din colectie
 function getAll(data) {
     const results = data.find({}).toArray();
     return results;
+}
+
+function insert(data, object) {
+    const results = data.insert(object);
+    console.log(results);
+    return results;
+}
+
+function deleteById(data, id) {
+    const results = data.deleteOne({"id": id});
+    console.log(results);
+    return results;
+}
+
+function updateOneById(data, id, query) {
+    const result = data.updateOne({"id": id}, query);
+    console.log(result);
+    return result;
 }
 
 //isi creeaza un filtru custom dupa mai multi parametrii
@@ -48,17 +64,7 @@ function findByFilter(tag_filter, name_filter, product_type_filter, color_filter
     return collection.find(query).toArray()
 }
 
-function deleteById(id) {
-    return collection.deleteOne({ "id": id })
-}
 
-function update(query, replace) {
-    return collection.updateMany(query, replace)
-}
-
-function insert(object) {
-    return collection.insertOne(object)
-}
 
 //obtine un set de valori unice pentru fiecare camp
 //de folosit pentru formular, in conjunctie cu findByFilter pentru cautari (just a proof of concept)
@@ -71,4 +77,4 @@ async function getFilters() {
     return fields
 }
 
-module.exports = { find, findById, findByFilter, getAll, deleteById, update, insert, getFilters }
+module.exports = { find, findById, findByFilter, getAll, deleteById, updateOneById, insert, getFilters }

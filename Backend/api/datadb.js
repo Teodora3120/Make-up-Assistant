@@ -13,7 +13,7 @@ const run = async (targetTable, callback) => {
       const database = client.db('MakeupProductsDatabase');
       const foundTable = database.collection(table);
       const results = await callback(foundTable);
-      console.log("Database callback succesful")
+      console.log("Database callback succesful");
       return results;
     } catch (err) {
       console.log(err);

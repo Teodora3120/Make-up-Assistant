@@ -1,19 +1,22 @@
 const getReqData = require("./utils");
 const Todo = require("./Backend-service");
 const { run } = require("./datadb");
-const { getAll, findById } = require("./models/service");
+const { getAll, findById, insert, deleteById, updateOneById } = require("./models/service");
 // const {getAll} = require('../api/models/service');
 
 const controller = async (req, res) => {
     if (req.url === "/api/todos" && req.method === "POST") {
         // get the data sent along
-        let todo_data = await getReqData(req);
-        // create the todo
-        let todo = await new Todo().createTodo(JSON.parse(todo_data));
+        // let todo_data = await getReqData(req);
+        // // create the todo
+        // let todo = await new Todo().createTodo(JSON.parse(todo_data));
+        const query = {id: 1050, "name": "Ddadada"};
+        const product = await run("Products", (data) => insert(data, query ));
+        console.log("Query: " + query.name);
         // set the status code and content-type
         res.writeHead(200, { "Content-Type": "application/json" });
         //send the todo
-        res.end(JSON.stringify(todo));
+        res.end(JSON.stringify(product));
 
     } else if (req.url === "/api/todos" && req.method === "GET") {
         // get the todos.
@@ -28,12 +31,13 @@ const controller = async (req, res) => {
         try {
             // get id from url
             const id = req.url.split("/")[3];
-            console.log("URL ID: " + id);
+            const idInt = parseInt(id);
+            console.log("URL ID: " + idInt);
             // get todo
             // const todo = await new Todo().getTodo(id);
             // console.log("To do: " + todo);
-            const product = await run("Products", (data) => findById(data, id));
-            console.log(product.readConcern());
+            const product = await run("Products", (data) => findById(data, idInt));
+            // console.log(product);
             // set the status code and content-type
             res.writeHead(200, { "Content-Type": "application/json" });
             // send the data
@@ -52,8 +56,11 @@ const controller = async (req, res) => {
         try {
             // get the id from url
             const id = req.url.split("/")[3];
+            const idInt = parseInt(id);
+            console.log("URL ID: " + idInt);
             // delete todo
-            let message = await new Todo().deleteTodo(id);
+            const product = await run("Products", (data) => deleteById(data, idInt));
+            console.log(product);
             // set the status code and content-type
             res.writeHead(200, { "Content-Type": "application/json" });
             // send the message
@@ -72,8 +79,12 @@ const controller = async (req, res) => {
         try {
             // get the id from the url
             const id = req.url.split("/")[3];
+            const idInt = parseInt(id);
+            console.log("URL ID: " + idInt);
             // update todo
-            let updated_todo = await new Todo().updateTodo(id);
+            query = {$set:{"name": "Teodora"}};
+            const product = await run("Products", (data) => updateOneById(data, idInt, query));
+            console.log(query.name);
             // set the status code and content-type
             res.writeHead(200, { "Content-Type": "application/json" });
             // send the message
