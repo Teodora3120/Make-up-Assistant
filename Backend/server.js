@@ -1,12 +1,12 @@
 var http = require('http');
-const pathSetup = require('./path_setup');
-const controller = require('./api/controller');
+const pathSetup = require('./path-setup');
+const initControllers = require('./controllers');
 
 const PORT = 5000;
 
 const server = http.createServer(async (request, response) => {
     await pathSetup(request, response);
-    await controller(request, response);
+    await initControllers(request, response);
 });
 
 server.listen(PORT, () => {
