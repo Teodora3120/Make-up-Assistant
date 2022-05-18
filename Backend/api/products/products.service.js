@@ -1,20 +1,20 @@
 const { run } = require("../database-connection");
 
 //filtreaza datele dupa un query specificat
-function filter(data, query) {
-    const options = {
-        // sort returned documents in ascending order by title (A->Z)
-        sort: { name: 1 },
-        // Include only the `title` and `imdb` fields in each returned document
-        projection: { _id: 0, id: 1, brand: 1, name: 1 },
-    };
-    return data.find(query, options).toArray();
-}
-async function findbyFilter() {
-    const products = await run("Products", (data) => filter(data, { brand: "colourpop" }));
-    console.log(products);
-}
-findbyFilter();
+// function filter(data, query) {
+//     const options = {
+//         // sort returned documents in ascending order by title (A->Z)
+//         sort: { name: 1 },
+//         // Include only the `title` and `imdb` fields in each returned document
+//         projection: { _id: 0, id: 1, brand: 1, name: 1 },
+//     };
+//     return data.find(query, options).toArray();
+// }
+// async function findbyFilter() {
+//     const products = await run("Products", (data) => filter(data, { brand: "colourpop" }));
+//     console.log(products);
+// }
+// findbyFilter();
 
 //filtreaza dupa id
 async function findById(data, id) {
@@ -47,4 +47,4 @@ function updateOneById(data, id, query) {
     return result;
 }
 
-module.exports = { filter, findById, getAll, deleteById, updateOneById, insert }
+module.exports = { findById, getAll, deleteById, updateOneById, insert }

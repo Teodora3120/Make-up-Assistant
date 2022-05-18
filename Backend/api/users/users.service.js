@@ -1,5 +1,6 @@
 const { run } = require("../database-connection");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 //filtreaza datele dupa un query specificat
 function filter(data, query) {
@@ -38,10 +39,23 @@ async function login(data, credentials) {
     }
     const match = await bcrypt.compare(credentials.password, existingUser.password);
     if (match) {
+        const token = jwt.sign(
+            {
+                user_id: existingUser._id,
+                username: existingUser.username
+            },
+            'jwttokenkey',
+            {
+                expiresIn: "2h",
+            }
+        );
+
+        // save user token
+        existingUser.token = token;
         response.statusCode = 200;
         response.message = "You are now logged in.";
         delete existingUser.password;
-        const result = { ...response, token: "120bdbxbjhbdcjsjb", ...existingUser };
+        const result = { ...response, ...existingUser };
         return result;
     }
 

@@ -1,9 +1,12 @@
 const assignReqToBody = require("../utils");
 const { run } = require("../database-connection");
+const auth = require("../../middleware/auth");
 const { getAll, findById, insert, deleteById, updateOneById } = require("./products.service");
 
 const productsController = async (req, res) => {
     if (req.method === "GET") {
+        await auth(req, res);
+        console.log(req.user);
         if (req.url === "/api/products") {
             try {
                 const products = await run("Products", (data) => getAll(data));
