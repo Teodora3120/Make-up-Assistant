@@ -1,9 +1,12 @@
 const assignReqToBody = require("../utils");
 const { run } = require("../database-connection");
+const auth = require("../../middleware/auth");
 const { getAll, findById, insert, deleteById, updateOneById } = require("./products.service");
 
 const productsController = async (req, res) => {
     if (req.method === "GET") {
+        await auth(req, res);
+        console.log(req.user);
         if (req.url === "/api/products") {
             try {
                 const products = await run("Products", (data) => getAll(data));
@@ -25,7 +28,9 @@ const productsController = async (req, res) => {
     }
     if (req.url === "/api/products" && req.method === "POST") {
         try {
-            const body = await assignReqToBody(req);
+            const body = await auth(req, res);
+            // const body = await assignReqToBody(req);
+            console.log("body" + body);
             const product = await run("Products", (data) => insert(data, body));
             writeSuccessHead(res, product);
         } catch (error) {
@@ -33,6 +38,7 @@ const productsController = async (req, res) => {
         }
     }
     if (req.url.match(/\/api\/products\/([0-9]+)/) && req.method === "DELETE") {
+        await auth(req, res);
         try {
             const id = req.url.split("/")[3];
             const idInt = parseInt(id);
@@ -44,9 +50,9 @@ const productsController = async (req, res) => {
     }
     if (req.url.match(/\/api\/products\/([0-9]+)/) && req.method === "PATCH") {
         try {
+            const body =  await auth(req, res);
             const id = req.url.split("/")[3];
             const idInt = parseInt(id);
-            const body = await assignReqToBody(req);
             const product = await run("Products", (data) => updateOneById(data, idInt, body));
             writeSuccessHead(res, product);
         } catch (error) {

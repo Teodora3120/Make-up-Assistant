@@ -1,5 +1,5 @@
-function assignReqToBody(req) {
-    return new Promise((resolve, reject) => {
+async function assignReqToBody(req) {
+    return await new Promise((resolve, reject) => {
         try {
             let body = "";
             // listen to data sent by client
