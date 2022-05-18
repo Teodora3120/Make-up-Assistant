@@ -40,10 +40,9 @@ function deleteById(data, id) {
 }
 
 function updateOneById(data, id, query) {
-    const newQuery = JSON.parse(query);
     const filter = { "id": id };
     const options = { upsert: true };
-    const updateDoc = { $set: newQuery };
+    const updateDoc = { $set: query };
     const result = data.updateOne(filter, updateDoc, options);
     return result;
 }

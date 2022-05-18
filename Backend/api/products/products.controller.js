@@ -26,8 +26,7 @@ const productsController = async (req, res) => {
     if (req.url === "/api/products" && req.method === "POST") {
         try {
             const body = await assignReqToBody(req);
-            const parsedBody = JSON.parse(body);
-            const product = await run("Products", (data) => insert(data, parsedBody));
+            const product = await run("Products", (data) => insert(data, body));
             writeSuccessHead(res, product);
         } catch (error) {
             writeErrorHead(res, error);

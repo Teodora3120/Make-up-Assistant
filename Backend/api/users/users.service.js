@@ -17,20 +17,47 @@ function filter(data, query) {
 // findbyFilter();
 
 
-function insert1(data) {
-    return data.insertOne({username: "calin", password : "mypass1"});
+// function uniqueUsername(data) {
+//     return data.createIndex({ "username": 1 }, {unique: true});
+// }
+// async function username(){
+//     const Users = await run("Users", (data) => uniqueUsername(data));
+//     console.log(Users);
+// }
+// username();
+
+
+const register = async (data, credentials) => {
+    let response = { statusCode: 200, message: "OK" };
+    const existingUser = await data.findOne({ "username": credentials.username });
+    if (existingUser && existingUser.username && existingUser.username === credentials.username) {
+        response.statusCode = 401;
+        response.message = "This username is already taken!";
+        return response;
+    }
+    const newUser = await data.insertOne(credentials);
+    return newUser;
 }
-async function insertData(){
-    const Users = await run("Users", (data) => insert1(data));
-    console.log(Users);
-}
-insertData();
 
 
 
-//filtreaza dupa username
-async function findbyUsername(data, username) {
-    return await data.findOne({ "username": username });
+async function login(data, credentials) {
+    let response = {};
+    const existingUser = await data.findOne({ "username": credentials.username });
+    if (!existingUser) {
+        response.statusCode = 404;
+        response.message = "This username does not exist in our database."
+        return response;
+    }
+
+    if (existingUser.password === credentials.password) {
+        response.statusCode = 200;
+        response.message = "You are now logged in.";
+        const result = { ...response, token: "120bdbxbjhbdcjsjb", ...existingUser };
+        return result;
+    }
+
+    return { statusCode: 401, message: "Wrong password!" };
 }
 
 //ia toate documentele din colectie
@@ -39,11 +66,7 @@ function getAll(data) {
     return results;
 }
 
-function insert(data, object) {
-    const response = data.insertOne(object);
-    console.log(response);
-    return response;
-}
+
 
 function deleteByUsername(data, username) {
     const results = data.deleteOne({ "username": username });
@@ -60,4 +83,4 @@ function updateOneByUsername(data, username, query) {
     return result;
 }
 
-module.exports = { filter, findbyUsername, getAll, deleteByUsername, updateOneByUsername, insert }
+module.exports = { filter, getAll, deleteByUsername, updateOneByUsername, register, login }
