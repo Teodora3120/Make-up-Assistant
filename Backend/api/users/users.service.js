@@ -3,14 +3,14 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 //filtreaza datele dupa un query specificat
-function filter(data, query) {
+async function filter(data, query) {
     const options = {
         // sort returned documents in ascending order by title (A->Z)
         sort: { name: 1 },
         // Include only the `title` and `imdb` fields in each returned document
         projection: { _id: 0, username: 1, brand: 1, name: 1 },
     };
-    return data.find(query, options).toArray();
+    return await data.find(query, options).toArray();
 }
 
 const register = async (data, credentials) => {
@@ -28,8 +28,7 @@ const register = async (data, credentials) => {
 }
 
 
-
-async function login(data, credentials) {
+const login = async (data, credentials) =>{
     let response = {};
     const existingUser = await data.findOne({ "username": credentials.username });
     if (!existingUser) {
@@ -63,26 +62,26 @@ async function login(data, credentials) {
 }
 
 //ia toate documentele din colectie
-function getAll(data) {
+async function getAll(data) {
     const results = data.find({}).toArray();
-    return results;
+    return await results;
 }
 
 
 
-function deleteByUsername(data, username) {
+async function deleteByUsername(data, username) {
     const results = data.deleteOne({ "username": username });
     console.log(results);
-    return results;
+    return await results;
 }
 
-function updateOneByUsername(data, username, query) {
+async function updateOneByUsername(data, username, query) {
     const newQuery = JSON.parse(query);
     const filter = { "username": username };
     const options = { upsert: true };
     const updateDoc = { $set: newQuery };
     const result = data.updateOne(filter, updateDoc, options);
-    return result;
+    return await result;
 }
 
 module.exports = { filter, getAll, deleteByUsername, updateOneByUsername, register, login }

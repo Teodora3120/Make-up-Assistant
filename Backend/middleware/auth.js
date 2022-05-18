@@ -25,10 +25,10 @@ const verifyToken = async (req, res) => {
     try {
         const decoded = jwt.verify(token, config);
         req.user = decoded;
+        return body;
     } catch (err) {
         res.writeHead(401, { "Content-Type": "application/json" });
         return res.end(JSON.stringify({ message: "Invalid Token" }));
     }
 };
-
 module.exports = verifyToken;

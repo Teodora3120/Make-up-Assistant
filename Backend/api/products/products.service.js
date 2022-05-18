@@ -1,4 +1,3 @@
-const { run } = require("../database-connection");
 
 //filtreaza datele dupa un query specificat
 // function filter(data, query) {
@@ -22,29 +21,29 @@ async function findById(data, id) {
 }
 
 //ia toate documentele din colectie
-function getAll(data) {
+async function getAll(data) {
     const results = data.find({}).toArray();
-    return results;
+    return await results;
 }
 
-function insert(data, object) {
-    const response = data.insertOne(object);
+async function insert(data, object) {
+    const response = await data.insertOne(object);
     console.log(response);
     return response;
 }
 
-function deleteById(data, id) {
+async function deleteById(data, id) {
     const results = data.deleteOne({ "id": id });
     console.log(results);
-    return results;
+    return await results;
 }
 
-function updateOneById(data, id, query) {
+async function updateOneById(data, id, query) {
     const filter = { "id": id };
     const options = { upsert: true };
     const updateDoc = { $set: query };
     const result = data.updateOne(filter, updateDoc, options);
-    return result;
+    return await result;
 }
 
 module.exports = { findById, getAll, deleteById, updateOneById, insert }
