@@ -10,7 +10,7 @@ function assignReqToBody(req) {
             // listen till the end
             req.on("end", () => {
                 // send back the data
-                resolve(body);
+                resolve(JSON.parse(body));
             });
         } catch (error) {
             reject(error);
