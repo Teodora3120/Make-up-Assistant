@@ -10,11 +10,23 @@ function filter(data, query) {
     };
     return data.find(query, options).toArray();
 }
-async function findbyFilter() {
-    const Users = await run("Users", (data) => filter(data, { username : "aba" }));
+// async function findbyFilter() {
+//     const Users = await run("Users", (data) => filter(data, { username : "aba" }));
+//     console.log(Users);
+// }
+// findbyFilter();
+
+
+function insert1(data) {
+    return data.insertOne({username: "calin", password : "mypass1"});
+}
+async function insertData(){
+    const Users = await run("Users", (data) => insert1(data));
     console.log(Users);
 }
-findbyFilter();
+insertData();
+
+
 
 //filtreaza dupa username
 async function findbyUsername(data, username) {
