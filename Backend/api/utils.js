@@ -1,4 +1,4 @@
-function getReqData(req) {
+function assignReqToBody(req) {
     return new Promise((resolve, reject) => {
         try {
             let body = "";
@@ -17,4 +17,4 @@ function getReqData(req) {
         }
     });
 }
-module.exports = getReqData;
+module.exports = assignReqToBody;
