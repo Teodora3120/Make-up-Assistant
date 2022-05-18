@@ -48,46 +48,4 @@ function updateOneById(data, id, query) {
     return result;
 }
 
-//isi creeaza un filtru custom dupa mai multi parametrii
-//de folosit in search (field-urile definite aici nu-s neaparat batute in piatra)
-/* function findByFilter(data, tag_filter, name_filter, product_type_filter, color_filter) {
-    var query = {}
-    if (tag_filter !== undefined) {
-        if (!Array.isArray(tag_filter)) {
-            tag_filter = [tag_filter]
-        }
-        query["tag_list"] = {
-            "$in": tag_filter
-        }
-    }
-
-    if (name_filter !== undefined) {
-        query["name"] = name_filter
-    }
-
-    if (product_type_filter !== undefined) {
-        query["product_type"] = product_type_filter
-    }
-
-    if (color_filter !== undefined) {
-        query["product_colors"] = {
-            "$in": color_filter
-        }
-    }
-    return data.find(query).toArray()
-}
-
-
-
-//obtine un set de valori unice pentru fiecare camp
-//de folosit pentru formular, in conjunctie cu findByFilter pentru cautari (just a proof of concept)
-async function getFilters() {
-    const filter_fields = ["brand", "rating", "category", "tag_list", "product_colors"]
-    const fields = {}
-    for (const field of filter_fields) {
-        fields[field] = await collection.distinct(field, {})
-    }
-    return fields
-}
- */
 module.exports = { filter, findById, getAll, deleteById, updateOneById, insert }
