@@ -1,4 +1,5 @@
 const { run } = require("../database-connection");
+const bcrypt = require('bcrypt');
 
 //filtreaza datele dupa un query specificat
 function filter(data, query) {
@@ -10,22 +11,6 @@ function filter(data, query) {
     };
     return data.find(query, options).toArray();
 }
-// async function findbyFilter() {
-//     const Users = await run("Users", (data) => filter(data, { username : "aba" }));
-//     console.log(Users);
-// }
-// findbyFilter();
-
-
-// function uniqueUsername(data) {
-//     return data.createIndex({ "username": 1 }, {unique: true});
-// }
-// async function username(){
-//     const Users = await run("Users", (data) => uniqueUsername(data));
-//     console.log(Users);
-// }
-// username();
-
 
 const register = async (data, credentials) => {
     let response = { statusCode: 200, message: "OK" };
@@ -35,6 +20,8 @@ const register = async (data, credentials) => {
         response.message = "This username is already taken!";
         return response;
     }
+    const hashedPassword = await bcrypt.hash(credentials.password, 10);
+    credentials.password = hashedPassword;
     const newUser = await data.insertOne(credentials);
     return newUser;
 }
@@ -49,10 +36,11 @@ async function login(data, credentials) {
         response.message = "This username does not exist in our database."
         return response;
     }
-
-    if (existingUser.password === credentials.password) {
+    const match = await bcrypt.compare(credentials.password, existingUser.password);
+    if (match) {
         response.statusCode = 200;
         response.message = "You are now logged in.";
+        delete existingUser.password;
         const result = { ...response, token: "120bdbxbjhbdcjsjb", ...existingUser };
         return result;
     }
