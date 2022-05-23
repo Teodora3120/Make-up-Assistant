@@ -38,8 +38,8 @@ const productsController = async (req, res) => {
         }
     }
     if (req.url.match(/\/api\/products\/([0-9]+)/) && req.method === "DELETE") {
-        await auth(req, res);
         try {
+            await auth(req, res);
             const id = req.url.split("/")[3];
             const idInt = parseInt(id);
             const message = await run("Products", (data) => deleteById(data, idInt));
