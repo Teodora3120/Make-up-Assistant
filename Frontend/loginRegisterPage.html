@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="/Frontend/LoginRegisterPage/loginRegisterPage.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="./node_modules/axios/dist/axios.min.js"></script>
+  <!-- <script src="./node_modules/axios/dist/axios.min.js"></script> -->
 </head>
 <body>
   <div class="hero">
@@ -16,13 +16,13 @@
              <button type="button" class="toggle-btn" onclick="register()">Register</button>
           </div>
           <form id="login" class="input-group" action="/Frontend/index.html" method="post">
-              <input type="text" class="input-field" placeholder="Enter Username" required>
-              <input type="password" class="input-field" placeholder="Enter Password" required>
+              <input type="text" id="loginUsername" class="input-field" placeholder="Enter Username" required>
+              <input type="password" id="loginPassword" class="input-field" placeholder="Enter Password" required>
               <button type="submit" class="submit-btn">Log in</button>
           </form>
           <form id="register" class="input-group" action="/Frontend/form.html" method="post">
-            <input type="text" class="input-field" placeholder="Enter New Username" required>
-            <input type="password" class="input-field" placeholder="Enter New Password" required>
+            <input type="text" id="registerUsername" class="input-field" placeholder="Enter New Username" required>
+            <input type="password" id="registerPassword" class="input-field" placeholder="Enter New Password" required>
             <button type="submit" class="submit-btn">Register</button>
         </form>
       </div>
