@@ -1,16 +1,15 @@
 import instance from './index';
 const baseURL = '/users';
 
-class UsersApi {
+export default class UsersApi {
 
-    Login = (data) => {
+   static Login = (data) => {
+        console.log(data);
         return instance.post(`${baseURL}/login`, data);
     }
 
-    Register = (data) => {
+   static Register = (data) => {
         return instance.post(`${baseURL}/register`, data);
     }
 
 }
-
-export default UsersApi;

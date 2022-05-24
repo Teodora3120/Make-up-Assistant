@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
   <title>Login/Register Page</title>
   <meta charset="UTF-8">
@@ -7,26 +8,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <script src="./node_modules/axios/dist/axios.min.js"></script> -->
 </head>
+
 <body>
   <div class="hero">
-      <div class="form-box">
-          <div class="button-box">
-             <div id="btn"></div>
-             <button type="button" class="toggle-btn" onclick="login()" >Log in</button>
-             <button type="button" class="toggle-btn" onclick="register()">Register</button>
-          </div>
-          <form id="login" class="input-group" action="/Frontend/index.html" method="post">
-              <input type="text" id="loginUsername" class="input-field" placeholder="Enter Username" required>
-              <input type="password" id="loginPassword" class="input-field" placeholder="Enter Password" required>
-              <button type="submit" class="submit-btn">Log in</button>
-          </form>
-          <form id="register" class="input-group" action="/Frontend/form.html" method="post">
-            <input type="text" id="registerUsername" class="input-field" placeholder="Enter New Username" required>
-            <input type="password" id="registerPassword" class="input-field" placeholder="Enter New Password" required>
-            <button type="submit" class="submit-btn">Register</button>
-        </form>
+    <div class="form-box">
+      <div class="button-box">
+        <div id="btn"></div>
+        <button type="button" class="toggle-btn" onclick='handleLoginAnimation()'>Log in</button>
+        <button type="button" class="toggle-btn" onclick="handleRegisterAnimation()">Register</button>
       </div>
+      <form id="login" class="input-group" method="post">
+        <input type="text" id="loginUsername" class="input-field" placeholder="Enter Username" required>
+        <input type="password" id="loginPassword" class="input-field" placeholder="Enter Password" required>
+        <button type="submit" class="submit-btn">Log in</button>
+      </form>
+      <form id="register" class="input-group" action="/Frontend/form.html" method="post">
+        <input type="text" id="registerUsername" class="input-field" placeholder="Enter New Username" required autocomplete="off">
+        <input type="password" id="registerPassword" class="input-field" placeholder="Enter New Password" required autocomplete="off">
+        <button type="submit" onclick="register()" class="submit-btn">Register</button>
+      </form>
+    </div>
   </div>
   <script src="/Frontend/LoginRegisterPage/Javascript/loginRegisterPage.js"></script>
+  <script src="/Frontend/LoginRegisterPage/Javascript/auth.js"></script>
 </body>
+
 </html>

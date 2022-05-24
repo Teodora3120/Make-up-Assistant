@@ -4,7 +4,6 @@ const assignReqToBody = require('../api/utils');
 const config = 'jwttokenkey';
 
 const verifyToken = async (req, res) => {
-    console.log("Stopped here...");
     const body = await assignReqToBody(req);
     let token = null;
     if (body && body.token) {
