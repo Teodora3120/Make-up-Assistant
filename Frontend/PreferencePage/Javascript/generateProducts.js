@@ -29,7 +29,7 @@ window.addEventListener("load", async (e) => {
                 document.querySelector("#preferance-span").textContent = `Showing ${products.slice(0, 100).length} products out of ${products.length}`;
                 dynamic.innerHTML = products.slice(0, 100).map((item, index) =>
                 `
-                <div id="card${index}">
+                <div style="width: 45%;" id="card${index}">
                     <div class="box-content">
                     <img class="grid-img" src="${item.api_featured_image}">
                     <h2>${item.name}</h2>
