@@ -9,8 +9,10 @@ async function assignReqToBody(req) {
             });
             // listen till the end
             req.on("end", () => {
+                console.log(body);
+                console.log(typeof body);
                 // send back the data
-                if (typeof body === 'string') {
+                if (typeof body === 'string' && body != "") {
                     resolve(JSON.parse(body));
                 } else {
                     resolve(body);
