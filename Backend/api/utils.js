@@ -10,7 +10,11 @@ async function assignReqToBody(req) {
             // listen till the end
             req.on("end", () => {
                 // send back the data
-                resolve(JSON.parse(body));
+                if (typeof body === 'string') {
+                    resolve(JSON.parse(body));
+                } else {
+                    resolve(body);
+                }
             });
         } catch (error) {
             reject(error);
