@@ -24,7 +24,7 @@ const register = async (data, credentials) => {
     const hashedPassword = await bcrypt.hash(credentials.password, 10);
     credentials.password = hashedPassword;
     const newUser = await data.insertOne(credentials);
-    return newUser;
+    return { ...newUser, ...response };
 }
 
 
