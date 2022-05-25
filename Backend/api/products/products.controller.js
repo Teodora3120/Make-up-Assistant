@@ -8,7 +8,6 @@ const productsController = async (req, res) => {
         if (req.url === "/api/products") {
             try {
                 await auth(req, res);
-                console.log("req.user" + req.user);
                 const products = await run("Products", (data) => getAll(data));
                 writeSuccessHead(res, products);
             } catch (error) {
