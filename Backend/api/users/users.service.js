@@ -30,13 +30,17 @@ const register = async (data, credentials) => {
 
 const login = async (data, credentials) =>{
     let response = {};
+    // const urlParams = new URLSearchParams(credentials)
+    // console.log('Credentials:' + 'username ' + urlParams.get('username') + ' password ' + urlParams.get('password'));
     const existingUser = await data.findOne({ "username": credentials.username });
+    // const existingUser = await data.findOne({ "username": urlParams.get('username') });
     if (!existingUser) {
         response.statusCode = 404;
-        response.message = "This username does not exist in our database."
+        response.message = "Invalid credentials"
         return response;
     }
     const match = await bcrypt.compare(credentials.password, existingUser.password);
+    // const match = await bcrypt.compare(urlParams.get('password'), existingUser.password);
     if (match) {
         const token = jwt.sign(
             {
@@ -52,13 +56,13 @@ const login = async (data, credentials) =>{
         // save user token
         existingUser.token = token;
         response.statusCode = 200;
-        response.message = "You are now logged in.";
+        response.message = "OK";
         delete existingUser.password;
         const result = { ...response, ...existingUser };
         return result;
     }
 
-    return { statusCode: 401, message: "Wrong password!" };
+    return { statusCode: 401, message: "Invalid credentials" };
 }
 
 //ia toate documentele din colectie

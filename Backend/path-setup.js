@@ -29,7 +29,7 @@ const pathSetup = async (request, response) => {
             return;
         }
         if (error) {
-            console.log(error);
+            console.log("path-setup"  + error);
             if (error.code == 'ENOENT') {
                 fs.readFile('../Frontend/404.html', function (error2, content) {
                     console.log(error2);

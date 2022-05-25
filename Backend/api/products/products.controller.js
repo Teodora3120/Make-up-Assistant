@@ -5,10 +5,10 @@ const { getAll, findById, insert, deleteById, updateOneById } = require("./produ
 
 const productsController = async (req, res) => {
     if (req.method === "GET") {
-        await auth(req, res);
-        console.log(req.user);
         if (req.url === "/api/products") {
             try {
+                await auth(req, res);
+                console.log("req.user" + req.user);
                 const products = await run("Products", (data) => getAll(data));
                 writeSuccessHead(res, products);
             } catch (error) {
@@ -17,6 +17,8 @@ const productsController = async (req, res) => {
         }
         if (req.url.match(/\/api\/products\/([0-9]+)/)) {
             try {
+                await auth(req, res);
+                console.log("req.user" + req.user);
                 const id = req.url.split("/")[3];
                 const idInt = parseInt(id);
                 const product = await run("Products", (data) => findById(data, idInt));
@@ -28,6 +30,7 @@ const productsController = async (req, res) => {
     }
     if (req.url === "/api/products" && req.method === "POST") {
         try {
+            console.log("POST");
             const body = await auth(req, res);
             // const body = await assignReqToBody(req);
             console.log("body" + body);
@@ -38,8 +41,9 @@ const productsController = async (req, res) => {
         }
     }
     if (req.url.match(/\/api\/products\/([0-9]+)/) && req.method === "DELETE") {
-        await auth(req, res);
         try {
+            console.log("DELETE");
+            await auth(req, res);
             const id = req.url.split("/")[3];
             const idInt = parseInt(id);
             const message = await run("Products", (data) => deleteById(data, idInt));
@@ -50,6 +54,7 @@ const productsController = async (req, res) => {
     }
     if (req.url.match(/\/api\/products\/([0-9]+)/) && req.method === "PATCH") {
         try {
+            console.log("PATCH");
             const body =  await auth(req, res);
             const id = req.url.split("/")[3];
             const idInt = parseInt(id);
