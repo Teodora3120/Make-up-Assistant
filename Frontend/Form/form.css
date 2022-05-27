@@ -126,14 +126,15 @@ label{
     flex-flow: row;
 }
 
-.submitButton{
+#submit{
     position: relative;
     align-content: center;
     display: flex;
     flex-flow: column;
     flex-wrap: nowrap;
     border:inherit;
-    margin:0%;   
+    margin:0%;
+    
 }
 .logo,.copyright{
   color:whitesmoke;
@@ -166,6 +167,7 @@ label{
 /* Reverse the CSS arrow when the dropdown is active */
 .checkbox-dropdown.is-active:after {
   border-bottom-color: #000;
+  /* border-top-color: #fff; */
   border-top-color: rgba(243,182,212,0.53);
   margin-top: -9px;
 }
@@ -197,7 +199,6 @@ label{
   display: block;
   border-bottom: 1px solid silver;
   padding: 10px;
- 
   transition: all 0.2s ease-out;
 }
 

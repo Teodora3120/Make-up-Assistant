@@ -9,17 +9,46 @@ window.addEventListener("load", async (e) => {
     e.preventDefault();
     console.log('Page is loaded');
     try {
-        // let request = new XMLHttpRequest();
-        // request.open('GET', 'http://localhost:5000/api/products');
-        // request.send();
-        // console.log(request.status);
-        // console.log(request.getResponseHeader);
-        // fetch('http://localhost:5000/api/products')
-        // .then(response => response.json())
-        // .then(data => console.log(data));
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const skintypes = urlParams.get('skintypes');
+        console.log(skintypes);
+
+        const skinage = urlParams.get('skinage');
+        console.log(skinage);
+
+        const haircolor = urlParams.get('haircolor')
+        console.log(haircolor);
+
+        const eyecolor = urlParams.get('eyecolor')
+        console.log(eyecolor);
+
+        const event = urlParams.get('event')
+        console.log(event);
+
+        const outfitcolors = urlParams.get('outfitcolors')
+        console.log(outfitcolors);
+        
+        const brands = urlParams.get('brands')
+        console.log(brands);
+       
+        const vegan = urlParams.get('vegan')
+        console.log(vegan);
+
+        const body = {
+            "skintypes": skintypes,
+            "skinage": skinage,
+            "haircolor": haircolor,
+            "eyecolor": eyecolor,
+            "event": event,
+            "outfitcolors": outfitcolors,
+            "brands": brands,
+            "vegan": vegan
+        }
+        console.log(body);
 
         var request = new XMLHttpRequest();
-        request.open('GET', 'http://localhost:5000/api/products', true);
+        request.open('POST', 'http://localhost:5000/api/products', true);
         request.setRequestHeader('x-access-token', token);
         request.send();
         request.onreadystatechange = function () {

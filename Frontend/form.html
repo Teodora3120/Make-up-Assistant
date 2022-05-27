@@ -44,23 +44,23 @@
             <div class="form">
                 <div class="selection">
                 <label for="skintypes">Skin type<br></label>
-                <select name="skintypes" id="skintypes">
+                <select name="skintypes" id="skintypes" onchange="selectedOption(id)">
                     <option value="oily">Oily</option>
                     <option value="dry">Dry</option>
-                    <option value="mixt">Mixed</option>
+                    <option value="mixed">Mixed</option>
                     <option value="dryacneic">Dry and acneic</option>
                     <option value="oilyacneic">Oily and acneic</option>
-                    <option value="mixtacneic">Mixed amd acneic</option>
+                    <option value="mixedacneic">Mixed and acneic</option>
                     
                 </select>
                 <label><br>Skin age</label> <!--deleting "for="varsta_tenului"  The value of the for attribute of the label element must be the ID of a non-hidden form control-->
-                <select name="skinage" id="skinage">
+                <select name="skinage" id="skinage" onchange="selectedOption(id)">
                     <option value="teen"> Teen (16-20 years)</option>
                     <option value="young"> Young (20-40 years)</option>
                     <option value="mature"> Mature (40+ years)</option>
                 </select>
                 <label><br>Hair color<br></label>
-                <select name="haircolor" id="haircolor">
+                <select name="haircolor" id="haircolor" onchange="selectedOption(id)">
                     <option value="blonde">Blonde</option>
                     <option value="brunette">Brunette</option>
                     <option value="brown">Brown</option>
@@ -68,7 +68,7 @@
                     <option value="others">Others</option>
                 </select>
                 <label ><br>Eye color<br></label> <!--for="makeup_intensity" The value of the for attribute of the label element must be the ID of a non-hidden form control-->
-                <select name="eyecolor" id="eyecolor">
+                <select name="eyecolor" id="eyecolor" onchange="selectedOption(id)">
                     <option value="green">Green</option>
                     <option value="brown">Brown</option>
                     <option value="hazel">Hazel</option>
@@ -76,19 +76,18 @@
                     <option value="black">Black</option>
                 </select>
                 <label ><br>Event</label> <!-- for="eveniment" The value of the for attribute of the label element must be the ID of a non-hidden form control-->
-                <select name="event" id="event">
-                    <option value="christening">Christening</option>
+                <select name="event" id="event" onchange="selectedOption(id)">
+                    <option value="party">Party</option>
                     <option value="goingOut">Going out</option>
                     <option value="date">Date</option>
                     <option value="funeral">Funeral</option>
                     <option value="wedding">Wedding</option>
                     <option value="bride">Bride</option>
-                    <option value="groom">Groom</option>
                     <option value="christmas">Christmas</option>
                     <option value="newYearsEve">New Year's Eve</option>
                 </select>
                 <label ><br>Outfit palette colors</label> <!--for="culoriTinuta" The value of the for attribute of the label element must be the ID of a non-hidden form control-->
-                <select name="outfitcolors">
+                <select name="outfitcolors" id="outfitcolors" onchange="selectedOption(id)">
                     <option value="warm">Warm colors</option>
                     <option value="cold">Cold colors</option>
                     <option value="dark">Dark colors</option>
@@ -103,51 +102,51 @@
                         <ul class="checkbox-dropdown-list">
                             <li>
                             <label>
-                                <input type="checkbox" value="colourpop" name="brands" />Colourpop</label>
+                                <input type="checkbox" value="colourpop" name="brands" class="brand" onclick="selectedBrands()"/>Colourpop</label>
                             </li>
                             <li>
                             <label>
-                                <input type="checkbox" value="nyx" name="brands" />Nyx</label>
+                                <input type="checkbox" value="nyx" name="brands" class="brand" onclick="selectedBrands()"/>Nyx</label>
                             </li>
                             <li>
                             <label>
-                                <input type="checkbox" value="boosh" name="brands" />Boosh</label>
+                                <input type="checkbox" value="boosh" name="brands" class="brand" onclick="selectedBrands()"/>Boosh</label>
                             </li>
                             <li>
                             <label>
-                                <input type="checkbox" value="l'oreal" name="brands" />L'oreal</label>
+                                <input type="checkbox" value="l'oreal" name="brands" class="brand" onclick="selectedBrands()"/>L'oreal</label>
                             </li>
                             <li>
                                 <label>
-                                <input type="checkbox" value="covergirl" name="brands" />Covergirl</label>
+                                <input type="checkbox" value="covergirl" name="brands" class="brand" onclick="selectedBrands()"/>Covergirl</label>
                             </li>
                             <li>
                                 <label>
-                                <input type="checkbox" value="dior" name="brands" />Dior</label>
+                                <input type="checkbox" value="dior" name="brands" class="brand" onclick="selectedBrands()"/>Dior</label>
                             </li>
                             <li>
                                 <label>
-                                <input type="checkbox" value="benefit" name="brands" />Benefit</label>
+                                <input type="checkbox" value="benefit" name="brands" class="brand" onclick="selectedBrands()"/>Benefit</label>
                             </li>
                             <li>
                                 <label>
-                                <input type="checkbox" value="smashbox" name="brands" />Smashbox</label>
+                                <input type="checkbox" value="smashbox" name="brands" class="brand" onclick="selectedBrands()"/>Smashbox</label>
                             </li>
                             <li>
                                 <label>
-                                <input type="checkbox" value="rejuva minerals" name="brands" />Rejuva Minerals</label>
+                                <input type="checkbox" value="rejuva minerals" name="brands" class="brand" onclick="selectedBrands()"/>Rejuva Minerals</label>
                             </li>
                             <li>
                                 <label>
-                                <input type="checkbox" value="maybelline" name="brands" />Maybelline</label>
+                                <input type="checkbox" value="maybelline" name="brands" class="brand" onclick="selectedBrands()"/>Maybelline</label>
                             </li>
                             <li>
                                 <label>
-                                <input type="checkbox" value="nudus" name="brands" />Nudus</label>
+                                <input type="checkbox" value="nudus" name="brands" class="brand" onclick="selectedBrands()"/>Nudus</label>
                             </li>
                             <li>
                                 <label>
-                                <input type="checkbox" value="clinique" name="brands" />Clinique</label>
+                                <input type="checkbox" value="clinique" name="brands" class="brand" onclick="selectedBrands()"/>Clinique</label>
                             </li>
                         </ul>
                     </div>
@@ -155,13 +154,13 @@
                 
                 <div class="selection">
                     <label ><br>Vegan</label> 
-                    <select name="vegan">
+                    <select name="vegan" id="vegan" onchange="selectedOption(id)">
                         <option value="true">Yes</option>
                         <option value="false">No</option>
                     </select>
                 </div>
-                <form class="submitButton" action="/Frontend/preferancePage.html" method="post"> 
-                <button type="submit" id="donebutton">Am terminat!</button> <!-- The element a must not appear as a descendant of the button element.-->
+                <form id="submit" method="post"> 
+                <button id="donebutton">Am terminat!</button>
                 </form>
             </div>
     </div>
@@ -174,6 +173,7 @@
        </div>
     </footer>
     <script src="/Frontend/Form/Javascript/form.js"></script>
+    <script src="/Frontend/Form/Javascript/filters.js"></script>
     <script src="../Frontend/LoginRegisterPage/Javascript/logout.js"></script>
 </body>
 

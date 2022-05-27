@@ -33,8 +33,9 @@ const productsController = async (req, res) => {
             const body = await auth(req, res);
             // const body = await assignReqToBody(req);
             console.log("body" + body);
-            const product = await run("Products", (data) => insert(data, body));
-            writeSuccessHead(res, product);
+            const products = await run("Products", (data) => getAll(data));
+            // const product = await run("Products", (data) => insert(data, body));
+            writeSuccessHead(res, products);
         } catch (error) {
             writeErrorHead(res, error);
         }
