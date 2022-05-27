@@ -36,21 +36,23 @@ window.addEventListener("load", async (e) => {
         console.log(vegan);
 
         const body = {
-            "skintypes": skintypes,
-            "skinage": skinage,
-            "haircolor": haircolor,
-            "eyecolor": eyecolor,
-            "event": event,
-            "outfitcolors": outfitcolors,
-            "brands": brands,
-            "vegan": vegan
+            skintypes: skintypes,
+            skinage: skinage,
+            haircolor: haircolor,
+            eyecolor: eyecolor,
+            event: event,
+            outfitcolors: outfitcolors,
+            brands: brands,
+            vegan: vegan
         }
+
         console.log(body);
 
         var request = new XMLHttpRequest();
-        request.open('POST', 'http://localhost:5000/api/products', true);
+        const url = "http://localhost:5000/api/products";
+        request.open('POST', url, true);
         request.setRequestHeader('x-access-token', token);
-        request.send();
+        request.send(JSON.stringify(body));
         request.onreadystatechange = function () {
             if (request.readyState == XMLHttpRequest.DONE) {
                 products = JSON.parse(request.responseText);

@@ -1,7 +1,7 @@
 const assignReqToBody = require("../utils");
 const { run } = require("../database-connection");
 const auth = require("../../middleware/auth");
-const { getAll, findById, insert, deleteById, updateOneById } = require("./products.service");
+const { getAll, findById, filter, deleteById, updateOneById } = require("./products.service");
 
 const productsController = async (req, res) => {
     if (req.method === "GET") {
@@ -31,9 +31,8 @@ const productsController = async (req, res) => {
         try {
             console.log("POST");
             const body = await auth(req, res);
-            // const body = await assignReqToBody(req);
-            console.log("body" + body);
-            const products = await run("Products", (data) => getAll(data));
+            console.log(body);
+            const products = await run("Products", (data) => filter(data, body));
             // const product = await run("Products", (data) => insert(data, body));
             writeSuccessHead(res, products);
         } catch (error) {

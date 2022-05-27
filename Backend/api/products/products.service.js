@@ -1,19 +1,23 @@
 
 //filtreaza datele dupa un query specificat
-// function filter(data, query) {
-//     const options = {
-//         // sort returned documents in ascending order by title (A->Z)
-//         sort: { name: 1 },
-//         // Include only the `title` and `imdb` fields in each returned document
-//         projection: { _id: 0, id: 1, brand: 1, name: 1 },
-//     };
-//     return data.find(query, options).toArray();
-// }
-// async function findbyFilter() {
-//     const products = await run("Products", (data) => filter(data, { brand: "colourpop" }));
-//     console.log(products);
-// }
-// findbyFilter();
+async function filter(data, body) {
+    const skin = {skintypes: body.skintypes, skinage: body.skinage};
+    const makeup = {outfitcolors : body.outfitcolors, event: body.event, eyecolor: body.eyecolor, haircolor: body.haircolor, vegan: body.vegan};
+    const options = {
+        // sort returned documents in ascending order by title (A->Z)
+        sort: { name: 1 },
+        // Include only the `title` and `imdb` fields in each returned document
+        projection: { brand: 1, name: 1, price: 1, price_sign: 1, product_link: 1 , description: 1, rating: 1, category: 1, product_type: 1, api_featured_image: 1 },
+    };
+    // const skinproducts = data.find(skin, options).toArray();
+    const products = data.find(body, options).toArray();
+    // const brands = data.find({$or: [{ brand: "nyx" }, { brand: "colourpop"}]}, options).toArray();
+    // console.log(skinproducts);
+    console.log(products);
+    // console.log(brands);
+    return await products;
+}
+
 
 //filtreaza dupa id
 async function findById(data, id) {
@@ -46,4 +50,4 @@ async function updateOneById(data, id, query) {
     return await result;
 }
 
-module.exports = { findById, getAll, deleteById, updateOneById, insert }
+module.exports = { findById, getAll, deleteById, updateOneById, insert, filter }
