@@ -29,13 +29,16 @@ window.addEventListener("load", async (e) => {
                 document.querySelector("#preferance-span").textContent = `Showing ${products.slice(0, 100).length} products out of ${products.length}`;
                 dynamic.innerHTML = products.slice(0, 100).map((item, index) =>
                 `
-                <div style="width: 45%;" id="card${index}">
+                <div class="card" id="card${index}">
                     <div class="box-content">
                     <img class="grid-img" src="${item.api_featured_image}">
                     <h2>${item.name}</h2>
+                    <p id="description">${item.description}</p>
                     <p>${item.price_sign}${item.price}</p>
                     <p>${item.brand}</p>
-                    <button class="showmore"><a href="${window.location.protocol}//${window.location.host}/api/todos/${products[index].id}">See more details</a></button>
+                    <div class="h_container">
+                        <i id="heart" class="far fa-heart"></i>
+                    </div>
                     </div>
                 </div>
                 `
