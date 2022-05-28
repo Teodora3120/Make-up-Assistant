@@ -54,10 +54,12 @@ const productsController = async (req, res) => {
     if (req.url.match(/\/api\/products\/([0-9]+)/) && req.method === "PATCH") {
         try {
             console.log("PATCH");
-            const body =  await auth(req, res);
+            // const body =  await auth(req, res);
             const id = req.url.split("/")[3];
             const idInt = parseInt(id);
-            const product = await run("Products", (data) => updateOneById(data, idInt, body));
+            // console.log(body);
+            console.log(idInt);
+            const product = await run("Products", (data) => updateOneById(data, idInt));
             writeSuccessHead(res, product);
         } catch (error) {
             writeErrorHead(res, error);

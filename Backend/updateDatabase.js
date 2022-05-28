@@ -10,8 +10,8 @@ client.connect();
 const database = client.db('MakeupProductsDatabase');
 const products = database.collection('Products');
     const options = { upsert: true };
-    const updateDoc = { $set: {skintypes: "", skinage: ""}};
-    await products.updateMany({ product_type :  "nail_polish"  }, updateDoc, options);
+    const updateDoc = { $set: {vegan: "false"}};
+    await products.updateMany( {id: { $mod: [7,3] }}, updateDoc, options);
 
   } finally {
     client.close();

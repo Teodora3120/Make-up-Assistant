@@ -1,3 +1,7 @@
+const like = (id) => {
+    console.log(id);
+}
+
 window.addEventListener("load", async (e) => {
     let token = "";
     let products = [];
@@ -7,7 +11,6 @@ window.addEventListener("load", async (e) => {
         token = JSON.parse(localStorage.getItem('user')).token;
     }
     e.preventDefault();
-    console.log('Page is loaded');
     try {
         const urlParams = new URLSearchParams(window.location.search);
 
@@ -60,25 +63,35 @@ window.addEventListener("load", async (e) => {
                 document.querySelector("#preferance-span").textContent = `Showing ${products.slice(0, 100).length} products out of ${products.length}`;
                 dynamic.innerHTML = products.slice(0, 100).map((item, index) =>
                 `
-                <div class="card" id="card${index}">
+                <div class="card-wrapper">
+                <div class="card">
                     <div class="box-content">
                     <img class="grid-img" src="${item.api_featured_image}">
                     <h2>${item.name}</h2>
-                    <p id="description">${item.description}</p>
-                    <p>${item.price_sign}${item.price}</p>
-                    <p>${item.brand}</p>
-                    <div class="h_container">
-                        <i id="heart" class="far fa-heart"></i>
+                    <p style="padding: 1em">${item.description}</p>
+                    <p style="font-weight: 600">${item.price_sign}${item.price}</p>
+                    <p style="padding: 1em; color: #9DA993">${item.brand}</p>
+                    <div class="h_container"  id="heart${index}"}">
+                        <i id="heart" class="fas fa-heart"></i>
                     </div>
                     </div>
                 </div>
+                </div>
                 `
             ).join(" ");
+
+            products.slice(0, 100).map((item, index) => {
+                document.getElementById(`heart${index}`).addEventListener("click", () =>{
+                    request.open('PATCH', `${url}/${item.id}`, true);
+                    request.setRequestHeader('x-access-token', token);
+                    request.send(item.id);
+                })
+            })
+
             }
         }
     } catch (err) {
         console.log(err);
-        // document.querySelector("#login-error").textContent = 'There has been an error';
     }
 });
 
