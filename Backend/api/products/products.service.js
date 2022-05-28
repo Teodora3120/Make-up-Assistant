@@ -1,19 +1,20 @@
 
 //filtreaza datele dupa un query specificat
-// function filter(data, query) {
-//     const options = {
-//         // sort returned documents in ascending order by title (A->Z)
-//         sort: { name: 1 },
-//         // Include only the `title` and `imdb` fields in each returned document
-//         projection: { _id: 0, id: 1, brand: 1, name: 1 },
-//     };
-//     return data.find(query, options).toArray();
-// }
-// async function findbyFilter() {
-//     const products = await run("Products", (data) => filter(data, { brand: "colourpop" }));
-//     console.log(products);
-// }
-// findbyFilter();
+async function filter(data, body) {
+    const brands = body.brands.split(",");
+    const skin = { skintypes: body.skintypes, skinage: body.skinage };
+    const makeup = { outfitcolors: body.outfitcolors, event: body.event, eyecolor: body.eyecolor, haircolor: body.haircolor, vegan: body.vegan };
+    const options = {
+        sort: { name: 1 },
+        projection: { id: 1, brand: 1, name: 1, price: 1, price_sign: 1, product_link: 1, description: 1, rating: 1, category: 1, product_type: 1, api_featured_image: 1 },
+    };
+    let products = await data.find({ $or: [skin, makeup] }, options).toArray();
+    if (brands[0] !== '') {
+        console.log(products);
+        return products.filter(item => brands.includes(item.brand));
+    }
+    return products;
+}
 
 //filtreaza dupa id
 async function findById(data, id) {
@@ -22,28 +23,28 @@ async function findById(data, id) {
 
 //ia toate documentele din colectie
 async function getAll(data) {
-    const results = data.find({}).toArray();
-    return await results;
+    const results = await data.find({}).toArray();
+    return results;
 }
 
 async function insert(data, object) {
     const response = await data.insertOne(object);
-    console.log(response);
+    // console.log(response);
     return response;
 }
 
 async function deleteById(data, id) {
-    const results = data.deleteOne({ "id": id });
+    const results = await data.deleteOne({ "id": id });
     console.log(results);
-    return await results;
+    return results;
 }
 
-async function updateOneById(data, id, query) {
-    const filter = { "id": id };
-    const options = { upsert: true };
-    const updateDoc = { $set: query };
-    const result = data.updateOne(filter, updateDoc, options);
-    return await result;
+async function updateOneById(data, id) {
+    const result = await data.updateOne(
+        { id: id },
+        { $inc: { rating: 1 } }
+     )
+    return result;
 }
 
-module.exports = { findById, getAll, deleteById, updateOneById, insert }
+module.exports = { findById, getAll, deleteById, updateOneById, insert, filter }

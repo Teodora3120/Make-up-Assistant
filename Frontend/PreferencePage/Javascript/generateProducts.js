@@ -1,3 +1,7 @@
+const like = (id) => {
+    console.log(id);
+}
+
 window.addEventListener("load", async (e) => {
     let token = "";
     let products = [];
@@ -7,21 +11,51 @@ window.addEventListener("load", async (e) => {
         token = JSON.parse(localStorage.getItem('user')).token;
     }
     e.preventDefault();
-    console.log('Page is loaded');
     try {
-        // let request = new XMLHttpRequest();
-        // request.open('GET', 'http://localhost:5000/api/products');
-        // request.send();
-        // console.log(request.status);
-        // console.log(request.getResponseHeader);
-        // fetch('http://localhost:5000/api/products')
-        // .then(response => response.json())
-        // .then(data => console.log(data));
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const skintypes = urlParams.get('skintypes');
+        console.log(skintypes);
+
+        const skinage = urlParams.get('skinage');
+        console.log(skinage);
+
+        const haircolor = urlParams.get('haircolor')
+        console.log(haircolor);
+
+        const eyecolor = urlParams.get('eyecolor')
+        console.log(eyecolor);
+
+        const event = urlParams.get('event')
+        console.log(event);
+
+        const outfitcolors = urlParams.get('outfitcolors')
+        console.log(outfitcolors);
+        
+        const brands = urlParams.get('brands')
+        console.log(brands);
+       
+        const vegan = urlParams.get('vegan')
+        console.log(vegan);
+
+        const body = {
+            skintypes: skintypes,
+            skinage: skinage,
+            haircolor: haircolor,
+            eyecolor: eyecolor,
+            event: event,
+            outfitcolors: outfitcolors,
+            brands: brands,
+            vegan: vegan
+        }
+
+        console.log(body);
 
         var request = new XMLHttpRequest();
-        request.open('GET', 'http://localhost:5000/api/products', true);
+        const url = "http://localhost:5000/api/products";
+        request.open('POST', url, true);
         request.setRequestHeader('x-access-token', token);
-        request.send();
+        request.send(JSON.stringify(body));
         request.onreadystatechange = function () {
             if (request.readyState == XMLHttpRequest.DONE) {
                 products = JSON.parse(request.responseText);
@@ -29,22 +63,35 @@ window.addEventListener("load", async (e) => {
                 document.querySelector("#preferance-span").textContent = `Showing ${products.slice(0, 100).length} products out of ${products.length}`;
                 dynamic.innerHTML = products.slice(0, 100).map((item, index) =>
                 `
-                <div id="card${index}">
+                <div class="card-wrapper">
+                <div class="card">
                     <div class="box-content">
                     <img class="grid-img" src="${item.api_featured_image}">
                     <h2>${item.name}</h2>
-                    <p>${item.price_sign}${item.price}</p>
-                    <p>${item.brand}</p>
-                    <button class="showmore"><a href="${window.location.protocol}//${window.location.host}/api/todos/${products[index].id}">See more details</a></button>
+                    <p style="padding: 1em">${item.description}</p>
+                    <p style="font-weight: 600">${item.price_sign}${item.price}</p>
+                    <p style="padding: 1em; color: #9DA993">${item.brand}</p>
+                    <div class="h_container"  id="heart${index}"}">
+                        <i id="heart" class="fas fa-heart"></i>
                     </div>
+                    </div>
+                </div>
                 </div>
                 `
             ).join(" ");
+
+            products.slice(0, 100).map((item, index) => {
+                document.getElementById(`heart${index}`).addEventListener("click", () =>{
+                    request.open('PATCH', `${url}/${item.id}`, true);
+                    request.setRequestHeader('x-access-token', token);
+                    request.send(item.id);
+                })
+            })
+
             }
         }
     } catch (err) {
         console.log(err);
-        // document.querySelector("#login-error").textContent = 'There has been an error';
     }
 });
 

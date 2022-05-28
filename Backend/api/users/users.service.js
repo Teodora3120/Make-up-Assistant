@@ -49,7 +49,7 @@ const login = async (data, credentials) =>{
             },
             'jwttokenkey',
             {
-                expiresIn: "2h",
+                expiresIn: "7d",
             }
         );
 
