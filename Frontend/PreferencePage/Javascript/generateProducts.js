@@ -64,7 +64,6 @@ window.addEventListener("load", async (e) => {
                 dynamic.innerHTML = products.slice(0, 100).map((item, index) =>
                 `
                 <div class="card-wrapper">
-                <div class="card">
                     <div class="box-content">
                     <img class="grid-img" src="${item.api_featured_image}">
                     <h2>${item.name}</h2>
@@ -75,7 +74,6 @@ window.addEventListener("load", async (e) => {
                         <i id="heart" class="fas fa-heart"></i>
                     </div>
                     </div>
-                </div>
                 </div>
                 `
             ).join(" ");
