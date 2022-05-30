@@ -63,8 +63,8 @@ window.addEventListener("load", async (e) => {
                     <div class="box-content">
                     <img class="grid-img" src="${item.api_featured_image}">
                     <h2>${item.name}</h2>
-                    <p style="padding: 1em">${item.description}</p>
-                    <p style="font-weight: 600">${item.price_sign}${item.price}</p>
+                    <p style="padding: 1em">${(item.description.split(".")[0])? item.description.split(".")[0] + "." : "No description"}</p>
+                    <p style="font-weight: 600">${item.price_sign ? item.price_sign: ""}${item.price ? item.price: "Unknown price"} </p>
                     <p style="padding: 1em; color: #9DA993">${item.brand}</p>
                     <div class="h_container"  id="heart${index}">
                         <i id="heart" class="fas fa-heart"></i>

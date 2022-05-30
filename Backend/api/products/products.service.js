@@ -21,11 +21,16 @@ async function topFilter(data, body) {
         sort: { name: 1 },
         projection: { id: 1, brand: 1, name: 1, price: 1, price_sign: 1, product_link: 1, description: 1, rating: 1, category: 1, product_type: 1, api_featured_image: 1 },
     };
-    let products = await data.find({product_type : body.product_type}, options).toArray();
+    if(body.product_type !== "all"){
+        let products = await data.find({product_type : body.product_type}, options).toArray();
+        console.log(products.sort((a, b) => a.rating < b.rating ? 1 : -1).slice(0, 10));
+        if(products.length <= 10){
+            return products.sort((a, b) => a.rating < b.rating ? 1 : -1);
+        } 
+        return products.sort((a, b) => a.rating < b.rating ? 1 : -1).slice(0, 10);
+    }
+    let products = await data.find({}, options).toArray();
     console.log(products.sort((a, b) => a.rating < b.rating ? 1 : -1).slice(0, 10));
-    if(products.length <= 10){
-        return products.sort((a, b) => a.rating < b.rating ? 1 : -1);
-    } 
     return products.sort((a, b) => a.rating < b.rating ? 1 : -1).slice(0, 10);
 }
 
