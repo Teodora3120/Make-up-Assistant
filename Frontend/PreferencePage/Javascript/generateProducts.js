@@ -1,7 +1,3 @@
-const like = (id) => {
-    console.log(id);
-}
-
 window.addEventListener("load", async (e) => {
     let token = "";
     let products = [];
@@ -70,7 +66,7 @@ window.addEventListener("load", async (e) => {
                     <p style="padding: 1em">${item.description}</p>
                     <p style="font-weight: 600">${item.price_sign}${item.price}</p>
                     <p style="padding: 1em; color: #9DA993">${item.brand}</p>
-                    <div class="h_container"  id="heart${index}"}">
+                    <div class="h_container"  id="heart${index}">
                         <i id="heart" class="fas fa-heart"></i>
                     </div>
                     </div>
