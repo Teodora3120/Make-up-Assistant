@@ -1,7 +1,7 @@
 const assignReqToBody = require("../utils");
 const { run } = require("../database-connection");
 const auth = require("../../middleware/auth");
-const { getAll, findById, filter, deleteById, updateOneById } = require("./products.service");
+const { getAll, findById, filter, deleteById, updateOneById, topFilter } = require("./products.service");
 
 const productsController = async (req, res) => {
     if (req.method === "GET") {
@@ -27,18 +27,52 @@ const productsController = async (req, res) => {
             }
         }
     }
-    if (req.url === "/api/products" && req.method === "POST") {
-        try {
-            console.log("POST");
-            const body = await auth(req, res);
-            console.log(body);
-            const products = await run("Products", (data) => filter(data, body));
-            // const product = await run("Products", (data) => insert(data, body));
-            writeSuccessHead(res, products);
-        } catch (error) {
-            writeErrorHead(res, error);
+    if (req.method === "POST") {
+        if (req.url === "/api/products/filter") {
+            try {
+                console.log("POST---topProducts");
+                const body = await auth(req, res);
+                console.log("Body" + body);
+                const products = await run("Products", (data) => topFilter(data, body));
+                writeSuccessHead(res, products);
+            } catch (error) {
+                writeErrorHead(res, error);
+            }
+        }
+        if (req.url === "/api/products") {
+            try {
+                console.log("POST---preferancePage");
+                const body = await auth(req, res);
+                console.log(body);
+                const products = await run("Products", (data) => filter(data, body));
+                writeSuccessHead(res, products);
+            } catch (error) {
+                writeErrorHead(res, error);
+            }
         }
     }
+    // if(req.url === "/api/products/filter" && req.method === "POST"){
+    //     try {
+    //         console.log("POST---topProducts");
+    //         const body = await auth(req, res);
+    //         console.log(body);
+    //         // const products = await run("Products", (data) => filter(data, body));
+    //         // writeSuccessHead(res, products);
+    //     } catch (error) {
+    //         writeErrorHead(res, error);
+    //     }
+    // }
+    // if (req.url === "/api/products" && req.method === "POST") {
+    // try {
+    //     console.log("POST---preferancePage");
+    //     const body = await auth(req, res);
+    //     console.log(body);
+    //     const products = await run("Products", (data) => filter(data, body));
+    //     writeSuccessHead(res, products);
+    // } catch (error) {
+    //     writeErrorHead(res, error);
+    // }
+    // }
     if (req.url.match(/\/api\/products\/([0-9]+)/) && req.method === "DELETE") {
         try {
             console.log("DELETE");

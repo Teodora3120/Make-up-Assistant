@@ -182,6 +182,16 @@ select{
     margin-top: 1em;
   } 
 
+  .filter-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    padding-bottom: 6em;
+    max-width: 50%;
+  }
   .container {
     display: flex;
     justify-content: space-evenly;
@@ -190,8 +200,7 @@ select{
     flex-direction: column;
     margin: auto;
     max-width: 50%;
-    /* margin-top: 4em;
-    margin-bottom: 4em; */
+
   }
   .box-content{
     background-color: white;
@@ -209,6 +218,26 @@ select{
   
   .box-description{
     align-self: center;
+  }
+
+  .h_container{
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+    width:35px;
+    height:35px;
+    text-align:center;
+    line-height:45px;
+  
+  }
+  #heart{
+    font-size: 25px;
+  }
+  .like{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 
 @media screen and(max-width: 1200px){

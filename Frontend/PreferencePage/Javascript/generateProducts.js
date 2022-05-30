@@ -1,7 +1,3 @@
-const like = (id) => {
-    console.log(id);
-}
-
 window.addEventListener("load", async (e) => {
     let token = "";
     let products = [];
@@ -64,18 +60,16 @@ window.addEventListener("load", async (e) => {
                 dynamic.innerHTML = products.slice(0, 100).map((item, index) =>
                 `
                 <div class="card-wrapper">
-                <div class="card">
                     <div class="box-content">
                     <img class="grid-img" src="${item.api_featured_image}">
                     <h2>${item.name}</h2>
                     <p style="padding: 1em">${item.description}</p>
                     <p style="font-weight: 600">${item.price_sign}${item.price}</p>
                     <p style="padding: 1em; color: #9DA993">${item.brand}</p>
-                    <div class="h_container"  id="heart${index}"}">
+                    <div class="h_container"  id="heart${index}">
                         <i id="heart" class="fas fa-heart"></i>
                     </div>
                     </div>
-                </div>
                 </div>
                 `
             ).join(" ");

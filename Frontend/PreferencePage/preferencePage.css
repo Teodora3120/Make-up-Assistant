@@ -120,7 +120,6 @@ a{
 }
 
 .card-wrapper{
-  display: flex;
   width:30%;
 }
 
@@ -145,10 +144,6 @@ a{
   margin-top: 1em;
 }
 
-.card {
-  flex: 1 1 auto;
-  /* height: 100%; */
-}
 
 .h_container{
   border-radius: 20px;
@@ -207,6 +202,9 @@ a{
 
 
 @media screen and (max-width: 600px){
+  .container{
+    align-items: center;
+  }
   .card-wrapper {
     width: 80%;
   }

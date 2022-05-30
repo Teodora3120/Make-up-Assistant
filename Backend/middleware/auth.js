@@ -5,7 +5,6 @@ const config = 'jwttokenkey';
 
 const verifyToken = async (req, res) => {
     const body = await assignReqToBody(req);
-    console.log("Type of body after assin" + body);
     let token = null;
     if (body && body.token) {
         console.log("Here1");
