@@ -30,9 +30,6 @@ const usersController = async (req, res) => {
                 writeErrorHead(res, error);
             }
         }
-        if (req.url === "/api/users/logout") {
-
-        }
     }
 }
 

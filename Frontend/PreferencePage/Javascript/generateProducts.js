@@ -5,6 +5,8 @@ window.addEventListener("load", async (e) => {
     const local = localStorage.getItem("user");
     if (local) {
         token = JSON.parse(localStorage.getItem('user')).token;
+    } else {
+       return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
     }
     e.preventDefault();
     try {

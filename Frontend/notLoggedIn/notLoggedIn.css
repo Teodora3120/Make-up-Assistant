@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* we removing the margins, paddings from start*/
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: url(/Frontend/Images/background.jpg)  no-repeat center center fixed;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
+    opacity:0.5;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+
+  }
+.overlay h1{
+    margin-bottom: 0.5em;
+}
+
+.overlay h3{
+    margin-bottom: 1em;
+}
+
+.link{
+    text-decoration: none;
+    color: #a4b0be;
+    display: flex;
+    justify-content: space-evenly;
+}
