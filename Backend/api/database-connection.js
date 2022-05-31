@@ -24,7 +24,6 @@ const run = async (targetTable, callback) => {
     await client.close();
   }
 }
-// run().catch(console.dir);
 
 module.exports = {
   run

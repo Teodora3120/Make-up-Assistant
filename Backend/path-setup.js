@@ -23,24 +23,25 @@ const pathSetup = async (request, response) => {
     var contentType = mimeTypes[extname] || 'application/octet-stream';
 
     fs.readFile(filePath, function (error, content) {
-          //exclude api endpoints reading
-          if (request.url.includes("/api")) {
+        //exclude api endpoints reading
+        if (request.url.includes("/api")) {
             return;
         }
-        
+
         console.log(filePath);
-        if(filePath.includes("?")){
+
+        if (filePath.includes("?")) {
             const url = filePath.split("?");
             console.log(url);
             fs.readFile(`${url[0]}`, function (error2, content) {
-                // console.log(error2);
-                response.writeHead(404, { 'Content-Type': 'text/html' });             
+                console.log(error2);
+                response.writeHead(200, { 'Content-Type': 'text/html' });
                 return response.end(content, 'utf-8');
             });
         }
-       
+
         if (error) {
-            console.log("path-setup"  + error);
+            console.log("path-setup" + error);
             if (error.code == 'ENOENT') {
                 fs.readFile('../Frontend/404.html', function (error2, content) {
                     console.log(error2);
