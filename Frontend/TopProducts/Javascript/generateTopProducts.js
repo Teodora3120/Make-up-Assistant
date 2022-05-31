@@ -8,6 +8,8 @@ window.addEventListener("load", async (e) => {
     const local = localStorage.getItem("user");
     if (local) {
         token = JSON.parse(localStorage.getItem('user')).token;
+    }else {
+       return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
     }
     e.preventDefault();
     try {
@@ -33,9 +35,9 @@ window.addEventListener("load", async (e) => {
                     </div>
                     <img class="grid-img" src="${item.api_featured_image}">
                     <h2>${item.name}</h2>
-                    <p style="padding: 1em">${item.description}</p>
+                    <a href="${item.product_link}" style="padding: 1em; color: #156068">You can find it here</a>
                     <p style="padding: 1em; color: #9DA993">${item.brand}</p>
-                    <small style="margin-bottom: .5em">${item.price}</small>
+                    <small style="margin-bottom: .5em">${item.price_sign ? item.price_sign: ""}${item.price ? item.price: "Unknown price"}</small>
                     </div>
                 </div>
                 `

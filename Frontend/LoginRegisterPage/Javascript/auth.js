@@ -1,7 +1,3 @@
-
-// import UsersApi from "../../api/users.js";
-
-
 function handleLoginAnimation(){
     var x = document.getElementById("login");
     var y = document.getElementById("register");
