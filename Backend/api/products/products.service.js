@@ -9,7 +9,6 @@ async function filter(data, body) {
     };
     let products = await data.find({ $or: [skin, makeup] }, options).toArray();
     if (brands[0] !== '') {
-        console.log(products);
         return products.filter(item => brands.includes(item.brand));
     }
     return products;
