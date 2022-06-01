@@ -33,8 +33,8 @@ const pathSetup = async (request, response) => {
         if (filePath.includes("?")) {
             const url = filePath.split("?");
             console.log(url);
-            fs.readFile(`${url[0]}`, function (error2, content) {
-                console.log(error2);
+           return fs.readFile(`${url[0]}`, function (error2, content) {  
+                console.log("Error param" + error2);
                 response.writeHead(200, { 'Content-Type': 'text/html' });
                 return response.end(content, 'utf-8');
             });
@@ -43,8 +43,8 @@ const pathSetup = async (request, response) => {
         if (error) {
             console.log("path-setup" + error);
             if (error.code == 'ENOENT') {
-                fs.readFile('../Frontend/404.html', function (error2, content) {
-                    console.log(error2);
+                fs.readFile('../Frontend/404.html', function (error, content) {
+                    console.log("ENONET " + error);
                     response.writeHead(404, { 'Content-Type': 'text/html' });
                     response.end(content, 'utf-8');
                 });
