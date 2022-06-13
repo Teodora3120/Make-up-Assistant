@@ -1,3 +1,15 @@
+const { toXML } = require('jstoxml');
+
+ async function printRSS(body) {
+        const products=body;
+        const content = {TopProducts:[products]};
+        const config = {
+            indent: '    ',
+            header:true
+        };
+        const rss=toXML(content, config);
+        return rss;
+} 
 
 //filtreaza datele dupa un query specificat
 async function filter(data, body) {
@@ -67,4 +79,4 @@ async function updateOneById(data, id) {
     return result;
 }
 
-module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter}
+module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS};
