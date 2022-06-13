@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&display=swap" rel="stylesheet">
-    <!-- <script src="./node_modules/axios/dist/axios.min.js"></script> -->
+    <link rel="icon" type="image/x-icon" href="/Frontend/Images/favicon_io/favicon.ico">
     <title>Choose your make-up!</title>
 </head>
 <body>
     <header>
-        <div class="header-container"> <!--Missing an "s" on "class"-->
+        <div class="header-container"> 
           <nav class="navbar">
-            <a class="navbarlogo" href="/Frontend/index.html" >~MKP ASSISTANT~</a> <!--Eliminating class-branding-->
+            <a class="navbarlogo" href="/Frontend/index.html" >~MKP ASSISTANT~</a> 
             <ul class="nav-menu">
               <li class="nav-item">
                 <a class="nav-link" href="/Frontend/topProducts.html">Top Products</a>
@@ -25,8 +25,8 @@
               <li class="nav-item">
                 <a class="nav-link" href="../Form/form.html" style="color: #C68E17">Form</a>
               </li>
-              <li class="nav-item" id="logout-button"> <!--"nav-tem" was outside of class=""-->
-                <a class="nav-link" href="/Frontend/loginRegisterPage.html">Logout</a>
+              <li class="nav-item">
+                <a id="logout-link" class="nav-link" href="/Frontend/loginRegisterPage.html"></a>
               </li>
             </ul>
     
@@ -54,7 +54,7 @@
                     <option value="mixedacneic">Mixed and acneic</option>
                     
                 </select>
-                <label><br>Skin age</label> <!--deleting "for="varsta_tenului"  The value of the for attribute of the label element must be the ID of a non-hidden form control-->
+                <label><br>Skin age</label> 
                 <select name="skinage" id="skinage" onchange="selectedOption(id)">
                     <option value="choose" disabled selected>Choose</option>
                     <option value="teen"> Teen (16-20 years)</option>
@@ -70,7 +70,7 @@
                     <option value="red">Red</option>
                     <option value="others">Others</option>
                 </select>
-                <label ><br>Eye color<br></label> <!--for="makeup_intensity" The value of the for attribute of the label element must be the ID of a non-hidden form control-->
+                <label ><br>Eye color<br></label> 
                 <select name="eyecolor" id="eyecolor" onchange="selectedOption(id)">
                     <option value="choose" disabled selected>Choose</option>
                     <option value="green">Green</option>
@@ -79,7 +79,7 @@
                     <option value="blue">Blue</option>
                     <option value="black">Black</option>
                 </select>
-                <label ><br>Event</label> <!-- for="eveniment" The value of the for attribute of the label element must be the ID of a non-hidden form control-->
+                <label ><br>Event</label>
                 <select name="event" id="event" onchange="selectedOption(id)">
                     <option value="choose" disabled selected>Choose</option>
                     <option value="party">Party</option>
@@ -91,7 +91,7 @@
                     <option value="christmas">Christmas</option>
                     <option value="newYearsEve">New Year's Eve</option>
                 </select>
-                <label ><br>Outfit palette colors</label> <!--for="culoriTinuta" The value of the for attribute of the label element must be the ID of a non-hidden form control-->
+                <label ><br>Outfit palette colors</label> 
                 <select name="outfitcolors" id="outfitcolors" onchange="selectedOption(id)">
                     <option value="choose" disabled selected>Choose</option>
                     <option value="warm">Warm colors</option>

@@ -11,7 +11,6 @@ const { toXML } = require('jstoxml');
         return rss;
 } 
 
-//filtreaza datele dupa un query specificat
 async function filter(data, body) {
     const brands = body.brands.split(",");
     const skin = { skintypes: body.skintypes, skinage: body.skinage };
@@ -22,7 +21,6 @@ async function filter(data, body) {
     };
     let products = await data.find({ $or: [skin, makeup] }, options).toArray();
     if (brands[0] !== '') {
-        console.log(products);
         return products.filter(item => brands.includes(item.brand));
     }
     return products;
@@ -47,13 +45,10 @@ async function topFilter(data, body) {
 }
 
 
-
-//filtreaza dupa id
 async function findById(data, id) {
     return await data.findOne({ "id": id });
 }
 
-//ia toate documentele din colectie
 async function getAll(data) {
     const results = await data.find({}).toArray();
     return results;
@@ -61,7 +56,6 @@ async function getAll(data) {
 
 async function insert(data, object) {
     const response = await data.insertOne(object);
-    // console.log(response);
     return response;
 }
 

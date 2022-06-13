@@ -5,6 +5,8 @@ window.addEventListener("load", async (e) => {
     const local = localStorage.getItem("user");
     if (local) {
         token = JSON.parse(localStorage.getItem('user')).token;
+    } else {
+       return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
     }
     e.preventDefault();
     try {
@@ -55,8 +57,13 @@ window.addEventListener("load", async (e) => {
         request.onreadystatechange = function () {
             if (request.readyState == XMLHttpRequest.DONE) {
                 products = JSON.parse(request.responseText);
+                if(products.length === 0){
+                    document.querySelector("#preferance-span").textContent = `We didn't find any products for the filters chosen by you. Please select other filters.`;
+                    return;
+                }
                 console.log(products);
-                document.querySelector("#preferance-span").textContent = `Showing ${products.slice(0, 100).length} products out of ${products.length}`;
+                var newArr = products.slice(0, 100);
+                document.querySelector("#preferance-span").textContent = `Showing ${newArr.length} products out of ${products.length}`;
                 dynamic.innerHTML = products.slice(0, 100).map((item, index) =>
                 `
                 <div class="card-wrapper">
@@ -76,12 +83,12 @@ window.addEventListener("load", async (e) => {
 
             products.slice(0, 100).map((item, index) => {
                 document.getElementById(`heart${index}`).addEventListener("click", () =>{
+                    document.querySelector("#heart").classList.toggle("active");
                     request.open('PATCH', `${url}/${item.id}`, true);
                     request.setRequestHeader('x-access-token', token);
                     request.send(item.id);
                 })
             })
-
             }
         }
     } catch (err) {

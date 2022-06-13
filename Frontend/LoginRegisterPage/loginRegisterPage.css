@@ -4,37 +4,45 @@
   font-family: sans-serif;
 }
 /* trebuie adaugat un layer peste imagine*/
-.hero{
+body{
   height: 100%;
   width: 100%;
-  /* margin:0; */
-  /* padding: 0; */
-  /* font-size: 0; */
   max-width: 100%;
   max-height: 100%;
   /* opacity: 0.5; */
-  background-image: url("../Images/test2.webp"), linear-gradient(
+  background-image: url("../Images/newbackgroun.webp"), linear-gradient(
     rgba(0, 0, 0.4), rgba(0, 0, 0.4));
   background-position: center;
   background-size:cover;
   position: absolute;
 }
 
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
 .form-box{
   width: 45em;
   height: 35em;
+  opacity: 1;
   position: relative;
   margin:6% auto;
   background: rgba(255, 255, 255, 1);
-  /* padding: 5px; */
   overflow: hidden;
+  z-index: 11;
 }
 
 .button-box{
   width: 220px;
   margin:35px auto;
   position:relative;
-  box-shadow: 0 0 20px 4px #dd6cb2;
+  box-shadow: 0 0 20px 4px #d5a3c2;
   border-radius: 30px;
 }
 
@@ -54,7 +62,7 @@
   width: 110px;
   height: 100%;
   background: linear-gradient(to right, rgb(179, 84, 104), #c36cdd, #dd6cb2);
-  border-radius: 30px;
+  border-radius: 20px;
   transition: .5s;
 }
 
@@ -121,7 +129,6 @@ span{
     position: relative;
     margin:6% auto;
     background: rgba(255, 255, 255, 1);
-    /* padding: 5px; */
     overflow: hidden;
   }
 

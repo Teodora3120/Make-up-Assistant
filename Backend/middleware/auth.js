@@ -7,15 +7,12 @@ const verifyToken = async (req, res) => {
     const body = await assignReqToBody(req);
     let token = null;
     if (body && body.token) {
-        console.log("Here1");
         token = body.token;
     }
     if (req && req.query && req.query.token) {
-        console.log("Here2");
         token = req.query.token;
     }
     if (req && req.headers && req.headers["x-access-token"]) {
-        console.log("Here3");
         token = req.headers["x-access-token"];
     }
     if (!token) {
