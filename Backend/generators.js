@@ -48,9 +48,11 @@ try {
     request.send(JSON.stringify(products, (key, value)=>{
         if(key==="_id" || key==="id")
         {
-            console.log("FOUND THE KEY "+key);
             return undefined;
         }
+        var word=JSON.stringify(value);
+        word.replace("&trade;", " ");
+        value=JSON.parse(word);
         return value;
     }));
     request.onload = function() {
