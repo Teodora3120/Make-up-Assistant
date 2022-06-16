@@ -57,38 +57,52 @@ window.addEventListener("load", async (e) => {
         request.onreadystatechange = function () {
             if (request.readyState == XMLHttpRequest.DONE) {
                 products = JSON.parse(request.responseText);
-                if(products.length === 0){
-                    document.querySelector("#preferance-span").textContent = `We didn't find any products for the filters chosen by you. Please select other filters.`;
-                    return;
-                }
-                console.log(products);
-                var newArr = products.slice(0, 100);
-                document.querySelector("#preferance-span").textContent = `Showing ${newArr.length} products out of ${products.length}`;
-                dynamic.innerHTML = products.slice(0, 100).map((item, index) =>
-                `
-                <div class="card-wrapper">
-                    <div class="box-content">
-                    <img class="grid-img" src="${item.api_featured_image}">
-                    <h2>${item.name}</h2>
-                    <p style="padding: 1em">${(item.description.split(".")[0])? item.description.split(".")[0] + "." : "No description"}</p>
-                    <p style="font-weight: 600">${item.price_sign ? item.price_sign: ""}${item.price ? item.price: "Unknown price"} </p>
-                    <p style="padding: 1em; color: #9DA993">${item.brand}</p>
-                    <div class="h_container"  id="heart${index}">
-                        <i id="heart" class="fas fa-heart"></i>
-                    </div>
-                    </div>
-                </div>
-                `
-            ).join(" ");
 
-            products.slice(0, 100).map((item, index) => {
-                document.getElementById(`heart${index}`).addEventListener("click", () =>{
-                    document.querySelector("#heart").classList.toggle("active");
-                    request.open('PATCH', `${url}/${item.id}`, true);
-                    request.setRequestHeader('x-access-token', token);
-                    request.send(item.id);
+                if (Array.isArray(products) == false && products.message === "Invalid Token") {
+                    console.log("This session has been expired. Click here to login again");
+                    
+                    return  dynamic.innerHTML =
+                     `
+                     <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                     <h3>Your session has expired.</h3>
+                     <h4 style="margin-top:2em; font-weight: 400;">Click <a style="color: #1a0dab;" href="/Frontend/loginRegisterPage.html"> here </a> to login again.</h4>
+                     </div>
+                   `
+                } else {
+                    if(products.length === 0){
+                        document.querySelector("#preferance-span").textContent = `We didn't find any products for the filters chosen by you. Please select other filters.`;
+                        return;
+                    }
+                    console.log(products);
+                    var newArr = products.slice(0, 100);
+                    document.querySelector("#preferance-span").textContent = `Showing ${newArr.length} products out of ${products.length}`;
+                    dynamic.innerHTML = products.slice(0, 100).map((item, index) =>
+                    `
+                    <div class="card-wrapper">
+                        <div class="box-content">
+                        <img class="grid-img" src="${item.api_featured_image}">
+                        <h2>${item.name}</h2>
+                        <p style="padding: 1em">${(item.description.split(".")[0])? item.description.split(".")[0] + "." : "No description"}</p>
+                        <p style="font-weight: 600">${item.price_sign ? item.price_sign: ""}${item.price ? item.price: "Unknown price"} </p>
+                        <p style="padding: 1em; color: #9DA993">${item.brand}</p>
+                        <div class="h_container"  id="heart${index}">
+                            <i id="heart" class="fas fa-heart"></i>
+                        </div>
+                        </div>
+                    </div>
+                    `
+                ).join(" ");
+    
+                products.slice(0, 100).map((item, index) => {
+                    document.getElementById(`heart${index}`).addEventListener("click", () =>{
+                        document.querySelector("#heart").classList.toggle("active");
+                        request.open('PATCH', `${url}/${item.id}`, true);
+                        request.setRequestHeader('x-access-token', token);
+                        request.send(item.id);
+                    })
                 })
-            })
+                }
+
             }
         }
     } catch (err) {

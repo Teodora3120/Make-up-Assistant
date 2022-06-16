@@ -87,7 +87,6 @@ header {
     align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    /* margin-top: 0.5em; */
 }  
 
 .cta-select {
@@ -253,6 +252,7 @@ select{
     justify-content: center;
     align-items: center;
   }
+
 
 @media screen and(max-width: 1200px){
   .container {
