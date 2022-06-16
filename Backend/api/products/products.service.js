@@ -1,6 +1,5 @@
 
 const { toXML } = require('jstoxml');
-const Feed = require('feed').Feed;
  async function printRSS(body) {
         const products=body;
        // const feed = new Feed(products);
@@ -8,14 +7,13 @@ const Feed = require('feed').Feed;
         const config = {
             indent: ' ',
             header:true, 
-            filter: {
+            contentReplacements: {
                 '<': '&lt;', 
                 '>': '&gt;',
                 '"': '&quot;',
                 '\'': '&apos;',
-                '&': '&amp;' ,
-                ';':'&.',
-                '&trade;':';'
+                '&': '&amp;',
+                '&trade;':''
             }
         };
        const rss=toXML(content, config);

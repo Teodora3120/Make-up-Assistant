@@ -1,14 +1,9 @@
 
 export async function generatePdfFromHtml(products, path){
    const doc=new jsPDF('p', 'pt', 'a4');       
-var elementHandler = {
-  '#ignorePDF': function (element, renderer) {
-    return true;
-  }
-};
 const margins = {top: 60, bottom: 30, left: 30, width: 595};
 products.forEach(function(product, i){
-    doc.setFillColor(219, 138, 116);
+    doc.setFillColor(236, 236, 236);
     doc.rect(0, 0, 1000, 1000, "F");
     doc.setFontSize(20);
     var string="Number: "+ (i+1)+ "\n" +
@@ -50,9 +45,10 @@ try {
         {
             return undefined;
         }
-        var word=JSON.stringify(value);
-        word.replace("&trade;", " ");
-        value=JSON.parse(word);
+        if(key==="name")
+        {var word=JSON.stringify(value);
+        word.replaceAll('&trade;', ' ');
+        value=JSON.parse(word);}
         return value;
     }));
     request.onload = function() {
