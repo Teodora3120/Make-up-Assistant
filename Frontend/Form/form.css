@@ -10,6 +10,14 @@ header {
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   }
+
+  body{
+    background: url(../Images/background2.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
   
   .header-container{
     display: flex;
@@ -74,29 +82,29 @@ header {
   }
   
 
-.background{
-    height: 100vh;
-    width: 100vh;
+/* .background{
+    height: 100%;
+    width: 100%;
     margin:0;
     display:block;
     flex-wrap:wrap;
     padding:0;
     font-size: 0;
-    max-width: 100vh;
-    max-height:100vh;
-    min-height:100vh;
+    max-width: 1005;
+    max-height:100%;
+    min-height:100%;
     min-width:100%;
-    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)),url(../Images/background2.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)),url(../Images/background2.jpg) no-repeat center center fixed;
     background-position:center;
     background-repeat:repeat-y;
     background-size:cover;
     position:absolute;
-}
+} */
 
 .form{
     display: flex;
     position:relative;
-    height:36rem; 
+    height:50rem; 
     flex-direction: column;
     align-content: center;
     justify-content: center;
@@ -110,8 +118,9 @@ header {
     flex-direction: column;
     flex-wrap:nowrap;
     justify-content: center;
-    margin:5% 25%;
+    margin:5% 5%;
 }
+
 #skintypes{
     position: relative;
     align-content: center;
@@ -142,7 +151,7 @@ label{
 
 .checkbox-dropdown {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 5px;
   border: 3px solid rgba(243,182,212,0.53);
   padding: 10px;
   background-color:  rgba(243,182,212,0.53);
@@ -229,21 +238,20 @@ select{
         font-size: 1.4vh;
         border:4px solid;
         border-color: rgba(243,182,212,0.53);
-        border-radius: 20px;
+        border-radius: 5px;
         appearance:none;
         align-content: center;
         justify-content: center;
         Width:90%;
         position: relative;
         align-content: center;
-
         margin-left:5%;
 }
 
 #donebutton{
     border:4px solid;
     border-color:rgba(243,182,212,0.54);
-    border-radius:20px;
+    border-radius:5px;
     padding: 5px 7px;
     align-self: center;
     font-size: 1.4vh;
@@ -254,7 +262,7 @@ select{
 #donebutton:hover{
     border:4px solid;
     border-color:rgba(235, 31, 133, 0.54);
-    border-radius:20px;
+    border-radius:5px;
     padding: 5px 7px;
     background-color: transparent;
     color:rgba(221, 42, 131, 0.54);
@@ -311,7 +319,7 @@ p{
     transform: translateY(-8px) rotate(-45deg);
   }
 
-
+/* 
   .background{
     height: 100%;
     width: 100%;
@@ -330,6 +338,14 @@ p{
     background-size:cover;
     position:absolute;
     z-index: 9998;
+} */
+
+body{
+  background: url(../Images/background_mobile.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 h4{
@@ -373,8 +389,6 @@ h4{
     left: 0;
   }
   .footer-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap:nowrap;
+    display: none;
 }
 }
