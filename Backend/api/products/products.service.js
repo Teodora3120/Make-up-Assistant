@@ -6,14 +6,13 @@ const { toXML } = require('jstoxml');
         const config = {
             indent: ' ',
             header:true, 
-            filter: {
+            contentReplacements: {
                 '<': '&lt;', 
                 '>': '&gt;',
                 '"': '&quot;',
                 '\'': '&apos;',
-                '&': '&amp;' ,
-                ';':'&.',
-                '&trade;':';'
+                '&': '&amp;',
+                '&trade;':''
             }
         };
        const rss=toXML(content, config);
