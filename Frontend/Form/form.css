@@ -110,7 +110,7 @@ header {
     flex-direction: column;
     flex-wrap:nowrap;
     justify-content: center;
-    margin:5% 20%;
+    margin:5% 25%;
 }
 #skintypes{
     position: relative;

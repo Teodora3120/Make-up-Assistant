@@ -74,9 +74,9 @@ window.addEventListener("load", async (e) => {
                         return;
                     }
                     console.log(products);
-                    var newArr = products.slice(0, 100);
+                    const newArr = products.slice(0, 100);
                     document.querySelector("#preferance-span").textContent = `Showing ${newArr.length} products out of ${products.length}`;
-                    dynamic.innerHTML = products.slice(0, 100).map((item, index) =>
+                    dynamic.innerHTML = newArr.map((item, index) =>
                     `
                     <div class="card-wrapper">
                         <div class="box-content">
