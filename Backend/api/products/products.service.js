@@ -1,4 +1,27 @@
 
+const { toXML } = require('jstoxml');
+const Feed = require('feed').Feed;
+ async function printRSS(body) {
+        const products=body;
+       // const feed = new Feed(products);
+        const content = {TopProducts:[products]};
+        const config = {
+            indent: ' ',
+            header:true, 
+            filter: {
+                '<': '&lt;', 
+                '>': '&gt;',
+                '"': '&quot;',
+                '\'': '&apos;',
+                '&': '&amp;' ,
+                ';':'&.',
+                '&trade;':';'
+            }
+        };
+       const rss=toXML(content, config);
+        return rss;
+} 
+
 async function filter(data, body) {
     const brands = body.brands.split(",");
     const skin = { skintypes: body.skintypes, skinage: body.skinage };
@@ -61,4 +84,4 @@ async function updateOneById(data, id) {
     return result;
 }
 
-module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter}
+module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS};

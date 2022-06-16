@@ -1,6 +1,6 @@
 const { run } = require("../database-connection");
 const auth = require("../../middleware/auth");
-const { getAll, findById, filter, deleteById, updateOneById, topFilter } = require("./products.service");
+const { getAll, findById, filter, deleteById, updateOneById, topFilter, printRSS} = require("./products.service");
 
 const productsController = async (req, res) => {
     if (req.method === "GET") {
@@ -13,6 +13,7 @@ const productsController = async (req, res) => {
                 writeErrorHead(res, error);
             }
         }
+       
         if (req.url.match(/\/api\/products\/([0-9]+)/)) {
             try {
                 await auth(req, res);
@@ -27,6 +28,17 @@ const productsController = async (req, res) => {
         }
     }
     if (req.method === "POST") {
+         if (req.url === "/api/products/rss") {
+            try {
+                console.log("POST---RSS");
+                const body = await auth(req, res);
+                printRSS(body).then(rss => {
+                    writeRssSuccessHead(res, rss);
+                });
+            } catch (error) {
+                writeErrorHead(res, error);
+            }
+        } 
         if (req.url === "/api/products/filter") {
             try {
                 console.log("POST---topProducts");
@@ -87,6 +99,11 @@ const writeErrorHead = (res, error) => {
     res.writeHead(404, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ message: error }));
 }
+const writeRssSuccessHead = (res, rss) => {
+    res.writeHead(200, {  'Content-Type': "text/html" });
+    res.end(rss);
+}
+                    
 
 console.log("products controller mounted");
 module.exports = productsController;
