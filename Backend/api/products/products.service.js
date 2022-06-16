@@ -1,8 +1,7 @@
 
 const { toXML } = require('jstoxml');
  async function printRSS(body) {
-        const products=body;
-       // const feed = new Feed(products);
+        const products = body;
         const content = {TopProducts:[products]};
         const config = {
             indent: ' ',

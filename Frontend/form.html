@@ -42,6 +42,8 @@
     <main>
         <div class="background">
             <div class="form">
+                <h4 style="color: red; margin-top: 1em;">All filters are mandatory!</h4>
+                <h4 style="margin-top: 1em;">If you don't fill out all filters, we will not be able give you suggestions.</h4>
                 <div class="selection">
                 <label for="skintypes">Skin type<br></label>
                 <select name="skintypes" id="skintypes" onchange="selectedOption(id)">
@@ -79,7 +81,7 @@
                     <option value="blue">Blue</option>
                     <option value="black">Black</option>
                 </select>
-                <label ><br>Event</label>
+                <label ><br>Event</br></label>
                 <select name="event" id="event" onchange="selectedOption(id)">
                     <option value="choose" disabled selected>Choose</option>
                     <option value="party">Party</option>
@@ -91,7 +93,7 @@
                     <option value="christmas">Christmas</option>
                     <option value="newYearsEve">New Year's Eve</option>
                 </select>
-                <label ><br>Outfit palette colors</label> 
+                <label ><br>Outfit palette colors</br></label> 
                 <select name="outfitcolors" id="outfitcolors" onchange="selectedOption(id)">
                     <option value="choose" disabled selected>Choose</option>
                     <option value="warm">Warm colors</option>
@@ -100,10 +102,8 @@
                     <option value="light">Light colors</option>
                     <option value="neutral">Neutral colors</option>
                 </select>
-
-
-                     <br>
-                    <label ><br>Brands</label> 
+                <div style="margin-bottom: 30%;">
+                    <label ><br>Brands</br></label> 
                     <div class="checkbox-dropdown">
                         <ul class="checkbox-dropdown-list">
                             <li>
@@ -152,6 +152,7 @@
                             </li>
                         </ul>
                     </div>
+                    </div>
                 </div>
                 
                 <div class="selection">
@@ -162,7 +163,7 @@
                         <option value="false">No</option>
                     </select>
                 </div>
-                <form id="submit" method="post"> 
+                <form  style="margin-bottom: 1em;" id="submit" method="post"> 
                 <button id="donebutton">Am terminat!</button>
                 </form>
             </div>

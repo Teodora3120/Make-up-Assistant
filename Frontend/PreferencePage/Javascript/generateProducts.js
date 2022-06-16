@@ -1,6 +1,7 @@
 window.addEventListener("load", async (e) => {
     let token = "";
     let products = [];
+    let newArr = [];
     const dynamic = document.querySelector('.container');
     const local = localStorage.getItem("user");
     if (local) {
@@ -74,7 +75,8 @@ window.addEventListener("load", async (e) => {
                         return;
                     }
                     console.log(products);
-                    const newArr = products.slice(0, 100);
+                    
+                    newArr = products.slice(0, 100);
                     document.querySelector("#preferance-span").textContent = `Showing ${newArr.length} products out of ${products.length}`;
                     dynamic.innerHTML = newArr.map((item, index) =>
                     `
@@ -92,8 +94,10 @@ window.addEventListener("load", async (e) => {
                     </div>
                     `
                 ).join(" ");
-    
-                products.slice(0, 100).map((item, index) => {
+
+                }
+
+                newArr.map((item, index) => {
                     document.getElementById(`heart${index}`).addEventListener("click", () =>{
                         document.querySelector("#heart").classList.toggle("active");
                         request.open('PATCH', `${url}/${item.id}`, true);
@@ -101,10 +105,9 @@ window.addEventListener("load", async (e) => {
                         request.send(item.id);
                     })
                 })
-                }
-
             }
         }
+
     } catch (err) {
         console.log(err);
     }
