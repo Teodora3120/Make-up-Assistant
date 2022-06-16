@@ -24,6 +24,7 @@ window.addEventListener("load", async (e) => {
         request.onreadystatechange = function () {
             if (request.readyState == XMLHttpRequest.DONE) {
                 products = JSON.parse(request.responseText);
+                productstogenerate=products;
                 if (Array.isArray(products) == false && products.message === "Invalid Token") {
                     console.log("This session has been expired. Click here to login again");
 
@@ -92,6 +93,7 @@ window.addEventListener("load", async (e) => {
                                `
                             } else {
                                 products = JSON.parse(request.responseText);
+                                productstogenerate=products;
                                 console.log(products);
                                 dynamic.innerHTML = products.map((item, index) =>
                                     `<div class="card-container">
