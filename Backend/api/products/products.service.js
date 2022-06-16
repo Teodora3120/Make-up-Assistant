@@ -1,13 +1,24 @@
-const { toXML } = require('jstoxml');
 
+const { toXML } = require('jstoxml');
+const Feed = require('feed').Feed;
  async function printRSS(body) {
         const products=body;
+       // const feed = new Feed(products);
         const content = {TopProducts:[products]};
         const config = {
-            indent: '    ',
-            header:true
+            indent: ' ',
+            header:true, 
+            filter: {
+                '<': '&lt;', 
+                '>': '&gt;',
+                '"': '&quot;',
+                '\'': '&apos;',
+                '&': '&amp;' ,
+                ';':'&.',
+                '&trade;':';'
+            }
         };
-        const rss=toXML(content, config);
+       const rss=toXML(content, config);
         return rss;
 } 
 

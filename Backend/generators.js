@@ -59,10 +59,9 @@ try {
       if(resObj.readyState  == XMLHttpRequest.DONE) {
         
           if (resObj.status != 200) {
-              console.log("pdf can't be downloaded");
+              console.log("file can't be downloaded");
           } else if (resObj.status == 200){
               const blob = new Blob([this.response], { type: 'text/html' });
-              console.log("THE BLOB: "+blob.arrayBuffer);
               const link = document.createElement('a');
               link.href = window.URL.createObjectURL(blob);
               link.download = `TopProducts.xml`;
