@@ -11,10 +11,10 @@ export async function generatePdfFromHtml(products, path) {
             "Rating: " + product.rating + " people liked this" + "\n" +
             "Brand: " + product.brand + "\n" +
             "Price: " + product.price_sign + product.price + "\n";
-        doc.textWithLink('You can find this product here.', 30, 230, { url: product.product_link });
+        doc.textWithLink('You can find this product here.', 150, 250, { url: product.product_link });
         var link = doc.splitTextToSize(string, 500);
 
-        doc.text(30, 20 + (i * 20), link);
+        doc.text(30, 40 , link);
         if (i < 9)
             doc.addPage();
     });
