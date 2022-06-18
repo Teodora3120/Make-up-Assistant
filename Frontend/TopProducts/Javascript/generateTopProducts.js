@@ -1,6 +1,6 @@
 let selectBox = document.getElementById("filter");
-import { generatePdfFromHtml } from '../../../Backend/generators.js';
-import { generateFeedRSS } from '../../../Backend/generators.js';
+import { generatePdfFromHtml } from '../javascript/generators.js';
+import { generateFeedRSS } from '../javascript/generators.js';
 let productstogenerate = [];
 
 window.addEventListener("load", async (e) => {
