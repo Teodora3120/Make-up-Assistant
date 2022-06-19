@@ -264,10 +264,9 @@ select{
     width: 70%;
     height: 50%;
   }
-
 } 
 
-  @media screen and (max-width: 600px){
+@media screen and (max-width: 600px){
  
     .hamburger{
       display: block;
