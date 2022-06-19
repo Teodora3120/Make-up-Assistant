@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> MAss project documentation </title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="images/style.css">
     </head>
     <body>
         <article>
@@ -43,7 +43,7 @@
                             <li><a href="#feature4"> Pagina de start(Landing page)</a></li>
                             <li><a href="#feature5"> Generare si Exportare statistici</a></li>
                             <li><a href="#feature6"> Vizualizare produse</a></li>
-                        
+                            <li><a href="#feature7"> Redirectionare in caz de erori</a></li>
                         </ol>
                    </li>
                 </ol>
@@ -100,27 +100,28 @@
             </div>
             <section role="doc-introduction" id="introduction" class="section-content">
                 <h2 class="h2-title"> 1. Introducere</h2>
-                <p>Make-up Assistant, prescurtat MAss este o aplicatie web conceputa pentru a asista utilizatorii inscrisi,
-                 pentru a cauta produsele perfecte preferintelor lor. MAss este menit pentru cei ce vor sa se tina cu tendintele in make-up,
-                pentru incepatori sau chiar pentru cei care cauta cu exactitate produsul destinat alegerilor lor.</p>
+                <p>Make-up Assistant, prescurtata MAss este o aplicatie web creata pentru a oferi userilor inscrisi sugestii 
+                de produse de makeup si skincare in functie de preferintele lor. MAss este menit pentru cei ce vor sa se tina in pas cu moda,
+                pentru incepatori si pentru cei care doresc sa aiba un ten inhrijit si machiajul potrivit indiferent de situatie.</p>
                 <section id="11-purpose">
                     <h3> 1.1 Scop </h3>
-                    <p>Scopul aplicatiei MAss este pentru a ajuta clientul sa caute produse make-up prin completarea unui formular
-                    ce va pregatii pagina cu produsele recomandate.
+                    <p>Scopul aplicatiei MAss este de a ajuta clientul prin sugerarea unei serii de produse obtinute pe baza unui formular cu filtre obligatorii.
+                        Utilizatorul poate aprecia produse si poate accesa un top al produselor in functie de filtrul ales.
                     </p>
                 </section>
                 <section id="12-conventions">
                     <h3> 1.2 Conventiile proiectului </h3>
                     <p> La realizarea aplicatiei s-au respectat conventiile de utilizare HTML si CSS, 
-                        iar codul va fi verificat cu ajutorul validatoarelor online Validator W3 Org si CSS Lint.</p>
+                        iar codul va fi verificat cu ajutorul validatoarelor online Validator W3 Org si CSS Lint. Se respecta o paleta de culori 
+                        adecvata publicului tinta. Niciun framework nu a fost folosit in procesul de realizare al acestei aplicatii.</p>
                 </section>
             </section>
             <section id="descriere" class="section-content">
                 <h2 class="h2-title"> 2. Descriere si structura </h2>
                 <section id="21-descriere">
                     <h3> 2.1. Descriere </h3>
-                    <p> Aplicatia utilizeaza informatii despre preferintele utilizatorului(brand-uri/produse preferate, tipul/varsta tenului, evenimentul la care acesta participa,
-                        culoarea tinutei, intensitatea look-ului si paleta de culori pe care acesta o doreste),
+                    <p> Aplicatia utilizeaza informatii despre preferintele utilizatorului(brand-uri preferate, produs vegan/non-vegan, tipul/varsta tenului, evenimentul la care acesta participa,
+                        culoarea tinutei, culoarea ochilor si culoarea parului),
                         pe baza carora genereaza o selectie de cosmetice potrivite
                         pentru realizarea unui machiaj unic, adaptat cerintelor. 
                     </p>
@@ -135,18 +136,16 @@
                             sa fie potrivite pentru nevoile sale </li>
                         <li> pagina unde vor fi afisate produsele selectate din baza de date a aplicatiei, 
                             pe baza criteriilor selectate in formular</li>
-                        <li> pagina separata cu informatii suplimentare pentru un anumit produs selectat</li>
                         <li> pagina Login/Register unde utilizatorii deja inregistrati se pot autentifica,
                             iar utilizatorii noi isi pot crea un cont nou. </li>
-                        <li> pagina pentru generare de statistici pe baza unor filtre in format HTML/PDF/RSS </li>
+                        <li> pagina pentru generare de statistici pe baza unor filtre, in format HTML/PDF/RSS </li>
                         <li> exportarea statisticilor in formatul dorit</li>
                     </ul>
                 </section>
                 <section id="23-environment" class="section-content">
                     <h3> 2.3 Environment de utilizare </h3>
                     <p> Aplicatia va rula in browser pe orice device care poate avea acces la un browser si internet si 
-                        va folosi o baza de date pentru managerierea cosmeticelor, a userilor, a preferintelor acestora si a brand-urilor 
-                        de produse (brand-uri drugstore/high-end). Este necesar un browser mai nou decat Internet Explorer si care suporta HTML5 si 
+                        va folosi o baza de date pentru managerierea cosmeticelor si a userilor. Este necesar un browser mai nou decat Internet Explorer si care suporta HTML5 si 
                         CSS3 pentru o buna functionare a website-ului.
                     </p>
                 </section>
@@ -154,10 +153,10 @@
                     <h3> 2.4 Limbaje </h3>
                     <p> 
                         <li>Pentru partea de frontend a aplicatiei se va utiliza HTML5, CSS3, Javascript.</li>
-                        <br>
-                        <li>Pentru partea de backend a aplicatiei se va utiliza Node.js.</li>
-                        <br>
-                        <li>Pentru baza de date se va utiliza Sql.</li>
+                        <li>Pentru partea de backend a aplicatiei se va utiliza NodeJS.</li>
+                        <li>Pentru baza de date se utilizeaza MongoDB, o alternativa NoSQL, pentru o manipulare mai usoara a datelor si pentru a 
+                            preveni atacurile de tip SQL injection.
+                        </li>
                         </p>
                 </section>
             </section>
@@ -167,6 +166,13 @@
                     <h3> 3.1 Interfete user </h3>
                     <p> NavBarul pentru interfata user va fi folosit pentru majoritatea paginilor
                         inafara de anumite exceptii (login/register).
+                    </p>
+                    <p>
+                        Pentru device-urile cu dimensiunea viewport-ului specifica device-urilor cu ecran mare, navbar-ul este un meniu care se intinde
+                        pe toata latimea viewport-ului si cuprinde 3 butoane (login/logout, form, Top Products). Pentru device-uri cu 
+                        viewport-ul de dimensiuni reduse (Smartphone etc.), navbar-ul se comprima intr-un singur buton, format din 3 linii. Odata ce se interactioneaza
+                        cu acesta, una dintre cele 3 linii dispare, celelalte 2 formand un "X", iar navbar-ul se va extinde intr-un meniu cu optiunile posibile.
+                        Alternativ, daca butonul in forma de "X" va fi apasat, meniul se va comprima.
                     </p>
                     <figure typeof="sa:image">
                         <img src="images/navbar_big.png" alt="Printscreen cu navigatia standard a website-ului" style="width:100%">
@@ -192,17 +198,27 @@
                         <li> Torch Browser</li>
                         <li> Brave</li>
                         <li> Vivaldi</li>
-                        <li> si posibil multe altele...</li>
+                        <li> si posibil multe altele... (Majoritatea browser-urilor care suporta HTML5 si javaScript)</li>
 
                     </ul>
                 </section>
                 <section id="33-software" class="section-content">
                     <h3> 3.3 Interfete software </h3>
-                    <p> Aplicatia va avea o conexiune cu baza de date in care se vor retine userii, produsele, brand-urile si preferintele/nevoile utilizatorilor. </p>
+                    <p> Aplicatia creeaza o baza de date MongoDB pentru a putea retine userii si produsele (impreuna cu toate specificatiile lor).
+                        Conectarea la baza de date se realizeaza de catre server-ul de backend, proiectat in javaScript si care utilizeaza 
+                        environment-ul NodeJS. Ca si librarii, au fost utilizate cele de baza din NodeJS, dar si librarii ajutatoare.
+                        Pentru a asigura stocarea criptata a parolelor, s-a folosit libraria bcrypt, iar pentru generarea token-urilor s-a folosit libraria jsonWebToken . Pentru exportarea 
+                        statisticilor referitoare la produse in format PDF s-a folosit libraria jsPDF. Nu a fost folosit niciun framework pentru dezvoltarea acestei aplicatii.
+                    </p>
                 </section>
                 <section id="34-communication" class="section-content">
                     <h3> 3.4 Interfete de comunicare </h3>
-                    <p> Aplicatia utilizeaza protocoale de comunicare HTTP. <br> </p>
+                    <p> Aplicatia utilizeaza protocoale de comunicare HTTP.
+                    </p>
+                    <p>
+                        Path-urile utilizate faciliteaza comunicarea dintre client (browser).
+                    </p>
+                    <p>Metodele HTTP utilizate sunt: POST,PATCH</p>
                 </section>
             </section>
             <section id="functionalitati" class="section-content">
@@ -210,8 +226,10 @@
                 <section id="feature1" class="section-content">
                     <h3> 4.1 Inregistrare ca utilizator nou</h3>
                     <p> Vizitatorii website-ului au posibilitatea de a se inregistra ca utilizatori. Pentru ca o persoana sa se poata 
-                        inregistra este nevoie sa aleaga un Username si sa introduca o parola noua.<br>
-                        Pentru a putea crea un cont nou, utilizatorul va utiliza butonul de register din pagina hibrid Login/Register.</p>
+                        inregistra este nevoie sa aleaga un Username unic si sa introduca o parola noua.<br>
+                        Pentru a putea crea un cont nou, utilizatorul va utiliza butonul de register din pagina hibrid Login/Register, iar dupa
+                        creearea contului va fi automat redirectionat catre sectiunea de Login.
+                    </p>
                     </p>
                     <figure typeof="sa:image" >
                         <img src="images/register.PNG" alt="Printscreen cu formularul de inregistrare">
@@ -220,80 +238,105 @@
                 </section>
                 <section id="feature2" class="section-content">
                     <h3> 4.2 Autentificare cu un cont de utilizator</h3>
-                    <p> Utilizatorii deja inregistrati care au trecut prin procesul de completare a formularului de logare doar isi vor introduce numele de utilizator si parola, iar apoi
-                        vor fi redirectionati catre landing page.</p>
-                    </p>
+                    <p> Utilizatorii deja inregistrati care au trecut prin procesul de completare a formularului de inregistrare doar isi vor introduce numele de utilizator si parola in formularul de logare, server-ul va genera un token de autentificare (cookie) a carui duratat
+                        de viata este de 7 zile, iar apoi utilizatorii
+                        vor fi redirectionati catre landing page.  Daca un utilizator va introduce un set incorect de credentiale pentru autentificare, 
+                        pe pagina va aparea un mesaj care il va atentiona de acest lucru.</p>
                     <figure typeof="sa:image">
                         <img src="images/login.PNG" alt="Printscreen cu formular login">
-                        <figcaption>Fig.4 - Formular Login </figcaption>
+                        <figcaption>Fig.4.1 - Formular Login </figcaption>
+                    </figure>
+                    <figure typeof="sa:image">
+                        <img src="images/loginWrong.PNG" alt="Printscreen cu formular login dupa introducerea unui set de credentiale invalide">
+                        <figcaption>Fig.4.2 - Formular Login in cazul in care credentialele nu sunt valide </figcaption>
                     </figure>
                 </section>
                 <section id="feature3" class="section-content">
                     <h3> 4.3 Formularul de preferinte </h3>
-                    <p> Utilizatorii aplicatiei au posibilitatea de a completa un formular detaliat 
+                    <p> Utilizatorii aplicatiei au posibilitatea de a completa un formular detaliat, in care toate campurile sunt obligatorii, 
                         pe baza caruia aplicatia va extrage din baza de date DOAR produsele care se preteaza pe cerintele utilizatorului. 
                         Odata ce acesta va termina de selectat ceea ce are nevoie, va apasa pe butonul "Am terminat!", care il va redirectiona
                         catre pagina cu produsele generate din baza de date. <br>
                         Cerintele si optiunile unui utilizator sunt:
                     </p>
                     <ul>
-                        <li> Tip de ten 
+                        <li> Skin type 
                             <ul>
-                                <li> Gras </li>
-                                <li> Uscat </li>
-                                <li> Mixt </li>
-                                <li> Gras si acneic </li>
-                                <li> Uscat si acneic</li>
-                                <li> Mixt si acneic</li>
+                                <li> Oily </li>
+                                <li> Dry </li>
+                                <li> Mixed </li>
+                                <li> Dry and Acneic </li>
+                                <li> Oily and Acneic</li>
+                                <li> Mixed & acneic</li>
                             </ul>
                         </li>
                         <br>
-                        <li> Varsta tenului:
+                        <li> Skin age
                             <ul>
-                                <li>Ten adolescentin (16-20 ani)</li>
-                                <li>Ten tanar (20-40 ani)</li>
-                                <li>Ten matur (40+ ani)</li>
+                                <li>Teen (16-20 ani)</li>
+                                <li>Young (20-40 ani)</li>
+                                <li>Mature (40+ ani)</li>
                             </ul>
                         </li>
                         <br>
-                        <li> Momentul din zi al machiajului:
+                        <li> Hair colour
                             <ul>
-                                <li>Zi</li>
-                                <li>Noapte</li>
+                                <li>Blonde</li>
+                                <li>Brunete</li>
+                                <li>Brown</li>
+                                <li>Red</li>
+                                <li>Others</li>
                             </ul>
                         </li>
                         <br>
-                        <li> Intensitatea machiajului: 
+                        <li> Eye colour 
                             <ul>
-                                <li> Intens </li>
-                                <li> Subtil</li>
+                                <li> Green </li>
+                                <li> Brown</li>
+                                <li> Blue</li>
+                                <li> Hazel</li>
+                                <li> Black</li>
                             </ul>
                         </li>
                         <br>
-                        <li> Evenimentul pentru care va fi conceput machiajul:
+                        <li> Event:
                             <ul>
-                                <li>Botez</li>
-                                <li>Majorat</li>
-                                <li>Iesire cu prietenii</li>
-                                <li>Funeralii</li>
-                                <li>Nunta (in calitate de invitat)</li>
-                                <li>Nunta (in calitate de mireasa)</li>
-                                <li>Nunta (in calitate de mire)</li>
-                                <li>Concert filarmonica/opera</li>
-                                <li>Concert de muzica usoara</li>
-                                <li>Concert rock/metal</li>
+                                <li>Party</li>
+                                <li>Going out</li>
+                                <li>Date</li>
+                                <li>Funeral</li>
+                                <li>Wedding</li>
+                                <li>Bride</li>
+                                <li>Christmas</li>
+                                <li>New Year's Eve</li>
                             </ul>
                         </li>
                         <br>
-                        <li> Paleta de culori a tinutei utilizatorului:
+                        <li> Outfit palette colors:
                         <ul>
-                            <li>Culori calde, nuante deschise</li>
-                            <li>Culori reci, nuante deschise</li>
-                            <li>Nonculori, nuante deschise</li>
-                            <li>Culori calde, nuante inchise</li>
-                            <li>Culori reci, nuante inchise</li>
-                            <li>Nonculori, nuante inchise</li>
+                            <li>Warm colors</li>
+                            <li>Cold colors</li>
+                            <li>Dark colors</li>
+                            <li>Light colors</li>
+                            <li>Neutral colors</li>
                         </ul>
+                        </li>
+                        <br>
+                        <li> Brands:
+                            <ul>
+                                <li>Nyx</li>
+                                <li>L'oreal</li>
+                                <li>Covergirl</li>
+                                <li>Elf</li>
+                                <li>Dior</li>
+                                <li> etc.</li>
+                            </ul>
+                        </li>
+                        <li>Vegan:
+                            <ul>
+                                <li>Yes</li>
+                                <li>No</li>
+                            </ul>
                         </li>
                     </ul>
                     <figure typeof="sa:image">
@@ -316,28 +359,69 @@
                     <h3> 4.5 Exportare statistici (pagina Top Products) </h3>
                     <p> 
                         Pagina numita Top Products pune la dispozitie utilizatorilor posibilitatea de a
-                        accesa un clasament al produselor, in functie de un anumit factor la alegere (varsta/an/ocazie) si
-                        repartizate pe diferite sub-categorii ale acestor factori.
-                        Aceste statistici vor fi exportate intr-unul dintre formatele puse la dispozitie pe pagina (HTML/PDF/RSS) si
+                        accesa un clasament al produselor, in functie de tipul de produs dorit.
+                        Aceste statistici vor fi vizibile pe pagina, dar si exportate intr-unul dintre formatele puse la dispozitie (PDF/RSS) si
                         apoi descarcate pe dispozitivul utilizatorului.
                     </p>
                     <figure typeof="sa:image">
                         <img src="images/export.png" alt="Pagina de exportare statistici">
-                        <figcaption>Fig.7 - Exportare Statistici in 3 formate</figcaption>
+                        <figcaption>Fig.7.1 - Pagina statistici fara filtre</figcaption>
+                    </figure>
+                    <figure typeof="sa:image">
+                        <img src="images/exportFilter.png" alt="Pagina de exportare statistici">
+                        <figcaption>Fig.7.2 - Pagina statistici cu filtre</figcaption>
+                    </figure>
+                    <figure typeof="sa:image">
+                        <img src="images/exportBttns.png" alt="Pagina de exportare statistici">
+                        <figcaption>Fig.7.3 - Butoane exportare statistici in format PDF/RSS</figcaption>
+                    </figure>
+                    <figure typeof="sa:image">
+                        <img src="images/exportPDF.png" alt="Pagina de exportare statistici">
+                        <figcaption>Fig.7.4 - PDF Statistici</figcaption>
+                    </figure>
+                    <figure typeof="sa:image">
+                        <img src="images/exportRSS.png" alt="Pagina de exportare statistici">
+                        <figcaption>Fig.7.5 - RSS/XML Statistici</figcaption>
                     </figure>
                 </section>
                 <section id="feature6" class="section-content">
                     <h3> 4.6 Vizualizare produse </h3>
                     <p> Odata ce formularul este completat, utilizatorul va fi redirectionat catre o pagina
-                        care contine produsele potrivite cerintelor sale (Preference Page). Odata ce utlizatorul vede un produs care
-                        ii capteaza atentia, acesta poate actiona butonul "See more details" din cadrul card-ului cu produsul si apoi va fi redirectionat pe o pagina
-                        care va contine toate detaliile despre produsul selectat.
+                        care contine produsele potrivite cerintelor sale (Preference Page), generate din baza de date prin interogari bazate pe atributele selectate in formular. Odata ce utlizatorul vede un produs care
+                        ii place, poate da like sau poate accesa un link catre o pagina externa de magazin online ce ii ofera posibilitatea de a achizitiona produsul sau de a obtine mai multe detalii. 
+                        Daca nu se pot gasi produse potrivite in baza de date, pagina va fi afisata, doar ca in loc de produse, va contine textul: 
+                        <i>"We didn't find any products for the filters chosen by you. Please select other filters"</i>
                     </p>
                     <figure typeof="sa:image">
                         <img src="images/preference.png" alt="PreferencePage">
-                        <figcaption>Fig.8- Pagina de preferinte</figcaption>
+                        <figcaption>Fig.8.1- Pagina de preferinte</figcaption>
+                    </figure>
+                    <figure typeof="sa:image">
+                        <img src="images/noProductsPage.png" alt="noProductsPage">
+                        <figcaption>Fig.8.2- Pagina de preferinte in caz de nu exista produse ce indeplinesc specificatiile dorite</figcaption>
                     </figure>
                 </section>
+            </section>
+            <section id="feature7" class="section-content">
+                <h3> 4.7 Redirectionare pagini in caz de erori</h3>
+                <p>
+                    Deoarece exista cazuri in care utilizatorii pot accidental sa introduca un URL gresit din bara de adrese sau sa incerce sa acceseze 
+                    o pagina care nu exista in aplicatie, in acest caz acestia vor fi redirectionati catre o pagina care ii va atentiona de acest lucru.
+                </p>
+                <figure typeof="sa:image">
+                    <img src="images/404.png" alt="Error404 Page">
+                    <figcaption>Fig.9- Pagina pentru codul 404</figcaption>
+                </figure>
+                <p>
+                    De asemenea, deoarece token-ul de autentificare are o perioada de viata de cca 7 zile, dupa care acesta va fi sters, iar utilizatorul va fi delogat, dar si pentru cazurile in care se doreste accesarea unei pagini care necesita logarea utilizatorului in prealabil (ex: Formular, preference Page, Statistici), exista 
+                    si o pagina catre care utilizatorul va fi redirectionat in cazul in care doreste sa acceseze anumite functionalitati care cer in prealabil un token valid.
+                    Aceasta contine un text care va explica de ce nu le este permis sa acceseze pagina dorita ("Oops! You are not logged in") si le va sugera doua link-uri catre pagina Home (Landing Page) sau catre formularul de 
+                    inregistrare/autentificare.
+                </p>
+                <figure typeof="sa:image">
+                    <img src="images/oops.png" alt="User Not Logged in Page">
+                    <figcaption>Fig.10- Pagina pentru utilizatorii neautentificati</figcaption>
+                </figure>
             </section>
             <section id="contributie" class="section-content">
                 <h2 class="h2-title"> 5. Lista contributii si impartirea sarcinilor </h2>
@@ -348,8 +432,10 @@
                         <li> Realizare pagina Login/Register </li>
                         <li> Contributie la corectarea codului</li>
                         <li> Verificare erori HTML/CSS cu W3 Validator/CSS Lint</li>
-                        <li> Adaugare functionalitati Single Product Page</li>
                         <li> Github managing</li>
+                        <li> Debug</li>
+                        <li> Creare server.js</li>
+                        <li> Functionalitatile butoanelor pentru PDF si RSS in products.controller.js</li>
                     </ul>
                 </section>
                 <section id="contributie2" class="section-content">
@@ -361,8 +447,22 @@
                         <li> Realizare pagina PreferencePage </li>
                         <li> Realizare LandingPage</li>
                         <li> Realizare pagina Top Products</li>
-                        <li> Realizare pagina Single Product Page</li>
                         <li> Github managing</li>
+                        <li> Creare REST API </li>
+                        <li> Creare utils.js</li>
+                        <li> Auth.js (token-uri + verificare)</li>
+                        <li> generateProducts.js</li>
+                        <li> preferencePage.js</li>
+                        <li>
+                            Adaugare functionalitati:
+                            <ul>
+                                <li>Login/Register</li>
+                                <li>Form</li>
+                                <li>topProducts fara RSS/PDF</li>
+                                <li>Logout</li>
+                                <li>Pagini 404 si Not Logged In</li>
+                            </ul>
+                        </li>
                     </ul>
                 </section>
                 <section id="contributie3" class="section-content">
@@ -372,6 +472,9 @@
                         <li> Realizare pagina formular</li>
                         <li> Realizare documentatie</li>
                         <li> Testare responsiveness si compatibilitate pe browsere multiple </li>
+                        <li> Gasirea dataset-ului pe baza caruia functioneaza API-ul</li>
+                        <li> Sugerarea folosirii MongoDB ca alternativa pentru baza de date</li>
+                        <li> Creare conexiune si functii ajutatoare pentru baza de date</li>
                     </ul>
                 </section>
                 <section id="contributie4" class="section-content">
@@ -380,6 +483,8 @@
                         <li> Corectare warning-uri CSS Lint </li>
                         <li> Estetica elementelor si pastrarea coerentei design-ului dintre pagini </li>
                         <li> Corectare bug-uri si eventuale erori/typo legate de sintaxa </li>
+                        <li> Colaborare pentru functionalitatile site-ului</li>
+                        <li> Testare</li>
                     </ul>
                 </section>
             </section>
