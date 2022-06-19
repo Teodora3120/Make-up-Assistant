@@ -40,9 +40,9 @@ export function generateFeedRSS(products) {
             if (key === "_id" || key === "id") {
                 return undefined;
             }
-            var word = JSON.stringify(value);
-            word.replace("&trade;", " ");
-            value = JSON.parse(word);
+            //var word = JSON.stringify(value);
+          //  word.replace("&trade;", " ");
+           // value = JSON.parse(word);
             return value;
         }));
         

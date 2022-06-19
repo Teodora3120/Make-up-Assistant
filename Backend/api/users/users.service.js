@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 //filtreaza datele dupa un query specificat
-async function filter(data, query) {
+/* async function filter(data, query) {
     const options = {
         // sort returned documents in ascending order by title (A->Z)
         sort: { name: 1 },
@@ -11,7 +11,7 @@ async function filter(data, query) {
         projection: { _id: 0, username: 1, brand: 1, name: 1 },
     };
     return await data.find(query, options).toArray();
-}
+} */
 
 const register = async (data, credentials) => {
     let response = { statusCode: 200, message: "OK" };
@@ -88,4 +88,4 @@ async function updateOneByUsername(data, username, query) {
     return await result;
 }
 
-module.exports = { filter, getAll, deleteByUsername, updateOneByUsername, register, login }
+module.exports = { getAll, deleteByUsername, updateOneByUsername, register, login }
