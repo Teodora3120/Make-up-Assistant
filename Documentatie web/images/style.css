@@ -1,0 +1,41 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+ 
+body {
+    background-color: #d8d8f6;
+    padding: 50px 100px;
+    color: black;
+}
+ 
+.project-title {
+    font-size: 2em;
+    color: #d8d8f6;
+    background-color: #000740;
+    padding: 20px;
+}
+ 
+ 
+.content > li > a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+ 
+.content > li > ol > li > a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+ 
+.h2-title {
+    color: black;
+    letter-spacing: 3px;
+}
+ 
+.section-content {
+    font-size: 20px;
+    padding: 10px 0;
+}
