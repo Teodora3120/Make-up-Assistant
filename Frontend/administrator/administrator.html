@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Frontend/Index/style.css">
+    <link rel="stylesheet" href="/Frontend/administrator/administrator.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/Frontend/Images/favicon_io/favicon.ico">
-    <title>Landing Page</title>
+    <title>Administrator</title>
 </head>
-
 <body>
+
     <header>
         <div class="header-container">
           <nav class="navbar">
@@ -42,36 +41,31 @@
           </nav>
         </div>
       </header>
+<main>
+    <div class="big-box">
+        <div class="toolbar">
+            <button type="button" class="toggle-btn" onclick="checkProducts()">Check products</button>
+            <button type="button" class="toggle-btn" onclick="addProduct()">Add product</button>
+            <button type="button" class="toggle-btn" onclick="modifyProduct()">Modify product</button>
+            <button type="button" class="toggle-btn" onclick="deleteProduct()">Delete product</button>
+        </div>
+        <div class="form-like">
+        <div class="box">
 
-    <main>
-        <section class="presentation">
+        </div>
+        <div class="submit-btn">
 
-            <div class="introduction">
-                <div class="intro-text">
-                    <h1>Hello, welcome to Make-up Assistant</h1>
-                    <p>Do you want some new makeup products? Do you know what kind of skin you have, what your preferences are, but you don't know what the best solutions are?</p>
-                    <h3 style="font-style: italic; color: grey"> We can help you!</h3>
-                    <p> Makeup Assistant website was created with the aim of suggesting, based on the filters given by you, the best makeup products from over 10 well-known brands!</p>
-                    <h2 style="color: grey;">Create a free account or log in and let's see what suits you!</h2>
-                </div>
-            </div>
 
-            <div class="cover">
-                <img draggable="false" src="/Frontend/Images/istockphoto-1176520415-612x612.jpg" alt="site photo">
-            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="footer-container">
+      <h4 class="logo">Make-up Assistant</h4>
+      <p>All rights reserved © 2022</p>
+   </div>
+</footer>
 
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-container">
-          <h4 class="logo">Make-up Assistant</h4>
-          <p>All rights reserved © 2022</p>
-       </div>
-    </footer>
-
-    <script src="/Frontend/Index/Javascript/index.js"></script>
-    <script src="../Frontend/LoginRegisterPage/Javascript/logout.js"></script>
+<script src="/Frontend/administrator/administrator.js"></script>
 </body>
-
 </html>

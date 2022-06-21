@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin</title>
+    <link rel="stylesheet" href="test.css">
+    <script src="https://kit.fontawesome.com/ab4339cff3.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Admin</h1>
+    <div class="row justify-content-center m-3">
+        <div class="butoane_mat">
+            <button class='clickable' id='add-stud'>Add Students</button>
+            <button class='clickable' id='add-prof'>Add Professors</button>
+        </div>
+
+    </div>
+    <h1>Example</h1>
+    <div class="row justify-content-center m-3">
+        <div class="butoane_mat">
+            <button class="clickable" id='ex-studs'>Studenti</button>
+            <button class = "clickable" id='ex-profs'>Professors</button>
+        </div>
+    </div>
+
+    
+    <h1 id="table-title">Students</h1>
+    <div class="row justify-content-center m-3">
+        <div class="butoane_mat">
+            <button class="clickable" id='show-studs'>Students</button>
+            <button class = "clickable" id='show-profs'>Professors</button>
+        </div>
+    </div>
+
+    <br>
+    <div class="butoane_mat">
+        <input id="search-bar" type="text" name="search" placeholder="Search..." autocomplete="off">
+    </div>
+    <br>
+    <br>
+
+    <table class="table" id="students-list">
+        <thead>
+            <tr>
+                <th>Nume</th>
+                <th>Prenume</th>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Modify</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="students-table">
+            <tr id="${professor._id}">
+                <td>
+                    <input type="text" id="lname-${professor._id}" name="lname" value="${professor.lastName}">
+                </td>
+                <td> 
+                    <input type="text" id="fname-${professor._id}" name="fname" value="${professor.firstName}">
+                </td>
+                <td id="unique-id-${professor._id}">calin</td>
+                <td> 
+                    <input type="text" id="subject-${professor._id}" name="fname" value="${professor.subject}">
+                </td>
+                <td>
+                    <i class="fas fa-edit clickable" id="modify-${professor._id}"></i>
+                </td>
+                <td>
+                    <i class="fas fa-trash clickable" id="delete-${professor._id}"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table hidden" id="profs-list">
+        <thead>
+            <tr>
+                <th>Nume</th>
+                <th>Prenume</th>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Modify</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="profs-table">
+
+        </tbody>
+    </table>
+
+</body>
+<script src="./test.js"></script>
+
+</html>
