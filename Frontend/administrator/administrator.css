@@ -225,6 +225,9 @@ header {
         min-height: 70vh;
         align-items: center;
     }
+    .form-like{
+      max-height: 30em;
+    }
 }
 
 .footer{
@@ -305,6 +308,17 @@ header {
     .big-box{
         width: 50%;
     }
-  
+    .form-like{
+      max-height: 25em;
+    }
   }
-  
+  @media screen and (max-height: 500px){
+    .form-like{
+      max-height: 15em;
+    }
+  }
+  @media screen and (max-height: 600px){
+    .form-like{
+      max-height: 15em;
+    }
+  }
