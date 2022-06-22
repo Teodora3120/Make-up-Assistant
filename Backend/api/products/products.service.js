@@ -81,4 +81,20 @@ async function updateOneById(data, id) {
     return result;
 }
 
-module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS};
+async function updateProduct(data, body){
+    const oldproduct={id:body.id};
+    if(body.product_type==='lip_liner' || body.product_type==='lipstick' || body.product_type==='eyeliner' || body.product_type==='eyeshadow' || body.product_type==='blush' || body.product_type==='bronzer' || body.product_type==='mascara')
+    {
+        body.skintypes="";
+        body.skinage="";
+    }
+    const newproduct={$set:{name:body.name, price:body.price, price_sign:body.price_sign,
+    product_link:body.product_link, description:body.description, rating:body.rating,
+     product_type:body.product_type, api_featured_image:body.api_featured_image, 
+     outfitcolors:body.outfitcolors, event:body.event, eyecolor:body.eyecolor, haircolor:body.haircolor,
+    vegan:body.vegan, skinage:body.skinage, skintypes:body.skintypes},};
+    const result= await data.updateOne(oldproduct, newproduct);
+    return result;
+}
+
+module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS, updateProduct};

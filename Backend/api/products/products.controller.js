@@ -1,6 +1,6 @@
 const { run } = require("../database-connection");
 const auth = require("../../middleware/auth");
-const { getAll, findById, filter, deleteById, updateOneById, topFilter, printRSS} = require("./products.service");
+const { getAll, findById, filter, deleteById, updateOneById, topFilter, printRSS, updateProduct} = require("./products.service");
 
 const productsController = async (req, res) => {
     if (req.method === "GET") {
@@ -83,6 +83,17 @@ const productsController = async (req, res) => {
             // console.log(body);
             console.log(idInt);
             const product = await run("Products", (data) => updateOneById(data, idInt));
+            writeSuccessHead(res, product);
+        } catch (error) {
+            writeErrorHead(res, error);
+        }
+    }
+    if (req.url.match("/api/products/updateproduct") && req.method === "PUT") {
+        try {
+            console.log("PUT");
+            const body =  await auth(req, res);
+            console.log(body);
+            const product = await run("Products", (data) => updateProduct(data, body));
             writeSuccessHead(res, product);
         } catch (error) {
             writeErrorHead(res, error);

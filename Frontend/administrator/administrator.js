@@ -1,4 +1,8 @@
 let dynamic=document.querySelector('.box');
+let idvalue="";
+var product=[];
+let originalproduct=[];
+var el="";
 window.checkProducts=async function(){
     //let dynamic=document.querySelector('.box');
      const local = localStorage.getItem("user");
@@ -57,10 +61,22 @@ window.modifyProduct=async function(){
         <button type="button" class="submit-btn" onclick="showProduct()">Find product</button>
       </form>
     `;
+   /*  el = document.getElementById("id");
+    el.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        showProduct();
+      }
+    }); */
 }
-
+addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      showProduct();
+    }
+  });
 window.showProduct=async function(){
-    var idvalue=document.querySelector("#id").value;
+    idvalue=document.querySelector("#id").value;
     const local = localStorage.getItem("user");
     console.log(idvalue);
     if (local) {
@@ -80,7 +96,8 @@ window.showProduct=async function(){
             console.log("onreadystechange IS FUNCTIONAL");
             if (request.readyState == XMLHttpRequest.DONE){
         console.log(JSON.parse(request.responseText));
-        const product=JSON.parse(request.responseText);
+        product=JSON.parse(request.responseText);
+        originalproduct=JSON.parse(request.responseText);
         if(product.product_type==='lip_liner' || product.product_type==='lipstick' || product.product_type==='eyeliner' || product.product_type==='eyeshadow' || product.product_type==='blush' || product.product_type==='bronzer' || product.product_type==='mascara')
         {
             dynamic.innerHTML=
@@ -100,8 +117,6 @@ window.showProduct=async function(){
         <input type="text" id="rating" class="input-id" placeholder="" value="${product.rating}">
         <p>Category</p>
         <input type="text" id="category" class="input-id" placeholder="" value="${product.category}">
-        <p>Type of product</p>
-        <input type="text" id="product-type" class="input-id" placeholder="" value="${product.product_type}">
         <p>Image link</p>
         <input type="text" id="featured_image" class="input-id" placeholder="" value="${product.api_featured_image}">
         <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
@@ -118,6 +133,17 @@ window.showProduct=async function(){
                 <option value="physicians formula">Physicians formula</option>
                 <option value="e.l.f">e.l.f</option>
                 <option value="clinique">Clinique</option>
+                </select>
+        <label id="producttype1" for="producttypeoption">Type of product<br></label>
+                <select name="producttypeoption" id="typeproduct" size="8">
+                <option id="foundation" value="foundation">Foundation</option>
+                <option id="lipliner" value="lip_liner">Lip Liner</option>
+                <option id="lipstick" value="lipstick">Lipstick</option>
+                <option id="eyeliner" value="eyeliner">Eyeliner</option>
+                <option id="eyeshadow" value="eyeshadow">Eyeshadow</option>
+                <option id="blush" value="blush">Blush</option>
+                <option id="bronzer" value="bronzer">Bronzer</option>
+                <option id="mascara" value="mascara">Mascara</option>
                 </select>
       <label id="outfitcolor1" for="outfitcolors">Outfit colors<br></label>
                 <select name="outfitcolors" id="outfitcolors" size="5">
@@ -168,12 +194,14 @@ window.showProduct=async function(){
         var selecthaircolor=document.getElementById("haircolor");
         var selectvegan=document.getElementById("vegan");
         var selectbrand=document.getElementById("brand");
+        var selecttypeproduct=document.getElementById("typeproduct");
         selectoutfitcolors.value=product.outfitcolors;
         selectevent.value=product.event;
         selecteyecolor.value=product.eyecolor;
         selecthaircolor.value=product.haircolor;
         selectvegan.value=product.vegan;
         selectbrand.value=product.brand;
+        selecttypeproduct.value=product.product_type;
     }
         else{
             dynamic.innerHTML=
@@ -193,8 +221,6 @@ window.showProduct=async function(){
         <input type="text" id="rating" class="input-id" placeholder="" value="${product.rating}">
         <p>Category</p>
         <input type="text" id="category" class="input-id" placeholder="" value="${product.category}">
-        <p>Type of product</p>
-        <input type="text" id="product-type" class="input-id" placeholder="" value="${product.product_type}">
         <p>Image link</p>
         <input type="text" id="featured_image" class="input-id" placeholder="" value="${product.api_featured_image}">
         <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
@@ -212,8 +238,19 @@ window.showProduct=async function(){
                 <option value="e.l.f">e.l.f</option>
                 <option value="clinique">Clinique</option>
                 </select>
+        <label id="producttype1" for="producttypeoption">Type of product<br></label>
+                <select name="producttypeoption" id="typeproduct" size="8">
+                <option id="foundation" value="foundation">Foundation</option>
+                <option id="lipliner" value="lip_liner">Lip Liner</option>
+                <option id="lipstick" value="lipstick">Lipstick</option>
+                <option id="eyeliner" value="eyeliner">Eyeliner</option>
+                <option id="eyeshadow" value="eyeshadow">Eyeshadow</option>
+                <option id="blush" value="blush">Blush</option>
+                <option id="bronzer" value="bronzer">Bronzer</option>
+                <option id="mascara" value="mascara">Mascara</option>
+                </select>
       <label id="outfitcolor1" for="outfitcolors">Outfit colors<br></label>
-                <select name="outfitcolors" id="outfitcolors">
+                <select name="outfitcolors" id="outfitcolors" size="5">
                 <option value="warm">Warm colors</option>
                 <option value="cold">Cold colors</option>
                 <option value="dark">Dark colors</option>
@@ -221,7 +258,7 @@ window.showProduct=async function(){
                 <option value="neutral">Neutral colors</option>
                 </select>
         <label id="event1" for="eventoption">Event<br></label>
-                <select name="eventoption" id="event">
+                <select name="eventoption" id="event" size="8">
                 <option value="party">Party</option>
                 <option value="goingOut">Going out</option>
                 <option value="date">Date</option>
@@ -232,7 +269,7 @@ window.showProduct=async function(){
                 <option value="newYearsEve">New Year's Eve</option>
                 </select>
         <label id="eyecolor1" for="eyecoloroption">Eye color<br></label>
-                <select name="eyecoloroption" id="eyecolor">
+                <select name="eyecoloroption" id="eyecolor" size="5">
                 <option value="green">Green</option>
                 <option value="brown">Brown</option>
                 <option value="hazel">Hazel</option>
@@ -240,7 +277,7 @@ window.showProduct=async function(){
                 <option value="black">Black</option>
                 </select>
         <label id="haircolor1" for="haircoloroption">Hair color<br></label>
-                <select name="haircoloroption" id="haircolor">
+                <select name="haircoloroption" id="haircolor" size="5">
                 <option value="blonde">Blonde</option>
                 <option value="brunette">Brunette</option>
                 <option value="brown">Brown</option>
@@ -248,18 +285,18 @@ window.showProduct=async function(){
                 <option value="others">Others</option>
                 </select>
         <label id="vegan1" for="veganoption">Vegan<br></label>
-                <select name="veganoption" id="vegan">
+                <select name="veganoption" id="vegan" size="2">
                 <option value="true">Yes</option>
                 <option value="false">No</option>
                 </select>
         <label id="skinage1" for="skinageoption">Skin Age<br></label>
-                <select name="skinageoption" id="skinage">
+                <select name="skinageoption" id="skinage" size="3">
                 <option value="teen"> Teen (16-20 years)</option>
                 <option value="young"> Young (20-40 years)</option>
                 <option value="mature"> Mature (40+ years)</option>
                 </select>
         <label id="skintypes1" for="skintypesoption">Skin types<br></label>
-                <select name="skintypesoption" id="skintypes">
+                <select name="skintypesoption" id="skintypes" size="6">
                 <option value="oily">Oily</option>
                 <option value="dry">Dry</option>
                 <option value="mixed">Mixed</option>
@@ -278,6 +315,7 @@ window.showProduct=async function(){
         var selectbrand=document.getElementById("brand");
         var selectskinage=document.getElementById("skinage");
         var selectskintypes=document.getElementById("skintypes");
+        var selecttypeproduct=document.getElementById("typeproduct");
         selectoutfitcolors.value=product.outfitcolors;
         selectevent.value=product.event;
         selecteyecolor.value=product.eyecolor;
@@ -286,6 +324,7 @@ window.showProduct=async function(){
         selectbrand.value=product.brand;
         selectskinage.value=product.skinage;
         selectskintypes.value=product.skintypes;
+        selecttypeproduct.value=product.product_type;
         }
           }
         }
@@ -315,7 +354,75 @@ window.cancelModify=async function(){
 }
 
 window.beginModifyProduct=async function(){
+    const local = localStorage.getItem("user");
+    var modifiedproduct=product;
+    if (local) {
+        token = JSON.parse(localStorage.getItem('user')).token;
+    } else {
+        return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
+    }
+     if(product.product_type==='lip_liner' || product.product_type==='lipstick' || product.product_type==='eyeliner' || product.product_type==='eyeshadow' || product.product_type==='blush' || product.product_type==='bronzer' || product.product_type==='mascara')
+    {
+        modifiedproduct.name=document.getElementById("name").value;
+        modifiedproduct.price=document.getElementById("price").value;
+        modifiedproduct.price_sign=document.getElementById("price-sign").value;
+        modifiedproduct.product_link=document.getElementById("product-link").value;
+        modifiedproduct.description=document.getElementById("description").value;
+        modifiedproduct.rating=document.getElementById("rating").value;
+        modifiedproduct.category=document.getElementById("category").value;
+        modifiedproduct.api_featured_image=document.getElementById("featured_image").value;
+        modifiedproduct.outfitcolors=document.getElementById("outfitcolors").value;
+        modifiedproduct.event=document.getElementById("event").value;
+        modifiedproduct.eyecolor=document.getElementById("eyecolor").value;
+        modifiedproduct.haircolor=document.getElementById("haircolor").value;
+        modifiedproduct.vegan=document.getElementById("vegan").value;
+        modifiedproduct.brand=document.getElementById("brand").value;
+        modifiedproduct.product_type=document.getElementById("typeproduct").value;
+    }else{
+        modifiedproduct.name=document.getElementById("name").value;
+        modifiedproduct.price=document.getElementById("price").value;
+        modifiedproduct.price_sign=document.getElementById("price-sign").value;
+        modifiedproduct.product_link=document.getElementById("product-link").value;
+        modifiedproduct.description=document.getElementById("description").value;
+        modifiedproduct.rating=document.getElementById("rating").value;
+        modifiedproduct.category=document.getElementById("category").value;
+        modifiedproduct.api_featured_image=document.getElementById("featured_image").value;
+        modifiedproduct.outfitcolors=document.getElementById("outfitcolors").value;
+        modifiedproduct.event=document.getElementById("event").value;
+        modifiedproduct.eyecolor=document.getElementById("eyecolor").value;
+        modifiedproduct.haircolor=document.getElementById("haircolor").value;
+        modifiedproduct.vegan=document.getElementById("vegan").value;
+        modifiedproduct.brand=document.getElementById("brand").value;
+        modifiedproduct.skinage=document.getElementById("skinage").value;
+        modifiedproduct.skintypes=document.getElementById("skintypes").value;
+        modifiedproduct.product_type=document.getElementById("typeproduct").value;
+    }
     console.log("Begin to modify!");
+    console.log("THIS IS THE ORIGINAL PRODUCT"+originalproduct.event);
+    console.log("THIS IS THE MODIFIED PRODUCT"+product.event);
+    try{
+        var request=new XMLHttpRequest();
+       const url='http://localhost:5000/api/products/updateproduct';
+       console.log(url);
+       request.open('PUT', url, true);
+       console.log("I AM REQUESTING THE OBJECT");
+       request.setRequestHeader('x-access-token', token);
+       request.send(JSON.stringify(product));
+    }catch (err) {
+        console.log(err);
+    }
+    try{
+        dynamic.innerHTML=`
+    <p>Choose the id you want to modify</p>
+    <form id="modify" class="input-modify" method="post">
+        <input type="text" id="id" class="input-id" placeholder="" required>
+        <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
+        <button type="button" class="submit-btn" onclick="showProduct()">Find product</button>
+      </form>
+    `;
+    }catch (err) {
+        console.log(err);
+    }
 }
 
 window.deleteProduct=async function(){
