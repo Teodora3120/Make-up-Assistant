@@ -26,7 +26,7 @@ window.checkProducts=async function(){
         const products=JSON.parse(request.responseText);
     dynamic.innerHTML=products.map((item, index)=>`
     <div class="list-objects">    
-        <p class="textlist">Id:${item.id}</p>
+        <p class="textlist" id="id" value="${item.id}">Id:${item.id}</p>
         <p class="textlist">Brand:${item.brand}</p>
         <p class="textlist">Name:${item.name}</p>
         <p class="textlist">Price:${item.price}</p>
@@ -42,6 +42,8 @@ window.checkProducts=async function(){
         <p class="textlist">Vegan:${item.vegan}</p>
         <p class="textlist">Skin age:${item.skinage}</p>
         <p class="textlist">Skin type:${item.skintypes}</p>
+        <button type="button" id="modify-btn" class="submit-btn" onclick="goToModify(${item.id})">Modify</button>
+        <button type="button" id="delete-btn" class="submit-btn" onclick="goToDelete(${item.id})">Delete</button>
     </div>
         `).join(" ");
             }
@@ -51,32 +53,43 @@ window.checkProducts=async function(){
     }
 }
 
+window.goToModify=async function(id)
+{
+    idvalue=id;
+    showProduct();
+}
+window.goToDelete=async function(id){
+    idvalue=id;
+    deleteProductById();
+}
 window.modifyProduct=async function(){
-   // let dynamic=document.querySelector('.box');
+    idvalue="";
+    const local = localStorage.getItem("user");
+    console.log("I AM IN THE FUNCTION!");
+   if (local) {
+       token = JSON.parse(localStorage.getItem('user')).token;
+   } else {
+       return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
+   }
     dynamic.innerHTML=`
     <p>Choose the id you want to modify</p>
     <form id="modify" class="input-modify" method="post">
         <input type="text" id="id" class="input-id" placeholder="" required>
         <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
-        <button type="button" class="submit-btn" onclick="showProduct()">Find product</button>
+        <button type="button" id="modify-btn" class="submit-btn" onclick="showProduct()">Find product</button>
       </form>
     `;
-   /*  el = document.getElementById("id");
-    el.addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        showProduct();
-      }
-    }); */
 }
 addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
       event.preventDefault();
-      showProduct();
+      //showProduct();
     }
   });
 window.showProduct=async function(){
+    if(idvalue=="")
     idvalue=document.querySelector("#id").value;
+    console.log("THE VALUE OF ID: "+idvalue);
     const local = localStorage.getItem("user");
     console.log(idvalue);
     if (local) {
@@ -185,7 +198,7 @@ window.showProduct=async function(){
                 <option value="true">Yes</option>
                 <option value="false">No</option>
                 </select>
-        <button type="button" class="submit-btn" onclick="cancelModify()">Cancel</button>
+        <button type="button" class="submit-btn" onclick="modifyProduct()">Cancel</button>
         <button type="button" class="submit-btn" onclick="beginModifyProduct()">Modify</button>
         `;
         var selectoutfitcolors=document.getElementById("outfitcolors");
@@ -304,7 +317,7 @@ window.showProduct=async function(){
                 <option value="oilyacneic">Oily and acneic</option>
                 <option value="mixedacneic">Mixed and acneic</option>
                 </select>
-        <button type="button" class="submit-btn" onclick="cancelModify()">Cancel</button>
+        <button type="button" class="submit-btn" onclick="modifyProduct()">Cancel</button>
         <button type="button" class="submit-btn" onclick="beginModifyProduct()">Modify</button>
         `;
         var selectoutfitcolors=document.getElementById("outfitcolors");
@@ -331,26 +344,7 @@ window.showProduct=async function(){
     }catch (err) {
         console.log(err);
     }
-}
-window.cancelModify=async function(){
-    const local = localStorage.getItem("user");
-    if (local) {
-        token = JSON.parse(localStorage.getItem('user')).token;
-    } else {
-        return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
-    }
-    try{
-        dynamic.innerHTML=`
-    <p>Choose the id you want to modify</p>
-    <form id="modify" class="input-modify" method="post">
-        <input type="text" id="id" class="input-id" placeholder="" required>
-        <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
-        <button type="button" class="submit-btn" onclick="showProduct()">Find product</button>
-      </form>
-    `;
-    }catch (err) {
-        console.log(err);
-    }
+   
 }
 
 window.beginModifyProduct=async function(){
@@ -423,11 +417,128 @@ window.beginModifyProduct=async function(){
     }catch (err) {
         console.log(err);
     }
+    
 }
 
 window.deleteProduct=async function(){
-    let dynamic=document.querySelector('.box');
-    dynamic.innerHTML=`<p>delete</p>`;
+    idvalue="";
+    const local = localStorage.getItem("user");
+    console.log("I AM IN THE FUNCTION!");
+   if (local) {
+       token = JSON.parse(localStorage.getItem('user')).token;
+   } else {
+       return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
+   }
+    dynamic.innerHTML=`
+    <p>Choose the id you want to delete</p>
+    <form id="delete" class="input-delete" method="post">
+        <input type="text" id="id-delete" class="input-id" placeholder="" required>
+        <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
+        <button type="button" id="delete-btn" class="submit-btn" onclick="deleteProductById()">Find product</button>
+      </form>
+    `;
+}
+
+window.deleteProductById=async function(){
+    if(idvalue=="")
+    idvalue=document.querySelector("#id-delete").value;
+    const local = localStorage.getItem("user");
+    console.log("I AM IN THE FUNCTION!");
+   if (local) {
+       token = JSON.parse(localStorage.getItem('user')).token;
+   } else {
+       return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
+   }
+   try{
+    var request=new XMLHttpRequest();
+   const url='http://localhost:5000/api/products/'+idvalue+"/";
+   console.log(url);
+   request.open('GET', url, true);
+   console.log("I AM REQUESTING THE OBJECT");
+   request.setRequestHeader('x-access-token', token);
+   request.send();
+   request.onreadystatechange = function () {
+    console.log("onreadystechange IS FUNCTIONAL");
+    if (request.readyState == XMLHttpRequest.DONE){
+console.log(JSON.parse(request.responseText));
+product=JSON.parse(request.responseText);
+if(product.product_type==='lip_liner' || product.product_type==='lipstick' || product.product_type==='eyeliner' || product.product_type==='eyeshadow' || product.product_type==='blush' || product.product_type==='bronzer' || product.product_type==='mascara')
+    {
+        dynamic.innerHTML=`
+        <p>Name: ${product.name}</p>
+        <p>Brand: ${product.brand}</p>
+        <p>Price: ${product.price}</p>
+        <p>Sign of price: ${product.price_sign}</p>
+        <p>Link of product: ${product.product_link}</p>
+        <p>Description: ${product.description}</p>
+        <p>rating: ${product.rating}</p>
+        <p>Type of product: ${product.product_type}</p>
+        <p>Featured image: ${product.api_featured_image}</p>
+        <p>Outfit colors: ${product.outfitcolors}</p>
+        <p>Event: ${product.event}</p>
+        <p>Eye color: ${product.eyecolor}</p>
+        <p>Hair color: ${product.haircolor}</p>
+        <p>Vegan: ${product.vegan}</p>
+        <button type="button" class="submit-btn" onclick="deleteProduct()">Cancel</button>
+        <button type="button" class="submit-btn" onclick="beginDeleteproduct()">Delete</button>
+        `;
+    } else{
+         dynamic.innerHTML=`
+        <p>Name: ${product.name}</p>
+        <p>Brand: ${product.brand}</p>
+        <p>Price: ${product.price}</p>
+        <p>Sign of price: ${product.price_sign}</p>
+        <p>Link of product: ${product.product_link}</p>
+        <p>Description: ${product.description}</p>
+        <p>rating: ${product.rating}</p>
+        <p>Type of product: ${product.product_type}</p>
+        <p>Featured image: ${product.api_featured_image}</p>
+        <p>Outfit colors: ${product.outfitcolors}</p>
+        <p>Event: ${product.event}</p>
+        <p>Eye color: ${product.eyecolor}</p>
+        <p>Hair color: ${product.haircolor}</p>
+        <p>Skin age: ${product.skinage}</p>
+        <p>Skin type: ${product.skintypes}</p>
+        <p>Vegan: ${product.vegan}</p>
+        <button type="button" class="submit-btn" onclick="deleteProduct()">Cancel</button>
+        <button type="button" class="submit-btn" onclick="beginDeleteproduct()">Delete</button>
+        `;
+    }
+    }
+}
+   }catch (err) {
+    console.log(err);
+}
+}
+
+window.beginDeleteproduct=async function(){
+    const local = localStorage.getItem("user");
+    console.log("I AM IN THE FUNCTION!");
+   if (local) {
+       token = JSON.parse(localStorage.getItem('user')).token;
+   } else {
+       return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
+   }
+   try{
+    var request=new XMLHttpRequest();
+   const url='http://localhost:5000/api/products/'+idvalue+"/";
+   console.log(url);
+   request.open('DELETE', url, true);
+   console.log("I AM REQUESTING THE OBJECT");
+   request.setRequestHeader('x-access-token', token);
+   request.send();
+  
+}catch (err) {
+    console.log(err);
+}
+dynamic.innerHTML=`
+    <p>Choose the id you want to delete</p>
+    <form id="delete" class="input-delete" method="post">
+        <input type="text" id="id-delete" class="input-id" placeholder="" required>
+        <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
+        <button type="button" id="delete-btn" class="submit-btn" onclick="deleteProductById()">Find product</button>
+      </form>
+    `;
 }
 
 window.addProduct=async function(){

@@ -69,10 +69,14 @@ async function insert(data, object) {
 
 async function deleteById(data, id) {
     const results = await data.deleteOne({ "id": id });
+    await data.updateMany({ "id": { $gt: id-1 } }, {$inc:{id:-1}});
     console.log(results);
     return results;
 }
 
+ async function updateIds(data, id){
+    console.log("");
+} 
 async function updateOneById(data, id) {
     const result = await data.updateOne(
         { id: id },
@@ -92,9 +96,9 @@ async function updateProduct(data, body){
     product_link:body.product_link, description:body.description, rating:body.rating,
      product_type:body.product_type, api_featured_image:body.api_featured_image, 
      outfitcolors:body.outfitcolors, event:body.event, eyecolor:body.eyecolor, haircolor:body.haircolor,
-    vegan:body.vegan, skinage:body.skinage, skintypes:body.skintypes},};
+    vegan:body.vegan, skinage:body.skinage, skintypes:body.skintypes}};
     const result= await data.updateOne(oldproduct, newproduct);
     return result;
 }
 
-module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS, updateProduct};
+module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS, updateProduct, updateIds};
