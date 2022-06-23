@@ -325,5 +325,149 @@ window.deleteProduct=async function(){
 
 window.addProduct=async function(){
     let dynamic=document.querySelector('.box');
-    dynamic.innerHTML=`<p>add product</p>`;
+    dynamic.innerHTML=`
+    <p>Insert data about the product you wish to add</p>
+    <p>Product name:</p>
+    <input type="text" id="productName" class="input-id" placeholder="" required>
+    <br><p>Price: </p>
+    <input type="text" id="price" class="input-id" placeholder="" required>
+    <br>
+    <p>Price sign</p>
+    <input type="text" id="price-sign" class="input-id" placeholder="" required>
+    <br>
+    <p>Product link: </p>
+    <input type="text" id="product-link" class="input-id" placeholder="" required>
+    <br>
+    <p>Product image link: </p>
+    <input type="text" id="product-image-link" class="input-id" placeholder="" required>
+    <br><p>Description</p>
+    <input type="text" id="description" class="input-id" placeholder=""  required>
+    <br><p>Brand name</p>
+    <input type="text" id="brandName" class="input-id" placeholder="" required>
+    <br><p>Category</p>
+    <select id="category" class="input-id" required>
+        <option value="lipstick">lipstick</option>
+        <option value="powder">Powder</option>
+        <option value="pencil">Pencil</option>
+        <option value="palette">Palette</option>
+        <option value="cream">Cream</option>
+        <option value="lipGloss">Lip gloss</option>
+        <option value="concealer">Concealer</option>
+        <option value="mineral">Mineral</option>
+        <option value="gel">Gel</option>
+    </select>
+    <br><p>Product type</p>
+    <select id="productType" class="input-id" required>
+        <option value="foundation">Foundation</option>
+        <option value="eyeliner">Eyeliner</option>
+        <option value="lipstick">Lipstick</option>
+        <option value="blush"></option>
+        <option value="mascara"></option>
+        <option value="eyeshadow"></option>
+        <option value="nailPolish"></option>
+        <option value="eyebrow"></option>
+        <option value="bronzer"></option>
+        <option value="lipLiner"></option>
+    </select>
+    <br><p>Skin type</p>
+    <select id="skinType" class="input-id" required>
+        <option value="dry">Dry</option>
+        <option value="oily">Oily</option>
+        <option value="mixed">Mixed</option>
+        <option value="dryAcneic">Dry & Acneic</option>
+        <option value="oilyAcneic">Oily & Acneic</option>
+        <option value="mixedAcneic">Mixed & Acneic</option>
+    </select>
+    <br><p>Skin age</p>
+    <select id="skinAge" class="input-id" required>
+        <option value="teen">Teen(16-20 yrs old)</option>
+        <option value="young">Young(20-40)</option>
+        <option value="mature">Mature(40+)</option>
+    </select>
+    <br><p>Hair color</p>
+    <select id="haircolor" class="input-id" required>
+        <option value="blonde">Blonde</option>
+        <option value="brunette">Brunette</option>
+        <option value="red">Red</option>
+        <option value="brown">Brown</option>
+        <option value="others">Others</option>
+    </select>
+    <br><p>Eye color</p>
+    <select id="eyecolor" class="input-id" required>
+        <option value="blue">Blue</option>
+        <option value="brown">Brown</option>
+        <option value="hazel">Hazel</option>
+        <option value="green">Green</option>
+        <option value="black">Black</option>
+    </select>
+    <br><p>Event</p>
+    <select id="event" class="input-id" required>
+        <option value="party">Party</option>
+        <option value="goingOut">Going Out</option>
+        <option value="date">Date</option>
+        <option value="wedding">Wedding</option>
+        <option value="bride">Bride</option>
+        <option value="funeral">Funeral</option>
+        <option value="christmas">Christmas</option>
+        <option value="newYearsEve">New Year's Eve</option>
+    </select>
+    <br><p>Outfit colors</p>
+    <select id="outfitColors" class="input-id" required>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="neutral">Neutral</option>
+        <option value="cold">Cold</option>
+        <option value="warm">Warm</option>
+    </select>
+    <br><p>Vegan</p>
+    <select id="vegan" class="input-id" required>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br>
+    <br>
+    <button type="button" class="submit-btn" onclick="addProductForm()">Add</button>
+    `;
+}
+
+
+window.addProductForm = async function(){
+    const local = localStorage.getItem("user");
+    if (local) {
+        token = JSON.parse(localStorage.getItem('user')).token;
+    } else {
+        return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
+    }
+
+    product = {
+        brand: document.querySelector("#brandName").value,
+        name: document.querySelector("#productName").value,
+        price: document.querySelector("#price").value,
+        price_sign: document.querySelector("#price-sign").value,
+        product_link: document.querySelector("#product-link").value,
+        description: document.querySelector("#description").value,
+        rating: 0,
+        category: document.querySelector("#category").value,
+        product_type: document.querySelector("#productType").value,
+        product_api_url: "",
+        api_featured_image: document.querySelector("#product-image-link").value,
+        skintypes: document.querySelector("#skinType").value,
+        skinage: document.querySelector("#skinAge").value,
+        haircolor: document.querySelector("#haircolor").value,
+        eyecolor: document.querySelector("#eyecolor").value,
+        event: document.querySelector("#event").value,
+        outfitcolors: document.querySelector("#outfitColors").value,
+        vegan: document.querySelector("#vegan").value
+    }
+    try{
+    console.log(product)
+    var request = new XMLHttpRequest();
+    const url = "http://localhost:5000/api/products/add";
+    request.open('POST', url, true);
+    request.setRequestHeader('x-access-token', token);
+    request.send(JSON.stringify(product))
+    console.log("Am trimis!")
+    }catch(err){
+        console.log(err)
+    }
 }

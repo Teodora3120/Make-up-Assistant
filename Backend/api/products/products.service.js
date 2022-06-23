@@ -81,4 +81,8 @@ async function updateOneById(data, id) {
     return result;
 }
 
-module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS};
+async function getMaxId(data){
+    return await data.find({}).sort({id: -1}).limit(1).toArray()
+}
+
+module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS, getMaxId};
