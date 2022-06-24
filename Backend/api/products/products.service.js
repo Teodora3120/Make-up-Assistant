@@ -54,7 +54,10 @@ async function topFilter(data, body) {
 
 
 async function findById(data, id) {
-    return await data.findOne({ "id": id });
+    const result=await data.findOne({ "id": id });
+    if(result===null)
+        return -1;
+    return result;
 }
 
 async function getAll(data) {

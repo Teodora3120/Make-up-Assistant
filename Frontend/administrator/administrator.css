@@ -30,13 +30,13 @@ header {
     /* margin-bottom: 20%; */
     width: 50%;
     height: 40%;
-    border-style: dashed;
+    border-style: groove;
   }
    .toolbar{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin:auto;
-    width:100%
+    width:100%;
   } 
 /* CSS */
  .toggle-btn {
@@ -44,7 +44,7 @@ header {
   border-radius: 8%;
   box-shadow:  0 0 5% 0 #d5a3c2;
   color: white;
-  
+  margin:5px;
 }  
 
 /* .toggle-btn:hover {
@@ -56,7 +56,7 @@ header {
    .form-like{
     display: flex;
     margin:auto;
-    /* justify-content: center; */
+     justify-content: center;
     /* align-items: center; */
     width:100%;
     height: 40%;
@@ -64,23 +64,43 @@ header {
     overflow-y: scroll;
     overflow-x: hidden;
     
-    border-style: dashed;
+    border-style: groove;
   } 
    .box{
     /* display: flex; */
     width: auto;
+    word-break: break-word;
     height: 80%;
   } 
+  .filter-check{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-style: italic;
+    font-weight: bold;
+    background-color: #E9967A;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .select-items div,.select-selected {
+    /* color: #ffffff; */
+    /* padding: 8px 16px; */
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+  }
    .list-objects{
-    border-style: dashed;
+    border-style: groove;
     margin: auto;
     margin-bottom: 5%;
+    word-break: break-word;
   }
   
   .textlist{
     font-family: 'Times New Roman', Times, serif;
     font-size: large;
-    width: 65%;
+    /* width: 65%; */
+    word-wrap: break-word;
   }
   
   a{
@@ -227,9 +247,13 @@ header {
         min-height: 70vh;
         align-items: center;
     }
-    .form-like{
-      max-height: 30em;
-    }
+  }
+    
+@media screen and (max-height: 1500px) {
+  .form-like{
+    max-height: 35em;
+  }
+
 }
 
 .footer{
@@ -319,8 +343,27 @@ header {
       max-height: 15em;
     }
   }
+  @media screen and (max-height: 700px){
+    .form-like{
+      max-height: 25em;
+    }
+  }
   @media screen and (max-height: 600px){
     .form-like{
       max-height: 15em;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .toolbar{
+      display: contents;
+    }
+    .toggle-btn{
+      width: 95%;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .form-like{
+      max-height: 19em;
     }
   }

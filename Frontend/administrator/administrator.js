@@ -36,8 +36,8 @@ window.checkProducts=async function(){
                  `
         }
         dynamic.innerHTML=`
-        <div class="filer-check">
-        <p>Filter</p>
+        <div class="filter-check">
+        <h2>Filter</h2>
         <label id="filterbrand1" for="filterbrandoption">Brand<br></label>
                 <select name="filterbrandoption" id="filterbrand">
                 <option id="choose" value="choose" selected>Choose</option>
@@ -126,7 +126,7 @@ window.checkProducts=async function(){
                 <option value="oilyacneic">Oily and acneic</option>
                 <option value="mixedacneic">Mixed and acneic</option>
                 </select>
-        <button type="button" class="submit-btn" onclick="setFilter()">Submit</button>
+        <button type="button" class="toggle-btn" onclick="setFilter()">Submit</button>
         </div>
         `;
     dynamic.innerHTML+=products.map((item, index)=>`
@@ -135,13 +135,13 @@ window.checkProducts=async function(){
         <p class="textlist">Brand:${item.brand}</p>
         <p class="textlist">Name:${item.name}</p>
         <p class="textlist">Price:${item.price}</p>
-        <p class="textlist">Price sign:${item.sign}</p>
+        <p class="textlist">Price sign:${item.price_sign}</p>
         <p class="textlist">Category:${item.category}</p>
         <p class="textlist">Product type:${item.product_type}</p>
         <p class="textlist">Link product:${item.product_link}</p>
-        <p class="textlist">description:${item.description}</p>
+        <p class="textlist">Description:${item.description}</p>
         <p class="textlist">Rating:${item.rating}</p>
-        <p class="textlist">API featured image:${item.api_featured_image}</p>
+        <p class="textlist">Image:${item.api_featured_image}</p>
         <p class="textlist">Outfit colors:${item.outfitcolors}</p>
         <p class="textlist">For event:${item.event}</p>
         <p class="textlist">Eyecolor:${item.eyecolor}</p>
@@ -149,8 +149,8 @@ window.checkProducts=async function(){
         <p class="textlist">Vegan:${item.vegan}</p>
         <p class="textlist">Skin age:${item.skinage}</p>
         <p class="textlist">Skin type:${item.skintypes}</p>
-        <button type="button" id="modify-btn" class="submit-btn" onclick="goToModify(${item.id})">Modify</button>
-        <button type="button" id="delete-btn" class="submit-btn" onclick="goToDelete(${item.id})">Delete</button>
+        <button type="button" id="modify-btn" class="toggle-btn" onclick="goToModify(${item.id})">Modify</button>
+        <button type="button" id="delete-btn" class="toggle-btn" onclick="goToDelete(${item.id})">Delete</button>
     </div>
         `).join(" ");
             }
@@ -211,7 +211,7 @@ window.setFilter=async function(){
         <p class="textlist">Brand:${item.brand}</p>
         <p class="textlist">Name:${item.name}</p>
         <p class="textlist">Price:${item.price}</p>
-        <p class="textlist">Price sign:${item.sign}</p>
+        <p class="textlist">Price sign:${item.price_sign}</p>
         <p class="textlist">Category:${item.category}</p>
         <p class="textlist">Product type:${item.product_type}</p>
         <p class="textlist">Link product:${item.product_link}</p>
@@ -225,8 +225,8 @@ window.setFilter=async function(){
         <p class="textlist">Vegan:${item.vegan}</p>
         <p class="textlist">Skin age:${item.skinage}</p>
         <p class="textlist">Skin type:${item.skintypes}</p>
-        <button type="button" id="modify-btn" class="submit-btn" onclick="goToModify(${item.id})">Modify</button>
-        <button type="button" id="delete-btn" class="submit-btn" onclick="goToDelete(${item.id})">Delete</button>
+        <button type="button" id="modify-btn" class="toggle-btn" onclick="goToModify(${item.id})">Modify</button>
+        <button type="button" id="delete-btn" class="toggle-btn" onclick="goToDelete(${item.id})">Delete</button>
     </div>
         `).join(" ");
         }
@@ -260,8 +260,8 @@ window.modifyProduct=async function(){
     <p>Choose the id you want to modify</p>
     <form id="modify" class="input-modify" method="post">
         <input type="text" id="id" class="input-id" placeholder="" required>
-        <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
-        <button type="button" id="modify-btn" class="submit-btn" onclick="showProduct()">Find product</button>
+        <h5 id="id-error" style="color: red; font-weight: 400; text-align: left; margin-top: 2em;"></h5>
+        <button type="button" id="modify-btn" class="toggle-btn" onclick="showProduct()">Find product</button>
       </form>
     `;
 }
@@ -272,6 +272,8 @@ addEventListener("keypress", function(event) {
     }
   });
 window.showProduct=async function(){
+    dynamic=document.querySelector('.box');
+    console.log("IDVALUE IS "+idvalue);
     if(idvalue=="")
     idvalue=document.querySelector("#id").value;
     console.log("THE VALUE OF ID: "+idvalue);
@@ -296,6 +298,7 @@ window.showProduct=async function(){
         console.log(JSON.parse(request.responseText));
         product=JSON.parse(request.responseText);
         originalproduct=JSON.parse(request.responseText);
+        idvalue="";
         if (Array.isArray(product) == false && product.message === "Invalid Token") {
             console.log("This session has been expired. Click here to login again");
 
@@ -307,10 +310,20 @@ window.showProduct=async function(){
                  </div>
                  `
         }
+        if(product===-1)
+        {
+            dynamic=document.querySelector('#id-error');
+            dynamic.innerHTML=`
+            <p>Id doesn't exist!</p>
+            `;
+            dynamic=document.querySelector('.box');
+        }
+        else   
         if(product.product_type==='lip_liner' || product.product_type==='lipstick' || product.product_type==='eyeliner' || product.product_type==='eyeshadow' || product.product_type==='blush' || product.product_type==='bronzer' || product.product_type==='mascara')
         {
             dynamic.innerHTML=
             `
+        <div class="filter-check">
         <form id="modify" class="input-modify" method="post">
         <p>Name</p>
         <input type="text" id="name" class="input-id" placeholder="" value="${product.name}">
@@ -394,8 +407,9 @@ window.showProduct=async function(){
                 <option value="true">Yes</option>
                 <option value="false">No</option>
                 </select>
-        <button type="button" class="submit-btn" onclick="modifyProduct()">Cancel</button>
-        <button type="button" class="submit-btn" onclick="beginModifyProduct()">Modify</button>
+        <button type="button" class="toggle-btn" onclick="modifyProduct()">Cancel</button>
+        <button type="button" class="toggle-btn" onclick="beginModifyProduct()">Modify</button>
+        </div>
         `;
         var selectoutfitcolors=document.getElementById("outfitcolors");
         var selectevent=document.getElementById("event");
@@ -415,6 +429,7 @@ window.showProduct=async function(){
         else{
             dynamic.innerHTML=
             `
+        <div class="filter-check">
         <form id="modify" class="input-modify" method="post">
         <p>Name</p>
         <input type="text" id="name" class="input-id" placeholder="" value="${product.name}">
@@ -513,8 +528,9 @@ window.showProduct=async function(){
                 <option value="oilyacneic">Oily and acneic</option>
                 <option value="mixedacneic">Mixed and acneic</option>
                 </select>
-        <button type="button" class="submit-btn" onclick="modifyProduct()">Cancel</button>
-        <button type="button" class="submit-btn" onclick="beginModifyProduct()">Modify</button>
+        <button type="button" class="toggle-btn" onclick="modifyProduct()">Cancel</button>
+        <button type="button" class="toggle-btn" onclick="beginModifyProduct()">Modify</button>
+        </div>
         `;
         var selectoutfitcolors=document.getElementById("outfitcolors");
         var selectevent=document.getElementById("event");
@@ -544,6 +560,7 @@ window.showProduct=async function(){
 }
 
 window.beginModifyProduct=async function(){
+    dynamic=document.querySelector('.box');
     const local = localStorage.getItem("user");
     var modifiedproduct=product;
     if (local) {
@@ -606,8 +623,8 @@ window.beginModifyProduct=async function(){
     <p>Choose the id you want to modify</p>
     <form id="modify" class="input-modify" method="post">
         <input type="text" id="id" class="input-id" placeholder="" required>
-        <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
-        <button type="button" class="submit-btn" onclick="showProduct()">Find product</button>
+        <h5 id="id-error" style="color: red; font-weight: 400; text-align: left; margin-top: 2em;"></h5>
+        <button type="button" class="toggle-btn" onclick="showProduct()">Find product</button>
       </form>
     `;
     }catch (err) {
@@ -630,8 +647,8 @@ window.deleteProduct=async function(){
     <p>Choose the id you want to delete</p>
     <form id="delete" class="input-delete" method="post">
         <input type="text" id="id-delete" class="input-id" placeholder="" required>
-        <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
-        <button type="button" id="delete-btn" class="submit-btn" onclick="deleteProductById()">Find product</button>
+        <h5 id="id-error" style="color: red; font-weight: 400; text-align: left; margin-top: 2em;"></h5>
+        <button type="button" id="delete-btn" class="toggle-btn" onclick="deleteProductById()">Find product</button>
       </form>
     `;
 }
@@ -659,6 +676,7 @@ window.deleteProductById=async function(){
     if (request.readyState == XMLHttpRequest.DONE){
 console.log(JSON.parse(request.responseText));
 product=JSON.parse(request.responseText);
+idvalue="";
 if (Array.isArray(product) == false && product.message === "Invalid Token") {
     console.log("This session has been expired. Click here to login again");
 
@@ -670,6 +688,15 @@ if (Array.isArray(product) == false && product.message === "Invalid Token") {
          </div>
          `
 }
+if(product===-1)
+{
+    dynamic=document.querySelector('#id-error');
+    dynamic.innerHTML=`
+        <p>Id doesn't exist!</p>
+    `;
+    dynamic=document.querySelector('.box');
+}
+else
 if(product.product_type==='lip_liner' || product.product_type==='lipstick' || product.product_type==='eyeliner' || product.product_type==='eyeshadow' || product.product_type==='blush' || product.product_type==='bronzer' || product.product_type==='mascara')
     {
         dynamic.innerHTML=`
@@ -687,8 +714,8 @@ if(product.product_type==='lip_liner' || product.product_type==='lipstick' || pr
         <p>Eye color: ${product.eyecolor}</p>
         <p>Hair color: ${product.haircolor}</p>
         <p>Vegan: ${product.vegan}</p>
-        <button type="button" class="submit-btn" onclick="deleteProduct()">Cancel</button>
-        <button type="button" class="submit-btn" onclick="beginDeleteproduct()">Delete</button>
+        <button type="button" class="toggle-btn" onclick="deleteProduct()">Cancel</button>
+        <button type="button" class="toggle-btn" onclick="beginDeleteproduct()">Delete</button>
         `;
     } else{
          dynamic.innerHTML=`
@@ -708,8 +735,8 @@ if(product.product_type==='lip_liner' || product.product_type==='lipstick' || pr
         <p>Skin age: ${product.skinage}</p>
         <p>Skin type: ${product.skintypes}</p>
         <p>Vegan: ${product.vegan}</p>
-        <button type="button" class="submit-btn" onclick="deleteProduct()">Cancel</button>
-        <button type="button" class="submit-btn" onclick="beginDeleteproduct()">Delete</button>
+        <button type="button" class="toggle-btn" onclick="deleteProduct()">Cancel</button>
+        <button type="button" class="toggle-btn" onclick="beginDeleteproduct()">Delete</button>
         `;
     }
     }
@@ -743,8 +770,8 @@ dynamic.innerHTML=`
     <p>Choose the id you want to delete</p>
     <form id="delete" class="input-delete" method="post">
         <input type="text" id="id-delete" class="input-id" placeholder="" required>
-        <h5 id="id-error" style="color: red; font-weight: 400; text-align: center; margin-top: 2em;"></h5>
-        <button type="button" id="delete-btn" class="submit-btn" onclick="deleteProductById()">Find product</button>
+        <h5 id="id-error" style="color: red; font-weight: 400; text-align: left; margin-top: 2em;"></h5>
+        <button type="button" id="delete-btn" class="toggle-btn" onclick="deleteProductById()">Find product</button>
       </form>
     `;
 }

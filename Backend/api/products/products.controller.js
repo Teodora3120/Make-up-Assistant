@@ -84,7 +84,7 @@ const productsController = async (req, res) => {
             writeErrorHead(res, error);
         }
     }
-    if (req.url.match(/\/api\/products\/stabiliseid\/([0-9]+)/) && req.method === "PUT") {
+    /* if (req.url.match(/\/api\/products\/stabiliseid\/([0-9]+)/) && req.method === "PUT") {
         try {
             console.log("PUT ALL IDS CONSECUTIVE");
             await auth(req, res);
@@ -95,7 +95,7 @@ const productsController = async (req, res) => {
         } catch (error) {
             writeErrorHead(res, error);
         }
-    }
+    } */
     if (req.url.match(/\/api\/products\/([0-9]+)/) && req.method === "PATCH") {
         try {
             console.log("PATCH");
