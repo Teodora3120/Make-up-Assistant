@@ -362,24 +362,12 @@ header {
       margin-left: 20%;
     }
     .toolbar{
-      float:left;
+      justify-self:center;
       display: flex;
       flex-direction: column;
     }
     .form-like{
       width: 100%;
-    }
-  }
-  @media screen and (max-width:500px){
-    .form-like{
-      width: 120%;
-    }
-    .toggle-btn{
-      padding-left: 2%;
-    }
-    .big-box{
-      margin-left:5%;
-      max-width: 100%;
     }
   }
   @media screen and (max-height: 500px){
