@@ -426,7 +426,7 @@ window.addProduct=async function(){
     </select>
     <br>
     <br>
-    <button type="button" class="submit-btn" onclick="addProductForm()">Add</button>
+    <button type="button" class="submit-bttn" onclick="addProductForm()">Add</button>
     `;
 }
 
@@ -486,10 +486,10 @@ window.csvMenu=async function(){
     dynamic.innerHTML=`
     <p>Select the action you wish to proceed with: </p>
     <br>
-    <button type="button" class="submit-btn" onclick="downloadCSV()">DownloadCSV</button>
+    <button type="button" class="submit-bttn" onclick="downloadCSV()">DownloadCSV</button>
     <br>
     <br>
-    <button type="buttom" class="submit-btn" onclick="uploadCSV()">Upload CSV data</button>
+    <button type="buttom" class="submit-bttn" onclick="uploadCSV()">Upload CSV data</button>
     <p id="mesaj-import"></p>
     <br>
     `; 
