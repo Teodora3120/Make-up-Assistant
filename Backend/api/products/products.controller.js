@@ -17,8 +17,9 @@ const productsController = async (req, res) => {
         if (req.url === "/api/products/csv") {
             try {
                 await auth(req, res);
+                console.log("blablabla");
                 const products = await run("Products", (data) => getAll(data));
-                var keys = Object.keys(products[0]).map((k)=>{ return k })
+                var keys = Object.keys(products[0])
                 var csv = [keys.join(",")]
                 for (const line of products) {
                     var csv_line = []
@@ -35,6 +36,7 @@ const productsController = async (req, res) => {
                             csv_line.push('')
                             continue
                         }
+                        csv_line.push('"'+line[k].replaceAll('"', '""').replaceAll('\n', '').trim() + '"')
                     }
                     csv.push(csv_line.join(","))
                 }
@@ -60,9 +62,14 @@ const productsController = async (req, res) => {
     if (req.method === "POST") {
         if (req.url === "/api/products/add") {
             try {
-                const body = await auth(req, res)
-                const last = await run("Products", (data) => getMaxId(data))
-                body["id"] = last[0]["id"] + 1;
+                var body = await auth(req, res)
+                if(!body.hasOwnProperty('id')){
+                    const last = await run("Products", (data) => getMaxId(data))
+                    body["id"] = last[0]["id"] + 1;
+                }
+                if(body.hasOwnProperty("_id")){
+                    delete body["_id"]
+                }
                 writeSuccessHead(res, await run("Products", (data) => insert(data, body)));
             } catch (error) {
                 writeErrorHead(res, error);
