@@ -480,11 +480,10 @@ window.addProductAPI = function (product, onSuccess, onError){
     request.open('POST', url, true);
     request.setRequestHeader('x-access-token', token);
     request.send(JSON.stringify(product))
-    console.log("Am trimis!")
+    console.log("Produsul a fost adaugat cu succes in baza de date!")
 }
 
 window.csvMenu=async function(){
-    console.log("Intrat in meniu!")
     let dynamic=document.querySelector('.box');
     dynamic.innerHTML=`
     <p>Select the action you wish to proceed with: </p>
@@ -571,30 +570,25 @@ window.downloadCSV=async function(){
         return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
     }
     try{
-        console.log("Descarcare csv")
         var request = new XMLHttpRequest();;
         const url="http://localhost:5000/api/products/csv";
         request.responseType='blob';
         request.open('GET', url, true);
-        console.log("aici!");
         request.setRequestHeader('x-access-token', token);
         request.send();
         request.onload=function(){
-            console.log('aiciacum')
             if (request.status != 200) {
-                console.log("file can't be downloaded");
+                alert("File cannot be downloade, error: "+request.status);
             }
             else if(request.status==200){
-                //request.responseType='blob'
                 var fileURL=window.URL.createObjectURL(this.response);
                 var a=document.createElement('a');
-                
                 a.href=fileURL;
                 a.target="_blank";
                 a.download='products.csv';
                 document.body.appendChild(a);
-                console.log(a.download);
                 a.click();
+                alert("Downloading "+a.download)
                 document.body.removeChild(a);
             } 
                 

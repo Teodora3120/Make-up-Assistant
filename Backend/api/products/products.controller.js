@@ -17,7 +17,6 @@ const productsController = async (req, res) => {
         if (req.url === "/api/products/csv") {
             try {
                 await auth(req, res);
-                console.log("blablabla");
                 const products = await run("Products", (data) => getAll(data));
                 var keys = Object.keys(products[0])
                 var csv = [keys.join(",")]
