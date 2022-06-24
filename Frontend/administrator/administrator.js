@@ -247,6 +247,7 @@ window.goToDelete=async function(id){
     deleteProductById();
 }
 window.modifyProduct=async function(){
+    dynamic=document.querySelector('.box');
     idvalue="";
     const local = localStorage.getItem("user");
     console.log("I AM IN THE FUNCTION!");
@@ -616,6 +617,7 @@ window.beginModifyProduct=async function(){
 }
 
 window.deleteProduct=async function(){
+    dynamic=document.querySelector('.box');
     idvalue="";
     const local = localStorage.getItem("user");
     console.log("I AM IN THE FUNCTION!");
