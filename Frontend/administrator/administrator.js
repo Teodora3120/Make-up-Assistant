@@ -327,6 +327,9 @@ window.addProduct=async function(){
     let dynamic=document.querySelector('.box');
     dynamic.innerHTML=`
     <p>Insert data about the product you wish to add</p>
+    <br>
+    <p>ALL FIELDS ARE REQUIRED!</p>
+    <br>
     <p>Product name:</p>
     <input type="text" id="productName" class="input-id" placeholder="" required>
     <br><p>Price: </p>
@@ -426,7 +429,7 @@ window.addProduct=async function(){
     </select>
     <br>
     <br>
-    <button type="button" class="submit-bttn" onclick="addProductForm()">Add</button>
+    <button type="button" id="productAddbttn" class="submit-bttn" onclick="addProductForm()">Add</button>
     `;
 }
 

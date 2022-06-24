@@ -4,7 +4,9 @@
     box-sizing: border-box; /* we removing the margins, paddings from start */
     font-family: 'Roboto', sans-serif;
 }
-
+body{
+  background-color: rgba(245, 245, 245,0.9);  
+}
 header {
     background-color: rgb(245, 215, 218);
     width: 100%;
@@ -27,15 +29,18 @@ header {
     flex-flow: column;
     align-items: center;
     margin:auto;
+    padding-top: 2%;
     /* margin-bottom: 20%; */
     width: 50%;
-    height: 90%;
+    height: 80%;
   }
    .toolbar{
     display: flex;
     justify-content: space-between;
     margin:auto;
-    width:100%
+    width:100%;
+    padding-bottom: 2%;
+    
   } 
 /* CSS */
  .toggle-btn {
@@ -48,8 +53,8 @@ header {
   font-size: 1.6vh;
   max-width: 20vh;
   background-color: rgba(243,182,212,0.53);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   margin-top: 5%;
-  
 }
 .toggle-btn:hover{
   border:4px solid;
@@ -104,20 +109,19 @@ header {
    .form-like{
     display: flex;
     margin:auto;
-    background-color:rgb(245, 215, 218);
+    width: 100%;
     /* justify-content: center; */
     /* align-items: center; */
-    width:100%;
-    height: 40%;
     max-height: 30em;
     overflow-y: scroll;
-    border-style: solid;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
   } 
    .box{
-    /* display: flex; */
-    width: auto;
+    max-width: 100%;
+    width:100%;
     background-color:rgb(245, 215, 218);
     height: 90%;
+    justify-content: center;
   } 
    .list-objects{
     border-style: dashed;
@@ -276,6 +280,7 @@ header {
     }
     .form-like{
       max-height: 30em;
+      
     }
 }
 
@@ -297,7 +302,7 @@ header {
     padding: 0 3em;
   }
 
-  @media screen and (max-width: 700px){
+  @media screen and (max-width: 772px){
  
     .hamburger{
       display: block;
@@ -361,11 +366,38 @@ header {
     .form-like{
       max-height: 25em;
     }
+    .big-box{
+      position: relative;
+      font-size: smaller;
+      margin-left: 20%;
+    }
+    .toolbar{
+      float:left;
+      display: flex;
+      flex-direction: column;
+    }
+    .form-like{
+      width: 100%;
+    }
+  }
+  @media screen and (max-width:500px){
+    .form-like{
+      width: 120%;
+    }
+    .toggle-btn{
+      padding-left: 2%;
+    }
+    .big-box{
+      margin-left:5%;
+      max-width: 100%;
+    }
   }
   @media screen and (max-height: 500px){
     .form-like{
       max-height: 15em;
+      
     }
+
   }
   @media screen and (max-height: 600px){
     .form-like{
