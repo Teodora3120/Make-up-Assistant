@@ -4,7 +4,7 @@ var product=[];
 let originalproduct=[];
 var el="";
 window.checkProducts=async function(){
-    //let dynamic=document.querySelector('.box');
+    let dynamic=document.querySelector('.box');
      const local = localStorage.getItem("user");
      console.log("I AM IN THE FUNCTION!");
     if (local) {
@@ -24,13 +24,120 @@ window.checkProducts=async function(){
             if (request.readyState == XMLHttpRequest.DONE){
         console.log(JSON.parse(request.responseText));
         const products=JSON.parse(request.responseText);
-    dynamic.innerHTML=products.map((item, index)=>`
+        if (Array.isArray(products) == false && products.message === "Invalid Token") {
+            console.log("This session has been expired. Click here to login again");
+
+            return dynamic.innerHTML =
+                `
+                 <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                 <h3>Your session has expired.</h3>
+                 <h4 style="margin-top:2em; font-weight: 400;">Click <a style="color: #1a0dab;" href="/Frontend/loginRegisterPage.html"> here </a> to login again.</h4>
+                 </div>
+                 `
+        }
+        dynamic.innerHTML=`
+        <div class="filer-check">
+        <p>Filter</p>
+        <label id="filterbrand1" for="filterbrandoption">Brand<br></label>
+                <select name="filterbrandoption" id="filterbrand">
+                <option id="choose" value="choose" selected>Choose</option>
+                <option value="nyx">Nyx</option>
+                <option value="l'oreal">L'oreal</option>
+                <option value="covergirl">Covergirl</option>
+                <option value="dior">Dior</option>
+                <option value="benefit">Benefit</option>
+                <option value="smashbox">Smashbox</option>
+                <option value="maybelline">Maybelline</option>
+                <option value="physicians formula">Physicians formula</option>
+                <option value="e.l.f">e.l.f</option>
+                <option value="clinique">Clinique</option>
+                </select>
+        <label id="filterproducttype1" for="filterproducttypeoption">Type of product<br></label>
+                <select name="filterproducttypeoption" id="filtertypeproduct">
+                <option id="choose" value="choose" selected>Choose</option>
+                <option id="foundation" value="foundation">Foundation</option>
+                <option id="lipliner" value="lip_liner">Lip Liner</option>
+                <option id="lipstick" value="lipstick">Lipstick</option>
+                <option id="eyeliner" value="eyeliner">Eyeliner</option>
+                <option id="eyeshadow" value="eyeshadow">Eyeshadow</option>
+                <option id="blush" value="blush">Blush</option>
+                <option id="bronzer" value="bronzer">Bronzer</option>
+                <option id="mascara" value="mascara">Mascara</option>
+                </select>
+        <label id="filteroutfitcolor1" for="filteroutfitcolors">Outfit colors<br></label>
+                <select name="filteroutfitcolors" id="filteroutfitcolors">
+                <option id="choose" value="choose" selected>Choose</option>
+                <option value="warm">Warm colors</option>
+                <option value="cold">Cold colors</option>
+                <option value="dark">Dark colors</option>
+                <option value="light">Light colors</option>
+                <option value="neutral">Neutral colors</option>
+                </select>
+        <label id="filterevent1" for="filtereventoption">Event<br></label>
+                <select name="filtereventoption" id="filterevent">
+                <option id="choose" value="choose" selected>Choose</option>
+                <option value="party">Party</option>
+                <option value="goingOut">Going out</option>
+                <option value="date">Date</option>
+                <option value="funeral">Funeral</option>
+                <option value="wedding">Wedding</option>
+                <option value="bride">Bride</option>
+                <option value="christmas">Christmas</option>
+                <option value="newYearsEve">New Year's Eve</option>
+                </select>
+        <label id="filtereyecolor1" for="filtereyecoloroption">Eye color<br></label>
+                <select name="filtereyecoloroption" id="filtereyecolor">
+                <option id="choose" value="choose" selected>Choose</option>
+                <option value="green">Green</option>
+                <option value="brown">Brown</option>
+                <option value="hazel">Hazel</option>
+                <option value="blue">Blue</option>
+                <option value="black">Black</option>
+                </select>
+        <label id="filterhaircolor1" for="filterhaircoloroption">Hair color<br></label>
+                <select name="filterhaircoloroption" id="filterhaircolor">
+                <option id="choose" value="choose" selected>Choose</option>
+                <option value="blonde">Blonde</option>
+                <option value="brunette">Brunette</option>
+                <option value="brown">Brown</option>
+                <option value="red">Red</option>
+                <option value="others">Others</option>
+                </select>
+        <label id="filtervegan1" for="filterveganoption">Vegan<br></label>
+                <select name="filterveganoption" id="filtervegan">
+                <option id="choose" value="choose" selected>Choose</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+                </select>
+        <label id="filterskinage1" for="filterskinageoption">Skin Age<br></label>
+                <select name="filterskinageoption" id="filterskinage">
+                <option id="choose" value="choose" selected>Choose</option>
+                <option value="teen"> Teen (16-20 years)</option>
+                <option value="young"> Young (20-40 years)</option>
+                <option value="mature"> Mature (40+ years)</option>
+                </select>
+        <label id="filterskintypes1" for="filterskintypesoption">Skin types<br></label>
+                <select name="filterskintypesoption" id="filterskintypes">
+                <option id="choose" value="choose" selected>Choose</option>
+                <option value="oily">Oily</option>
+                <option value="dry">Dry</option>
+                <option value="mixed">Mixed</option>
+                <option value="dryacneic">Dry and acneic</option>
+                <option value="oilyacneic">Oily and acneic</option>
+                <option value="mixedacneic">Mixed and acneic</option>
+                </select>
+        <button type="button" class="submit-btn" onclick="setFilter()">Submit</button>
+        </div>
+        `;
+    dynamic.innerHTML+=products.map((item, index)=>`
     <div class="list-objects">    
         <p class="textlist" id="id" value="${item.id}">Id:${item.id}</p>
         <p class="textlist">Brand:${item.brand}</p>
         <p class="textlist">Name:${item.name}</p>
         <p class="textlist">Price:${item.price}</p>
         <p class="textlist">Price sign:${item.sign}</p>
+        <p class="textlist">Category:${item.category}</p>
+        <p class="textlist">Product type:${item.product_type}</p>
         <p class="textlist">Link product:${item.product_link}</p>
         <p class="textlist">description:${item.description}</p>
         <p class="textlist">Rating:${item.rating}</p>
@@ -51,6 +158,83 @@ window.checkProducts=async function(){
     }catch (err) {
         console.log(err);
     }
+}
+
+window.setFilter=async function(){
+    const local = localStorage.getItem("user");
+    var filter=[];
+   if (local) {
+       token = JSON.parse(localStorage.getItem('user')).token;
+   } else {
+       return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
+   }
+    filter.outfitcolors=document.getElementById("filteroutfitcolors").value;
+    filter.event=document.getElementById("filterevent").value;
+    filter.eyecolor=document.getElementById("filtereyecolor").value;
+    filter.haircolor=document.getElementById("filterhaircolor").value;
+    filter.vegan=document.getElementById("filtervegan").value;
+    filter.brand=document.getElementById("filterbrand").value;
+    filter.skinage=document.getElementById("filterskinage").value;
+    filter.skintypes=document.getElementById("filterskintypes").value;
+    filter.product_type=document.getElementById("filtertypeproduct").value;
+    try{
+        var request=new XMLHttpRequest();
+       const url='http://localhost:5000/api/products/filtercheck';
+       console.log(url);
+       request.open('POST', url, true);
+       console.log("I AM REQUESTING THE OBJECTS");
+       request.setRequestHeader('x-access-token', token);
+       console.log("THE FILTER IS: " + JSON.stringify(filter));
+       request.send(JSON.stringify({brand:filter.brand,outfitcolors:filter.outfitcolors,event:filter.event, 
+        eyecolor:filter.eyecolor, haircolor:filter.haircolor, vegan:filter.vegan, skinage:filter.skinage,
+         skintypes:filter.skintypes, product_type:filter.product_type}));
+       request.onreadystatechange = function () {
+        console.log("onreadystechange IS FUNCTIONAL");
+        if (request.readyState == XMLHttpRequest.DONE){
+    console.log(JSON.parse(request.responseText));
+    const products=JSON.parse(request.responseText);
+    dynamic=document.querySelector('.list-objects');
+    if (Array.isArray(products) == false && products.message === "Invalid Token") {
+        console.log("This session has been expired. Click here to login again");
+
+        return dynamic.innerHTML =
+            `
+             <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+             <h3>Your session has expired.</h3>
+             <h4 style="margin-top:2em; font-weight: 400;">Click <a style="color: #1a0dab;" href="/Frontend/loginRegisterPage.html"> here </a> to login again.</h4>
+             </div>
+             `
+    }
+    dynamic.innerHTML=products.map((item, index)=>`
+    <div class="list-objects">    
+        <p class="textlist" id="id" value="${item.id}">Id:${item.id}</p>
+        <p class="textlist">Brand:${item.brand}</p>
+        <p class="textlist">Name:${item.name}</p>
+        <p class="textlist">Price:${item.price}</p>
+        <p class="textlist">Price sign:${item.sign}</p>
+        <p class="textlist">Category:${item.category}</p>
+        <p class="textlist">Product type:${item.product_type}</p>
+        <p class="textlist">Link product:${item.product_link}</p>
+        <p class="textlist">description:${item.description}</p>
+        <p class="textlist">Rating:${item.rating}</p>
+        <p class="textlist">API featured image:${item.api_featured_image}</p>
+        <p class="textlist">Outfit colors:${item.outfitcolors}</p>
+        <p class="textlist">For event:${item.event}</p>
+        <p class="textlist">Eyecolor:${item.eyecolor}</p>
+        <p class="textlist">Haircolor:${item.haircolor}</p>
+        <p class="textlist">Vegan:${item.vegan}</p>
+        <p class="textlist">Skin age:${item.skinage}</p>
+        <p class="textlist">Skin type:${item.skintypes}</p>
+        <button type="button" id="modify-btn" class="submit-btn" onclick="goToModify(${item.id})">Modify</button>
+        <button type="button" id="delete-btn" class="submit-btn" onclick="goToDelete(${item.id})">Delete</button>
+    </div>
+        `).join(" ");
+        }
+    }
+    }catch (err) {
+        console.log(err);
+    }
+    dynamic=document.querySelector('.box');
 }
 
 window.goToModify=async function(id)
@@ -111,6 +295,17 @@ window.showProduct=async function(){
         console.log(JSON.parse(request.responseText));
         product=JSON.parse(request.responseText);
         originalproduct=JSON.parse(request.responseText);
+        if (Array.isArray(product) == false && product.message === "Invalid Token") {
+            console.log("This session has been expired. Click here to login again");
+
+            return dynamic.innerHTML =
+                `
+                 <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                 <h3>Your session has expired.</h3>
+                 <h4 style="margin-top:2em; font-weight: 400;">Click <a style="color: #1a0dab;" href="/Frontend/loginRegisterPage.html"> here </a> to login again.</h4>
+                 </div>
+                 `
+        }
         if(product.product_type==='lip_liner' || product.product_type==='lipstick' || product.product_type==='eyeliner' || product.product_type==='eyeshadow' || product.product_type==='blush' || product.product_type==='bronzer' || product.product_type==='mascara')
         {
             dynamic.innerHTML=
@@ -462,6 +657,17 @@ window.deleteProductById=async function(){
     if (request.readyState == XMLHttpRequest.DONE){
 console.log(JSON.parse(request.responseText));
 product=JSON.parse(request.responseText);
+if (Array.isArray(product) == false && product.message === "Invalid Token") {
+    console.log("This session has been expired. Click here to login again");
+
+    return dynamic.innerHTML =
+        `
+         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+         <h3>Your session has expired.</h3>
+         <h4 style="margin-top:2em; font-weight: 400;">Click <a style="color: #1a0dab;" href="/Frontend/loginRegisterPage.html"> here </a> to login again.</h4>
+         </div>
+         `
+}
 if(product.product_type==='lip_liner' || product.product_type==='lipstick' || product.product_type==='eyeliner' || product.product_type==='eyeshadow' || product.product_type==='blush' || product.product_type==='bronzer' || product.product_type==='mascara')
     {
         dynamic.innerHTML=`

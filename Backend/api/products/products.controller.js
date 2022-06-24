@@ -1,6 +1,6 @@
 const { run } = require("../database-connection");
 const auth = require("../../middleware/auth");
-const { getAll, findById, filter, deleteById, updateOneById, topFilter, printRSS, updateProduct, updateIds} = require("./products.service");
+const { getAll, findById, filter, deleteById, updateOneById, topFilter, printRSS, updateProduct, updateIds, checkFilter} = require("./products.service");
 
 const productsController = async (req, res) => {
     if (req.method === "GET") {
@@ -50,6 +50,16 @@ const productsController = async (req, res) => {
                 writeErrorHead(res, error);
             }
         }
+        if (req.url === "/api/products/filtercheck") {
+            try {
+                console.log("POST---FILTER");
+                const body = await auth(req, res);
+                const products = await run("Products", (data) => checkFilter(data, body));
+                writeSuccessHead(res, products);
+            } catch (error) {
+                writeErrorHead(res, error);
+            }
+        } 
         if (req.url === "/api/products") {
             try {
                 console.log("POST---preferancePage");
