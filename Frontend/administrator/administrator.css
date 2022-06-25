@@ -79,8 +79,7 @@ header {
     font-style: italic;
     font-weight: bold;
     background-color: #E9967A;
-    overflow-y: scroll;
-    overflow-x: hidden;
+  
   }
   .select-items div,.select-selected {
     /* color: #ffffff; */
