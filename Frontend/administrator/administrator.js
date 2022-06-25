@@ -161,6 +161,7 @@ window.checkProducts=async function(){
 }
 
 window.setFilter=async function(){
+    idvalue='';
     const local = localStorage.getItem("user");
     var filter=[];
    if (local) {
@@ -694,9 +695,11 @@ if(product===-1)
     dynamic.innerHTML=`
         <p>Id doesn't exist!</p>
     `;
-    dynamic=document.querySelector('.box');
+    
 }
-else
+else{
+    dynamic=document.querySelector('.box');
+    console.log("I PASS THROUGH HERE!");
 if(product.product_type==='lip_liner' || product.product_type==='lipstick' || product.product_type==='eyeliner' || product.product_type==='eyeshadow' || product.product_type==='blush' || product.product_type==='bronzer' || product.product_type==='mascara')
     {
         dynamic.innerHTML=`
@@ -740,6 +743,7 @@ if(product.product_type==='lip_liner' || product.product_type==='lipstick' || pr
         `;
     }
     }
+}
 }
    }catch (err) {
     console.log(err);
