@@ -54,7 +54,11 @@ async function topFilter(data, body) {
 
 
 async function findById(data, id) {
-    return await data.findOne({ "id": id });
+    const result=await data.findOne({ "id": id });
+    console.log(result);
+    if(result===null)
+        return -1;
+    return result;
 }
 
 async function getAll(data) {
@@ -69,10 +73,45 @@ async function insert(data, object) {
 
 async function deleteById(data, id) {
     const results = await data.deleteOne({ "id": id });
+    await data.updateMany({ "id": { $gt: id-1 } }, {$inc:{id:-1}});
     console.log(results);
     return results;
 }
 
+async function checkFilter(data, body) {
+    var projection={};
+    if(body.brand!="choose")
+        projection=Object.assign(projection, {brand:body.brand});
+    if(body.product_type!="choose")
+        projection=Object.assign(projection, {product_type:body.product_type});
+    if(body.outfitcolors!="choose")
+        projection=Object.assign(projection, {outfitcolors:body.outfitcolors});
+    if(body.event!="choose")
+        projection=Object.assign(projection, {event:body.event});
+    if(body.eyecolor!="choose")
+        projection=Object.assign(projection, {eyecolor:body.eyecolor});
+    if(body.haircolor!="choose")
+        projection=Object(projection, {haircolor:body.haircolor});
+    if(body.vegan!="choose")
+        projection=Object.assign(projection, {vegan:body.vegan});
+    if(body.skinage!="choose")
+        projection=Object.assign(projection,{skinage:body.skinage});
+    if(body.skintypes!="choose")
+        projection=Object.assign(projection, {skintypes:body.skintypes});
+    
+    const options = {
+        sort: { id: 1 },
+        projection: { id: 1, brand: 1, name: 1, price: 1, price_sign: 1, product_link: 1, description: 1,
+             rating: 1, category: 1, product_type: 1, api_featured_image: 1, outfitcolors:1, event:1, eyecolor:1,
+            haircolor:1, vegan:1, skinage:1, skintypes:1},
+    };
+    let products = await data.find(projection, options).toArray();
+    return products;
+}
+
+ async function updateIds(data, id){
+    console.log("");
+} 
 async function updateOneById(data, id) {
     const result = await data.updateOne(
         { id: id },
@@ -81,4 +120,23 @@ async function updateOneById(data, id) {
     return result;
 }
 
-module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS};
+async function updateProduct(data, body){
+    const oldproduct={id:body.id};
+    if(body.product_type==='lip_liner' || body.product_type==='lipstick' || body.product_type==='eyeliner' || body.product_type==='eyeshadow' || body.product_type==='blush' || body.product_type==='bronzer' || body.product_type==='mascara')
+    {
+        body.skintypes="";
+        body.skinage="";
+    }
+    const newproduct={$set:{name:body.name, price:body.price, price_sign:body.price_sign,
+    product_link:body.product_link, description:body.description, rating:body.rating,
+     product_type:body.product_type, api_featured_image:body.api_featured_image, 
+     outfitcolors:body.outfitcolors, event:body.event, eyecolor:body.eyecolor, haircolor:body.haircolor,
+    vegan:body.vegan, skinage:body.skinage, skintypes:body.skintypes}};
+    const result= await data.updateOne(oldproduct, newproduct);
+    return result;
+}
+async function getMaxId(data){
+    return await data.find({}).sort({id: -1}).limit(1).toArray()
+}
+module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS, updateProduct, updateIds, checkFilter, getMaxId};
+

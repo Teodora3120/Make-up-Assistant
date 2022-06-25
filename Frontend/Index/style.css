@@ -42,7 +42,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10em;
+    gap: 8em;
   }
   
   .nav-branding{
