@@ -134,5 +134,8 @@ async function updateProduct(data, body){
     const result= await data.updateOne(oldproduct, newproduct);
     return result;
 }
+async function getMaxId(data){
+    return await data.find({}).sort({id: -1}).limit(1).toArray()
+}
+module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS, updateProduct, updateIds, checkFilter, getMaxId};
 
-module.exports = { findById, getAll, deleteById, updateOneById, insert, filter , topFilter, printRSS, updateProduct, updateIds, checkFilter};

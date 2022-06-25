@@ -778,5 +778,276 @@ dynamic.innerHTML=`
 
 window.addProduct=async function(){
     let dynamic=document.querySelector('.box');
-    dynamic.innerHTML=`<p>add product</p>`;
+    dynamic.innerHTML=`
+    <p>Insert data about the product you wish to add</p>
+    <br>
+    <p>ALL FIELDS ARE REQUIRED!</p>
+    <br>
+    <p>Product name:</p>
+    <input type="text" id="productName" class="input-id" placeholder="" required>
+    <br><p>Price: </p>
+    <input type="text" id="price" class="input-id" placeholder="" required>
+    <br>
+    <p>Price sign</p>
+    <input type="text" id="price-sign" class="input-id" placeholder="" required>
+    <br>
+    <p>Product link: </p>
+    <input type="text" id="product-link" class="input-id" placeholder="" required>
+    <br>
+    <p>Product image link: </p>
+    <input type="text" id="product-image-link" class="input-id" placeholder="" required>
+    <br><p>Description</p>
+    <input type="text" id="description" class="input-id" placeholder=""  required>
+    <br><p>Brand name</p>
+    <input type="text" id="brandName" class="input-id" placeholder="" required>
+    <br><p>Category</p>
+    <select id="category" class="input-id" required>
+        <option value="lipstick">lipstick</option>
+        <option value="powder">Powder</option>
+        <option value="pencil">Pencil</option>
+        <option value="palette">Palette</option>
+        <option value="cream">Cream</option>
+        <option value="lipGloss">Lip gloss</option>
+        <option value="concealer">Concealer</option>
+        <option value="mineral">Mineral</option>
+        <option value="gel">Gel</option>
+    </select>
+    <br><p>Product type</p>
+    <select id="productType" class="input-id" required>
+        <option value="foundation">Foundation</option>
+        <option value="eyeliner">Eyeliner</option>
+        <option value="lipstick">Lipstick</option>
+        <option value="blush"></option>
+        <option value="mascara"></option>
+        <option value="eyeshadow"></option>
+        <option value="nailPolish"></option>
+        <option value="eyebrow"></option>
+        <option value="bronzer"></option>
+        <option value="lipLiner"></option>
+    </select>
+    <br><p>Skin type</p>
+    <select id="skinType" class="input-id" required>
+        <option value="dry">Dry</option>
+        <option value="oily">Oily</option>
+        <option value="mixed">Mixed</option>
+        <option value="dryAcneic">Dry & Acneic</option>
+        <option value="oilyAcneic">Oily & Acneic</option>
+        <option value="mixedAcneic">Mixed & Acneic</option>
+    </select>
+    <br><p>Skin age</p>
+    <select id="skinAge" class="input-id" required>
+        <option value="teen">Teen(16-20 yrs old)</option>
+        <option value="young">Young(20-40)</option>
+        <option value="mature">Mature(40+)</option>
+    </select>
+    <br><p>Hair color</p>
+    <select id="haircolor" class="input-id" required>
+        <option value="blonde">Blonde</option>
+        <option value="brunette">Brunette</option>
+        <option value="red">Red</option>
+        <option value="brown">Brown</option>
+        <option value="others">Others</option>
+    </select>
+    <br><p>Eye color</p>
+    <select id="eyecolor" class="input-id" required>
+        <option value="blue">Blue</option>
+        <option value="brown">Brown</option>
+        <option value="hazel">Hazel</option>
+        <option value="green">Green</option>
+        <option value="black">Black</option>
+    </select>
+    <br><p>Event</p>
+    <select id="event" class="input-id" required>
+        <option value="party">Party</option>
+        <option value="goingOut">Going Out</option>
+        <option value="date">Date</option>
+        <option value="wedding">Wedding</option>
+        <option value="bride">Bride</option>
+        <option value="funeral">Funeral</option>
+        <option value="christmas">Christmas</option>
+        <option value="newYearsEve">New Year's Eve</option>
+    </select>
+    <br><p>Outfit colors</p>
+    <select id="outfitColors" class="input-id" required>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="neutral">Neutral</option>
+        <option value="cold">Cold</option>
+        <option value="warm">Warm</option>
+    </select>
+    <br><p>Vegan</p>
+    <select id="vegan" class="input-id" required>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br>
+    <br>
+    <button type="button" id="productAddbttn" class="submit-bttn" onclick="addProductForm()">Add</button>
+    `;
+}
+
+window.addProductForm = async function(){
+    product = {
+        brand: document.querySelector("#brandName").value,
+        name: document.querySelector("#productName").value,
+        price: document.querySelector("#price").value,
+        price_sign: document.querySelector("#price-sign").value,
+        product_link: document.querySelector("#product-link").value,
+        description: document.querySelector("#description").value,
+        rating: 0,
+        category: document.querySelector("#category").value,
+        product_type: document.querySelector("#productType").value,
+        product_api_url: "",
+        api_featured_image: document.querySelector("#product-image-link").value,
+        skintypes: document.querySelector("#skinType").value,
+        skinage: document.querySelector("#skinAge").value,
+        haircolor: document.querySelector("#haircolor").value,
+        eyecolor: document.querySelector("#eyecolor").value,
+        event: document.querySelector("#event").value,
+        outfitcolors: document.querySelector("#outfitColors").value,
+        vegan: document.querySelector("#vegan").value
+    }
+    addProductAPI(product, ()=>{alert("Trimis cu succes!")}, ()=>{alert("Eroare la trimitere!")})
+}
+
+window.addProductAPI = function (product, onSuccess, onError){
+    const local = localStorage.getItem("user");
+    if (local) {
+        token = JSON.parse(localStorage.getItem('user')).token;
+    } else {
+        return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
+    }
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = () => {
+        if(request.readyState === XMLHttpRequest.DONE){
+            if(request.status === 200){
+                onSuccess()
+            }else{
+                onError()
+            }
+        }
+    }
+
+    const url = "http://localhost:5000/api/products/add";
+    request.open('POST', url, true);
+    request.setRequestHeader('x-access-token', token);
+    request.send(JSON.stringify(product))
+    console.log("Produsul a fost adaugat cu succes in baza de date!")
+}
+
+window.csvMenu=async function(){
+    let dynamic=document.querySelector('.box');
+    dynamic.innerHTML=`
+    <p>Select the action you wish to proceed with: </p>
+    <br>
+    <button type="button" class="submit-bttn" onclick="downloadCSV()">DownloadCSV</button>
+    <br>
+    <br>
+    <button type="buttom" class="submit-bttn" onclick="uploadCSV()">Upload CSV data</button>
+    <p id="mesaj-import"></p>
+    <br>
+    `; 
+}
+
+uploadCSV=async function(){
+    var input=document.createElement('input');
+    input.type='file';
+    input.accept=".csv";
+    input.click();
+    input.onchange = e => {
+        var file=e.target.files[0];
+        var reader= new FileReader();
+        reader.onload = ()=>{
+            var lines = reader.result.split("\n");
+            const fields = lines.shift().split(",")
+            var products = []
+            for (var line of lines) {
+                var product = {}
+                var value = ""
+                var field_count = 0
+                while(line.length > 0){
+                    if(line[0] !== '"'){
+                        value = line.slice(0, line.indexOf(','))
+                        line = line.slice(line.indexOf(',')+1)
+                        if(value.includes(".")){
+                            product[fields[field_count]] = parseFloat(value)    
+                        }else{
+                            product[fields[field_count]] = parseInt(value)
+                        }
+                    }else{
+                        line = line.slice(1)
+                        for(var i = 0; i < line.length-1; i = i + 1){
+                            if(line[i] === '"'){
+                                if(line[i+1] === '"'){
+                                    value = value + '"'
+                                    i = i + 1
+                                }
+                                if(line[i+1] === ','){
+                                    break
+                                }
+                            }else{
+                                value = value + line[i]
+                            }
+                        }
+                        line = line.slice(i + 2)
+                        product[fields[field_count]] = value
+                    }
+                    field_count = field_count + 1
+                    value = ""
+                }
+                products.push(product)
+            }
+            var product_iter = -1
+            var send_next_product = ()=>{
+                product_iter = product_iter + 1
+                if(products.length == product_iter){
+                    alert("DB imported!")
+                }else{
+                    addProductAPI(products[product_iter], send_next_product, ()=>{
+                        alert("Eroare la adaugarea produsului de pe linia "+product_iter)
+                    })
+                }
+            }
+            send_next_product()
+        }
+        reader.readAsText(file);
+    }
+}
+
+window.downloadCSV=async function(){
+    const local = localStorage.getItem("user");
+    if (local) {
+        token = JSON.parse(localStorage.getItem('user')).token;
+    } else {
+        return window.location.href = "http://localhost:5000/Frontend/notLoggedIn.html";
+    }
+    try{
+        var request = new XMLHttpRequest();;
+        const url="http://localhost:5000/api/products/csv";
+        request.responseType='blob';
+        request.open('GET', url, true);
+        request.setRequestHeader('x-access-token', token);
+        request.send();
+        request.onload=function(){
+            if (request.status != 200) {
+                alert("File cannot be downloade, error: "+request.status);
+            }
+            else if(request.status==200){
+                var fileURL=window.URL.createObjectURL(this.response);
+                var a=document.createElement('a');
+                a.href=fileURL;
+                a.target="_blank";
+                a.download='products.csv';
+                document.body.appendChild(a);
+                a.click();
+                alert("Downloading "+a.download)
+                document.body.removeChild(a);
+            } 
+                
+        }
+
+    }catch(err){
+        console.log(err)
+    }
 }
