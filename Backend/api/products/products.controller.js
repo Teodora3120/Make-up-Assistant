@@ -61,6 +61,7 @@ const productsController = async (req, res) => {
     if (req.method === "POST") {
         if (req.url === "/api/products/add") {
             try {
+                console.log("CSV---POST")
                 var body = await auth(req, res)
                 if(!body.hasOwnProperty('id')){
                     const last = await run("Products", (data) => getMaxId(data))

@@ -27,12 +27,12 @@ header {
   .big-box{
     display: flex;
     flex-flow: column;
-    align-items: center;
+    /* align-items: center; */
     margin:auto;
     padding-top: 2%;
     /* margin-bottom: 20%; */
     width: 50%;
-    height: 80%; /*40%*/
+    height: 40%; /*40%*/
     border-style: groove;
   }
    .toolbar{
@@ -48,6 +48,7 @@ header {
   border-radius: 8%;
   box-shadow:  0 0 5% 0 #d5a3c2;
   color: white;
+  background: linear-gradient(to right, rgb(179, 84, 104), #c36cdd, #dd6cb2);
   margin:5px;
 }  
 .toggle-bttn{
@@ -303,7 +304,7 @@ color:rgba(101, 9, 55, 0.825);
     
 @media screen and (max-height: 1500px) {
   .form-like{
-    max-height: 35em;
+    max-height: 30em;
   }
 
 }
