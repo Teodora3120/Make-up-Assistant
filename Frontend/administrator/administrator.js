@@ -128,9 +128,12 @@ window.checkProducts=async function(){
                 </select>
         <button type="button" class="toggle-btn" onclick="setFilter()">Submit</button>
         </div>
+        <div id="filtered-elements">
+        </div>
         `;
-    dynamic.innerHTML+=products.map((item, index)=>`
-    <div class="list-objects">    
+        dynamic=document.querySelector("#filtered-elements");
+    dynamic.innerHTML=products.map((item, index)=>`
+    <div class="list-objects" id="filter-products">    
         <p class="textlist" id="id" value="${item.id}">Id:${item.id}</p>
         <p class="textlist">Brand:${item.brand}</p>
         <p class="textlist">Name:${item.name}</p>
@@ -161,6 +164,8 @@ window.checkProducts=async function(){
 }
 
 window.setFilter=async function(){
+    dynamic=document.querySelector('#filtered-elements');
+    product=[];
     idvalue='';
     const local = localStorage.getItem("user");
     var filter=[];
@@ -192,10 +197,12 @@ window.setFilter=async function(){
        request.onreadystatechange = function () {
         console.log("onreadystechange IS FUNCTIONAL");
         if (request.readyState == XMLHttpRequest.DONE){
+            dynamic=document.querySelector('#filtered-elements');
     console.log(JSON.parse(request.responseText));
-    const products=JSON.parse(request.responseText);
-    dynamic=document.querySelector('.list-objects');
-    if (Array.isArray(products) == false && products.message === "Invalid Token") {
+    product=JSON.parse(request.responseText);
+    //console.log("THE FILTERED PRODUCTS ARE" + products1.brand);
+    
+    if (Array.isArray(product) == false && product.message === "Invalid Token") {
         console.log("This session has been expired. Click here to login again");
 
         return dynamic.innerHTML =
@@ -206,28 +213,28 @@ window.setFilter=async function(){
              </div>
              `
     }
-    dynamic.innerHTML=products.map((item, index)=>`
-    <div class="list-objects">    
-        <p class="textlist" id="id" value="${item.id}">Id:${item.id}</p>
-        <p class="textlist">Brand:${item.brand}</p>
-        <p class="textlist">Name:${item.name}</p>
-        <p class="textlist">Price:${item.price}</p>
-        <p class="textlist">Price sign:${item.price_sign}</p>
-        <p class="textlist">Category:${item.category}</p>
-        <p class="textlist">Product type:${item.product_type}</p>
-        <p class="textlist">Link product:${item.product_link}</p>
-        <p class="textlist">description:${item.description}</p>
-        <p class="textlist">Rating:${item.rating}</p>
-        <p class="textlist">API featured image:${item.api_featured_image}</p>
-        <p class="textlist">Outfit colors:${item.outfitcolors}</p>
-        <p class="textlist">For event:${item.event}</p>
-        <p class="textlist">Eyecolor:${item.eyecolor}</p>
-        <p class="textlist">Haircolor:${item.haircolor}</p>
-        <p class="textlist">Vegan:${item.vegan}</p>
-        <p class="textlist">Skin age:${item.skinage}</p>
-        <p class="textlist">Skin type:${item.skintypes}</p>
-        <button type="button" id="modify-btn" class="toggle-btn" onclick="goToModify(${item.id})">Modify</button>
-        <button type="button" id="delete-btn" class="toggle-btn" onclick="goToDelete(${item.id})">Delete</button>
+    dynamic.innerHTML=product.map((item1, index)=>`
+    <div class="list-objects" id="filter-products">    
+        <p class="textlist" id="id" value="${item1.id}">Id:${item1.id}</p>
+        <p class="textlist">Brand:${item1.brand}</p>
+        <p class="textlist">Name:${item1.name}</p>
+        <p class="textlist">Price:${item1.price}</p>
+        <p class="textlist">Price sign:${item1.price_sign}</p>
+        <p class="textlist">Category:${item1.category}</p>
+        <p class="textlist">Product type:${item1.product_type}</p>
+        <p class="textlist">Link product:${item1.product_link}</p>
+        <p class="textlist">description:${item1.description}</p>
+        <p class="textlist">Rating:${item1.rating}</p>
+        <p class="textlist">API featured image:${item1.api_featured_image}</p>
+        <p class="textlist">Outfit colors:${item1.outfitcolors}</p>
+        <p class="textlist">For event:${item1.event}</p>
+        <p class="textlist">Eyecolor:${item1.eyecolor}</p>
+        <p class="textlist">Haircolor:${item1.haircolor}</p>
+        <p class="textlist">Vegan:${item1.vegan}</p>
+        <p class="textlist">Skin age:${item1.skinage}</p>
+        <p class="textlist">Skin type:${item1.skintypes}</p>
+        <button type="button" id="modify-btn" class="toggle-btn" onclick="goToModify(${item1.id})">Modify</button>
+        <button type="button" id="delete-btn" class="toggle-btn" onclick="goToDelete(${item1.id})">Delete</button>
     </div>
         `).join(" ");
         }
@@ -266,7 +273,7 @@ window.modifyProduct=async function(){
       </form>
     `;
 }
-addEventListener("keypress", function(event) {
+window.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
       event.preventDefault();
       //showProduct();
@@ -635,8 +642,8 @@ window.beginModifyProduct=async function(){
 }
 
 window.deleteProduct=async function(){
-    dynamic=document.querySelector('.box');
     idvalue="";
+    dynamic=document.querySelector('.box');
     const local = localStorage.getItem("user");
     console.log("I AM IN THE FUNCTION!");
    if (local) {
@@ -677,7 +684,7 @@ window.deleteProductById=async function(){
     if (request.readyState == XMLHttpRequest.DONE){
 console.log(JSON.parse(request.responseText));
 product=JSON.parse(request.responseText);
-idvalue="";
+//idvalue="";
 if (Array.isArray(product) == false && product.message === "Invalid Token") {
     console.log("This session has been expired. Click here to login again");
 
